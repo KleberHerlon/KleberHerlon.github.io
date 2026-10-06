@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - BreaKeltner v3.0</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', -apple-system, sans-serif;
+  background: #080C12;
+  color: #C8D6E5;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: start;
+}
+
+/* FORM SIDE */
+.form-section {
+  background: #0E121B;
+  border: 1px solid #1A2A3C;
+  border-radius: 16px;
+  padding: 40px;
+}
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1A2A3C;
+}
+.form-header pre {
+  color: #4A6FA5;
+  font-size: 11px;
+  line-height: 1.1;
+}
+.form-header h2 {
+  color: #E6EDF3;
+  font-size: 20px;
+  font-weight: 700;
+}
+.form-header p {
+  color: #6A7A8E;
+  font-size: 13px;
+}
+
+/* Tabs */
+.payment-tabs {
+  display: flex;
+  gap: 4px;
+  background: #0A0E14;
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+}
+.payment-tab {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #6A7A8E;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+  font-family: inherit;
+}
+.payment-tab:hover { color: #C8D6E5; }
+.payment-tab.active {
+  background: #1A2A3C;
+  color: #8AB4F8;
+}
+.payment-tab .icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* Form fields */
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #6A7A8E;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0A0E14;
+  border: 1px solid #1A2A3C;
+  border-radius: 8px;
+  color: #E6EDF3;
+  font-size: 14px;
+  font-family: inherit;
+  transition: 0.2s;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #4A6FA5;
+  box-shadow: 0 0 0 2px rgba(74,111,165,0.2);
+}
+.form-group input::placeholder { color: #3A4A5C; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group .card-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3A4A5C;
+}
+
+/* PIX Section */
+.pix-section {
+  text-align: center;
+  padding: 20px 0;
+}
+.pix-qr-placeholder {
+  width: 200px;
+  height: 200px;
+  background: #0A0E14;
+  border: 2px dashed #1A2A3C;
+  border-radius: 16px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: #2A3A5C;
+}
+.pix-key-box {
+  background: #0A0E14;
+  border: 1px solid #1A2A3C;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.pix-key-box code {
+  color: #8AB4F8;
+  font-size: 14px;
+}
+.pix-key-box button {
+  background: #1A2A3C;
+  border: none;
+  color: #8AB4F8;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+  font-family: inherit;
+}
+.pix-key-box button:hover { background: #2A3A5C; }
+.pix-info {
+  color: #6A7A8E;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+/* Card Form */
+.card-form { padding: 4px 0; }
+.card-number-wrap {
+  position: relative;
+}
+.card-number-wrap input { padding-right: 50px; }
+
+/* Summary */
+.summary-section {
+  background: #0E121B;
+  border: 1px solid #1A2A3C;
+  border-radius: 16px;
+  padding: 32px;
+  position: sticky;
+  top: 20px;
+}
+.summary-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #E6EDF3;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1A2A3C;
+}
+.summary-plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.summary-plan-name { font-size: 14px; color: #C8D6E5; }
+.summary-plan-price { font-size: 24px; font-weight: 800; color: #8AB4F8; }
+.summary-plan-price span { font-size: 14px; font-weight: 400; color: #6A7A8E; }
+.summary-divider { border: none; border-top: 1px solid #1A2A3C; margin: 16px 0; }
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.summary-row-label { color: #6A7A8E; }
+.summary-row-value { color: #C8D6E5; }
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #1A2A3C;
+}
+.summary-total-label { color: #E6EDF3; }
+.summary-total-value { color: #8AB4F8; font-size: 20px; }
+.summary-guarantee {
+  text-align: center;
+  margin-top: 20px;
+  padding: 12px;
+  background: #0A0E14;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #4EC9B0;
+}
+
+/* Submit Button */
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #4A6FA5, #6A9FD8);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  margin-top: 20px;
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74,111,165,0.4);
+}
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4A6FA5;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+.btn-back:hover { color: #8AB4F8; }
+
+/* Success overlay */
+.success-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(8,12,18,0.97);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.success-overlay.show { display: flex; }
+.success-icon {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #4EC9B0, #2A9D8F);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  margin: 0 auto 24px;
+}
+.success-overlay h2 { color: #E6EDF3; font-size: 28px; margin-bottom: 12px; }
+.success-overlay p { color: #6A7A8E; font-size: 15px; max-width: 400px; margin: 0 auto 8px; }
+.success-overlay .btn-done {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 40px;
+  background: linear-gradient(135deg, #4A6FA5, #6A9FD8);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
+  font-family: inherit;
+}
+.success-overlay .btn-done:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74,111,165,0.4);
+}
+
+/* Footer */
+.form-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #1A2A3C;
+}
+.form-footer p {
+  color: #3A4A5C;
+  font-size: 12px;
+}
+.form-footer .badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+.form-footer .badges span {
+  color: #3A4A5C;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
+  .summary-section {
+    position: static;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="checkout-container">
+  <div class="form-section">
+    <a href="index.html" class="btn-back">← Voltar</a>
+
+    <div class="form-header">
+      <pre>╔═══╗
+║◉◉║
+║▄▄║
+╚═══╝</pre>
+      <div>
+        <h2>Finalizar Pedido</h2>
+        <p>BreaKeltner v3.0 — Escolha sua forma de pagamento</p>
+      </div>
+    </div>
+
+    <!-- Plan selector inside checkout -->
+    <div class="form-group">
+      <label>Selecione o Plano</label>
+      <select id="planSelect">
+        <option value="mensal">Assinatura Mensal — R$ 197/mês</option>
+        <option value="anual">Assinatura Anual — R$ 1.497/ano (economize R$ 867)</option>
+        <option value="vitalicia" selected>Licença Vitalícia — R$ 997 (economia total)</option>
+      </select>
+    </div>
+
+    <!-- Payment tabs -->
+    <div class="payment-tabs">
+      <button class="payment-tab active" data-tab="pix">
+        <span class="icon">⎔</span>
+        Pix
+      </button>
+      <button class="payment-tab" data-tab="card">
+        <span class="icon">◉</span>
+        Cartão de Crédito
+      </button>
+    </div>
+
+    <!-- PIX Panel -->
+    <div class="panel active" id="panel-pix">
+      <div class="pix-section">
+        <p style="color:#6A7A8E; font-size:14px;">
+          Pague com Pix e receba o robô em instantes<br>
+          <small style="color:#3A4A5C;">Após a confirmação, você receberá o acesso por e-mail</small>
+        </p>
+
+        <div class="pix-qr-placeholder">
+          ◆
+        </div>
+
+        <div class="pix-key-box">
+          <code>breakeltner@pix.com.br</code>
+          <button onclick="copyPix()">Copiar</button>
+        </div>
+
+        <p class="pix-info">
+          Abra seu app de pagamento, escaneie o QR Code ou copie a chave Pix acima.
+          O ambiente será liberado automaticamente após a confirmação.
+        </p>
+      </div>
+    </div>
+
+    <!-- Credit Card Panel -->
+    <div class="panel" id="panel-card">
+      <div class="card-form">
+        <div class="form-group">
+          <label>Nome no Cartão</label>
+          <input type="text" placeholder="Como impresso no cartão">
+        </div>
+
+        <div class="form-group card-number-wrap">
+          <label>Número do Cartão</label>
+          <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Validade</label>
+            <input type="text" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="text" placeholder="123" maxlength="4">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>CPF / CNPJ</label>
+          <input type="text" placeholder="000.000.000-00">
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" placeholder="(11) 99999-9999">
+        </div>
+      </div>
+
+      <button class="btn-submit" onclick="showSuccess()">
+        ◉ Pagar R$ <span id="cardAmount">997</span>
+      </button>
+    </div>
+
+    <div class="form-footer">
+      <p>🔒 Ambiente 100% seguro — Seus dados não são armazenados</p>
+      <div class="badges">
+        <span>🔒</span>
+        <span>⎔</span>
+        <span>◉</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Summary -->
+  <div class="summary-section">
+    <div class="summary-title">Resumo do Pedido</div>
+
+    <div class="summary-plan">
+      <div>
+        <div class="summary-plan-name" id="summaryName">Licença Vitalícia</div>
+        <div style="font-size:12px; color:#6A7A8E;">BreaKeltner v3.0 PROFESSIONAL</div>
+      </div>
+      <div class="summary-plan-price" id="summaryPrice">R$ 997</div>
+    </div>
+
+    <hr class="summary-divider">
+
+    <div class="summary-row">
+      <span class="summary-row-label">Licença</span>
+      <span class="summary-row-value" id="summaryLicense">Vitalícia</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-row-label">Contas</span>
+      <span class="summary-row-value" id="summaryAccounts">Até 3 contas reais</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-row-label">Suporte</span>
+      <span class="summary-row-value" id="summarySupport">Prioritário 24h</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-row-label">Garantia</span>
+      <span class="summary-row-value">7 dias incondicional</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-row-label">Entrega</span>
+      <span class="summary-row-value" id="summaryDelivery">Imediata por e-mail</span>
+    </div>
+
+    <hr class="summary-divider">
+
+    <div class="summary-total">
+      <span class="summary-total-label">Total</span>
+      <span class="summary-total-value" id="summaryTotal">R$ 997</span>
+    </div>
+
+    <div style="margin-top:8px;">
+      <div class="summary-row" id="summaryEconomy" style="color:#4EC9B0;">
+        <span class="summary-row-label">Economia</span>
+        <span class="summary-row-value">58% vs. assinatura</span>
+      </div>
+    </div>
+
+    <div class="summary-guarantee">
+      🛡️ Garantia incondicional de 7 dias
+    </div>
+
+    <!-- PIX submit button -->
+    <button class="btn-submit" id="pixSubmit" onclick="showSuccess()">
+      ⎔ Pagar com Pix — R$ <span id="pixAmount">997</span>
+    </button>
+  </div>
+</div>
+
+<!-- Success overlay -->
+<div class="success-overlay" id="successOverlay">
+  <div>
+    <div class="success-icon">✓</div>
+    <h2>Pagamento Confirmado!</h2>
+    <p>Bem-vindo ao BreaKeltner Professional.</p>
+    <p style="color:#4EC9B0; font-weight:600;">Seu acesso será enviado para o e-mail cadastrado em instantes.</p>
+    <p style="color:#3A4A5C; font-size:13px; margin-top:16px;">
+      Enviamos um e-mail com instruções de instalação, preset configurado<br>
+      e acesso ao grupo de usuários.
+    </p>
+    <a href="index.html" class="btn-done">Ir para a Página Inicial</a>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.payment-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Auto-select plan from URL
+const urlParams = new URLSearchParams(window.location.search);
+const planParam = urlParams.get('plan');
+if (planParam) {
+  document.getElementById('planSelect').value = planParam;
+}
+// Trigger plan change on load
+document.getElementById('planSelect').dispatchEvent(new Event('change'));
+
+// Plan selector
+document.getElementById('planSelect').addEventListener('change', function() {
+  const plans = {
+    mensal: {
+      name: 'Assinatura Mensal',
+      price: 197,
+      suffix: '/mês',
+      license: 'Mensal',
+      accounts: '1 conta real',
+      support: 'Suporte 24h',
+      delivery: 'Imediata por e-mail',
+      economy: null,
+      economyLabel: null
+    },
+    anual: {
+      name: 'Assinatura Anual',
+      price: 1497,
+      suffix: '/ano',
+      license: 'Anual',
+      accounts: '1 conta real',
+      support: 'Suporte 24h',
+      delivery: 'Imediata por e-mail',
+      economy: '-R$ 867',
+      economyLabel: 'Economia de 37%'
+    },
+    vitalicia: {
+      name: 'Licença Vitalícia',
+      price: 997,
+      suffix: '',
+      license: 'Vitalícia',
+      accounts: 'Até 3 contas reais',
+      support: 'Prioritário 24h',
+      delivery: 'Imediata por e-mail',
+      economy: '58% vs. assinatura',
+      economyLabel: 'Melhor custo-benefício'
+    }
+  };
+
+  const plan = plans[this.value];
+  document.getElementById('summaryName').textContent = plan.name;
+  document.getElementById('summaryPrice').textContent = 'R$ ' + plan.price + ' ' + plan.suffix;
+  document.getElementById('summaryLicense').textContent = plan.license;
+  document.getElementById('summaryAccounts').textContent = plan.accounts;
+  document.getElementById('summarySupport').textContent = plan.support;
+  document.getElementById('summaryDelivery').textContent = plan.delivery;
+  document.getElementById('pixAmount').textContent = plan.price;
+  document.getElementById('cardAmount').textContent = plan.price;
+  document.getElementById('summaryTotal').textContent = 'R$ ' + plan.price;
+
+  const economyRow = document.getElementById('summaryEconomy');
+  if (plan.economy) {
+    economyRow.style.display = 'flex';
+    economyRow.querySelector('.summary-row-value').textContent = plan.economyLabel + ' (' + plan.economy + ')';
+  } else {
+    economyRow.style.display = 'none';
+  }
+});
+
+// Copy PIX
+function copyPix() {
+  const key = 'breakeltner@pix.com.br';
+  navigator.clipboard.writeText(key).then(() => {
+    const btn = document.querySelector('.pix-key-box button');
+    btn.textContent = 'Copiado ✓';
+    setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+  });
+}
+
+// Success
+function showSuccess() {
+  document.getElementById('successOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+// Card number formatting
+document.querySelector('#panel-card input[placeholder="0000 0000 0000 0000"]').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+  e.target.value = value.substring(0, 19);
+});
+
+// Expiry formatting
+document.querySelector('#panel-card input[placeholder="MM/AA"]').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 2) value = value.substring(0,2) + '/' + value.substring(2);
+  e.target.value = value.substring(0, 5);
+});
+
+// CPF formatting
+document.querySelector('#panel-card input[placeholder="000.000.000-00"]').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 3) value = value.substring(0,3) + '.' + value.substring(3);
+  if (value.length > 7) value = value.substring(0,7) + '.' + value.substring(7);
+  if (value.length > 11) value = value.substring(0,11) + '-' + value.substring(11);
+  e.target.value = value.substring(0, 14);
+});
+
+// Phone formatting
+document.querySelector('#panel-card input[placeholder="(11) 99999-9999"]').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 2) value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+  if (value.length > 10) value = value.substring(0,10) + '-' + value.substring(10);
+  e.target.value = value.substring(0, 15);
+});
+</script>
+</body>
+</html>

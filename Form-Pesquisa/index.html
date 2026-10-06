@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário de satisfação</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc484gAlIsr3txL6JF8rqKnuRmAvOUXuWjAuGqvZmzMc9Yy1g/formResponse" method="post">
+    <label for="attendant_name">Nome do atendente:</label>
+    <input type="text" id="attendant_name" name="entry.1133024037"><br><br>
+  
+    <label for="satisfaction_problem">Qual seu grau de satisfação sobre a resolução do problema?</label>
+    <select id="satisfaction_problem" name="entry.540391981">
+      <option value="0">0 - Pouco Satisfeito</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10 - Muito Satisfeito</option>
+    </select><br><br>
+  
+    <label for="satisfaction_attendance">Qual seu grau de satisfação com o atendimento?</label>
+    <select id="satisfaction_attendance" name="entry.717721574">
+      <option value="0">0 - Pouco Satisfeito</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10 - Muito Satisfeito</option>
+    </select><br><br>
+  
+    <input type="submit" value="Enviar">
+    
+  </form>
+  <div id="success-message" style="display:none;">
+    <h2>Pesquisa enviada com sucesso!</h2>
+    <p>Obrigado por nos ajudar a melhorar nossos serviços.</p>
+  </div>
+  <script src="code.js"></script>
+</body>
+</html>

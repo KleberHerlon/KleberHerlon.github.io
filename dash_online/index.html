@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robot Dashboard</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Consolas, "Courier New", monospace;
+  background: #0d0806;
+  color: #C8C0B0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+#app {
+  background: #140E0A;
+  border: 1px solid #A56F4A;
+  padding: 12px;
+  width: 100%;
+  max-width: 780px;
+  min-height: 200px;
+}
+.header { display: flex; align-items: flex-start; gap: 12px; }
+.icon { color: #A56F4A; font-size: 13px; line-height: 1.25; white-space: pre; }
+.title { color: #E0D8C0; font-size: 20px; font-weight: bold; }
+.sub { color: #A56F4A; font-size: 11px; margin-top: 2px; }
+.ts { color: #A56F4A; font-size: 10px; text-align: right; margin-bottom: 6px; }
+
+.clock-box {
+  margin: 8px 0;
+  padding: 10px;
+  background: #1C1410;
+  border: 1px solid #A56F4A;
+}
+.clock-row { display: flex; justify-content: space-between; align-items: flex-end; }
+.clock-col { display: flex; flex-direction: column; }
+.clock-label { color: #A56F4A; font-size: 10px; }
+.clock-val { font-size: 36px; font-weight: bold; }
+.clock-val.time { color: #B0C94E; }
+.clock-val.sec { color: #B0C94E; }
+.clock-bar-bg { height: 6px; background: #2A1F18; margin-top: 6px; }
+.clock-bar-fg { height: 6px; background: #B0C94E; width: 0%; transition: width 0.3s; }
+
+.filtro-bar {
+  display: flex; align-items: center; gap: 8px;
+  margin: 8px 0; font-size: 11px;
+}
+.filtro-bar label { color: #C8C0B0; }
+.filtro-bar select {
+  background: #1C1410; color: #C8C0B0;
+  border: 1px solid #A56F4A; padding: 2px 6px;
+  font-family: Consolas, monospace; font-size: 11px;
+  outline: none;
+}
+
+.sep { height: 1px; background: #A56F4A; margin: 8px 0; }
+
+table { width: 100%; border-collapse: collapse; font-size: 11px; }
+th { color: #A56F4A; font-weight: bold; padding: 2px 4px; }
+th:nth-child(1), th:nth-child(2) { text-align: left; }
+th:nth-child(n+3) { text-align: right; }
+td { padding: 2px 4px; }
+td:nth-child(1) { color: #C8C0B0; }
+td:nth-child(2) { color: #9A8A78; }
+td:nth-child(3) { color: #C8C0B0; text-align: right; }
+.gp { color: #B0C94E; text-align: right; }
+.gl { color: #756CE0; text-align: right; }
+.cost { color: #9A8A78; text-align: right; }
+.total-row td { font-weight: bold; font-size: 12px; }
+.total-row td:nth-child(1) { color: #E0D8C0; }
+.total-row td:nth-child(2) { color: #E0D8C0; }
+.total-row td:nth-child(3) { color: #E0D8C0; text-align: right; }
+.total-sep td { padding: 0; }
+.total-sep hr { border: none; border-top: 1px solid #A56F4A; margin: 4px 0; }
+
+.hist-header { color: #E0D8C0; font-size: 12px; font-weight: bold; margin: 12px 0 4px; }
+
+.footer { color: #A56F4A; font-size: 10px; margin-top: 8px; }
+.empty { text-align: center; color: #9A8A78; padding: 20px; }
+.error { text-align: center; color: #756CE0; padding: 20px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="header">
+    <div class="icon">  ╔═══╗ <br>  ║◉◉ ║ <br>  ║▄▄ ║ <br>  ╚═══╝ </div>
+    <div>
+      <div class="title">ROBOT DASHBOARD</div>
+      <div class="sub">WIN R$1.00/op &nbsp;·&nbsp; WDO R$2.52/op</div>
+    </div>
+  </div>
+
+  <div class="ts" id="ts">--</div>
+
+  <div class="clock-box">
+    <div class="clock-row">
+      <div class="clock-col">
+        <span class="clock-label">HORA ATUAL</span>
+        <span class="clock-val time" id="hora">00:00:00</span>
+      </div>
+      <div class="clock-col" style="align-items:flex-end">
+        <span class="clock-label">PRÓXIMO MINUTO</span>
+        <span class="clock-val sec" id="seg">60</span>
+      </div>
+    </div>
+    <div class="clock-bar-bg"><div class="clock-bar-fg" id="barra"></div></div>
+  </div>
+
+  <div class="filtro-bar">
+    <label for="dias">PERÍODO:</label>
+    <select id="dias">
+      <option value="HOJE">Hoje</option>
+      <option value="1">1 dia</option>
+      <option value="2">2 dias</option>
+      <option value="3">3 dias</option>
+      <option value="5">5 dias</option>
+      <option value="7">7 dias</option>
+      <option value="15">15 dias</option>
+      <option value="30">30 dias</option>
+    </select>
+  </div>
+
+  <div class="sep"></div>
+
+  <table id="tabela">
+    <thead><tr>
+      <th>Robô</th><th>Magic</th><th>Entr.</th><th>Lucro</th><th>Prej.</th><th>Custos</th><th>Líquido</th><th>Result.</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div id="historico">
+    <div class="hist-header">HISTÓRICO POR DIA</div>
+    <table id="hist-tabela">
+      <thead><tr>
+        <th>Data</th><th>Entr.</th><th>Lucro</th><th>Prej.</th><th>Custos</th><th>Líquido</th><th>Result.</th>
+      </tr></thead>
+      <tbody id="histBody"></tbody>
+    </table>
+  </div>
+
+  <div class="footer" id="footer"></div>
+</div>
+
+<script>
+const $hora   = document.getElementById('hora');
+const $seg    = document.getElementById('seg');
+const $barra  = document.getElementById('barra');
+const $ts     = document.getElementById('ts');
+const $tbody  = document.getElementById('tbody');
+const $footer = document.getElementById('footer');
+const $dias   = document.getElementById('dias');
+const $historico  = document.getElementById('historico');
+const $histBody   = document.getElementById('histBody');
+
+function atualizarRelogio() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  $hora.textContent = h + ':' + m + ':' + s;
+
+  const secLeft = 60 - now.getSeconds();
+  $seg.textContent = secLeft;
+  const pct = (now.getSeconds() / 60) * 100;
+  $barra.style.width = pct + '%';
+
+  if (secLeft <= 10) { $seg.style.color = '#756CE0'; $barra.style.background = '#756CE0'; }
+  else if (secLeft <= 20) { $seg.style.color = '#A56F4A'; $barra.style.background = '#A56F4A'; }
+  else { $seg.style.color = '#B0C94E'; $barra.style.background = '#B0C94E'; }
+}
+
+function format(val) { return val.toFixed(2); }
+function gpCls(val) { return val >= 0 ? 'gp' : 'gl'; }
+function gpTxt(val) { return val.toFixed(2); }
+
+function renderTabela(data) {
+  const filtro = $dias.value;
+  const isHoje = (filtro === 'HOJE');
+
+  const robos = isHoje ? (data.robos_hoje || []) : (data.robos || []);
+
+  if (!robos || robos.length === 0) {
+    $tbody.innerHTML = '<tr><td colspan="8" class="empty">Sem dados.</td></tr>';
+    $footer.textContent = '';
+    $historico.style.display = 'none';
+    return;
+  }
+
+  let html = '';
+
+  for (const r of robos) {
+    const liq = r.gp - r.gl;
+    const net = liq - r.c;
+    html += '<tr>' +
+      '<td>Robô ' + r.mg + '</td>' +
+      '<td>' + r.mg + '</td>' +
+      '<td style="text-align:right">' + r.entries + '</td>' +
+      '<td class="gp">' + format(r.gp) + '</td>' +
+      '<td class="gl">' + format(r.gl) + '</td>' +
+      '<td class="cost">' + format(r.c) + '</td>' +
+      '<td class="' + gpCls(liq) + '">' + gpTxt(liq) + '</td>' +
+      '<td class="' + gpCls(net) + '">' + gpTxt(net) + '</td>' +
+      '</tr>';
+  }
+
+  let te = 0, tgp = 0, tgl = 0, tc = 0;
+  for (const r of robos) { te += r.entries; tgp += r.gp; tgl += r.gl; tc += r.c; }
+  const tliq = tgp - tgl;
+  const tnet = tliq - tc;
+
+  html += '<tr class="total-sep"><td colspan="8"><hr></td></tr>';
+  html += '<tr class="total-row">' +
+    '<td>TOTAL</td><td></td>' +
+    '<td style="text-align:right">' + te + '</td>' +
+    '<td class="gp">' + format(tgp) + '</td>' +
+    '<td class="gl">' + format(tgl) + '</td>' +
+    '<td class="cost">' + format(tc) + '</td>' +
+    '<td class="' + gpCls(tliq) + '">' + gpTxt(tliq) + '</td>' +
+    '<td class="' + gpCls(tnet) + '">' + gpTxt(tnet) + '</td>' +
+    '</tr>';
+
+  $tbody.innerHTML = html;
+  if (data.ts) $ts.textContent = data.ts;
+  $footer.textContent = robos.length + ' robô(s) monitorado(s)';
+
+  if (isHoje) {
+    $historico.style.display = 'none';
+  } else {
+    renderHistorico(data.historico);
+  }
+}
+
+function renderHistorico(historico) {
+  const dias = parseInt($dias.value) || 1;
+  if (!historico || historico.length === 0 || dias <= 1) {
+    $historico.style.display = 'none';
+    return;
+  }
+  $historico.style.display = 'block';
+
+  const filtered = historico.slice(-dias);
+  let html = '';
+  for (const d of filtered) {
+    const liq = d.gp - d.gl;
+    const net = liq - d.c;
+    html += '<tr>' +
+      '<td>' + d.data + '</td>' +
+      '<td style="text-align:right">' + d.entries + '</td>' +
+      '<td class="gp">' + format(d.gp) + '</td>' +
+      '<td class="gl">' + format(d.gl) + '</td>' +
+      '<td class="cost">' + format(d.c) + '</td>' +
+      '<td class="' + gpCls(liq) + '">' + gpTxt(liq) + '</td>' +
+      '<td class="' + gpCls(net) + '">' + gpTxt(net) + '</td>' +
+      '</tr>';
+  }
+
+  let te = 0, tgp = 0, tgl = 0, tc = 0;
+  for (const d of filtered) { te += d.entries; tgp += d.gp; tgl += d.gl; tc += d.c; }
+  const tliq = tgp - tgl;
+  const tnet = tliq - tc;
+
+  html += '<tr class="total-sep"><td colspan="7"><hr></td></tr>';
+  html += '<tr class="total-row">' +
+    '<td>TOTAL</td>' +
+    '<td style="text-align:right">' + te + '</td>' +
+    '<td class="gp">' + format(tgp) + '</td>' +
+    '<td class="gl">' + format(tgl) + '</td>' +
+    '<td class="cost">' + format(tc) + '</td>' +
+    '<td class="' + gpCls(tliq) + '">' + gpTxt(tliq) + '</td>' +
+    '<td class="' + gpCls(tnet) + '">' + gpTxt(tnet) + '</td>' +
+    '</tr>';
+
+  $histBody.innerHTML = html;
+}
+
+async function carregar() {
+  try {
+    const resp = await fetch('data.json?' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    renderTabela(data);
+  } catch(e) {
+    $tbody.innerHTML = '<tr><td colspan="8" class="error">Falha ao carregar dados.</td></tr>';
+    $historico.style.display = 'none';
+  }
+}
+
+$dias.addEventListener('change', function() {
+  carregar();
+});
+
+setInterval(atualizarRelogio, 200);
+setInterval(carregar, 5000);
+atualizarRelogio();
+carregar();
+</script>
+
+</body>
+</html>

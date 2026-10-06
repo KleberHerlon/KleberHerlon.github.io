@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio de Projetos</title>
+<style>
+:root {
+  --bg: #0b0f14;
+  --surface: #121821;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #34d399;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 64px; }
+header h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+header p { color: var(--muted); margin-top: 8px; max-width: 640px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.card h2 { font-size: 1.1rem; }
+.card p { color: var(--muted); font-size: .92rem; flex: 1; }
+.tag {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  background: rgba(52,211,153,.1);
+  border: 1px solid rgba(52,211,153,.3);
+  border-radius: 999px;
+  padding: 2px 10px;
+  width: fit-content;
+}
+.actions { display: flex; gap: 10px; margin-top: 4px; }
+.btn {
+  font-size: .85rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #04110c; }
+.btn:hover { border-color: var(--accent); }
+footer { margin-top: 48px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); padding-top: 20px; }
+footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Portfólio de Projetos</h1>
+    <p>Seleção de projetos desenvolvidos — aplicações web, dashboards, automações e análise de dados.</p>
+  </header>
+
+  <main class="grid">
+    <article class="card">
+      <span class="tag">HTML · Dashboard</span>
+      <h2>Robot Dashboard Online</h2>
+      <p>Dashboard online para monitoramento de robôs, com interface em tema escuro e leitura de dados em tempo real.</p>
+      <div class="actions">
+        <a class="btn primary" href="./dash_online/">Ver projeto</a>
+        <a class="btn" href="https://github.com/Leon-Roza/dash_online" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">HTML · Landing Page</span>
+      <h2>BreaKeltner v3.0</h2>
+      <p>Sales page de produto digital com página de checkout, construída em HTML/CSS puro.</p>
+      <div class="actions">
+        <a class="btn primary" href="./breakeltner-site/">Ver projeto</a>
+        <a class="btn" href="https://github.com/Leon-Roza/breakeltner-site" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">HTML · Automação</span>
+      <h2>Performance Robo Metatrader</h2>
+      <p>Analisador de relatórios de backtest do MetaTrader 5: lê relatórios, gera métricas de performance e exporta dashboards HTML.</p>
+      <div class="actions">
+        <a class="btn primary" href="./PerformanceRoboMetatrader/">Ver projeto</a>
+        <a class="btn" href="https://github.com/Leon-Roza/PerformanceRoboMetatrader" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">CSS · Portfolio</span>
+      <h2>Portfólio Pessoal</h2>
+      <p>Site pessoal com seção sobre, projetos e contato, com layout responsivo para desktop, tablet e mobile.</p>
+      <div class="actions">
+        <a class="btn primary" href="./Portfolio/">Ver projeto</a>
+        <a class="btn" href="https://github.com/Leon-Roza/Portfolio" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">HTML · Formulário</span>
+      <h2>Formulário de Pesquisa</h2>
+      <p>Formulário de pesquisa de satisfação com validação e coleta de respostas.</p>
+      <div class="actions">
+        <a class="btn primary" href="./Form-Pesquisa/">Ver projeto</a>
+        <a class="btn" href="https://github.com/Leon-Roza/Form-Pesquisa" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">Python · Web Scraping</span>
+      <h2>Cotação de FIIs</h2>
+      <p>Web scraping para capturar cotações atuais de fundos imobiliários brasileiros e consolidar os dados.</p>
+      <div class="actions">
+        <a class="btn primary" href="./Cotacao_FIIs/Cota%C3%A7%C3%A3o_FIIs.ipynb">Ver notebook</a>
+        <a class="btn" href="https://github.com/Leon-Roza/Cotacao_FIIs" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">Python · Web Scraping</span>
+      <h2>Web Scraping Covid</h2>
+      <p>Extração de dados de casos de Covid no mundo para análise e acompanhamento da evolução da pandemia.</p>
+      <div class="actions">
+        <a class="btn primary" href="./Web_scrapping_Covid/Web_scrapping_covid.ipynb">Ver notebook</a>
+        <a class="btn" href="https://github.com/Leon-Roza/Web_scrapping_Covid" target="_blank" rel="noopener">Código</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    Espelhado de <a href="https://github.com/Leon-Roza" target="_blank" rel="noopener">github.com/Leon-Roza</a> · Repositório original mantido pelo autor.
+  </footer>
+</div>
+</body>
+</html>
