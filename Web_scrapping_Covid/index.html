@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Scraping COVID-19 — Dados Globais | Kleber Carboni</title>
+<meta name="description" content="Pipeline ETL que extrai os dados globais de COVID-19 da Wikipedia e estrutura em CSV pronto para análise. Python e BeautifulSoup.">
+<style>
+:root{
+  --bg:#06090f;--bg2:#0a1018;--surface:#0e1621;--surface2:#131d2b;
+  --border:#1e2a3a;--muted:#8fa3bd;--text:#dbe6f2;
+  --accent:#2ee6c5;--accent2:#4ea8ff;--accent3:#ffd166;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:40px 22px 64px}
+.breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:18px;font-family:Consolas,'Courier New',monospace}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.15;margin-bottom:8px}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-size:1rem;margin-bottom:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tag{font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(78,168,255,.1);border:1px solid rgba(78,168,255,.3);color:#c6e0ff}
+.tag.g{background:rgba(46,230,197,.08);border-color:rgba(46,230,197,.3);color:#aef3e6}
+h2{font-size:1.15rem;letter-spacing:.04em;margin:34px 0 12px;color:var(--accent)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.card+.card{margin-top:12px}
+.card h3{font-size:.95rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.9rem}
+.pipe{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.step .ic{font-size:1.3rem}
+.step .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin:6px 0 2px;font-family:Consolas,monospace}
+.step p{font-size:.78rem;color:var(--muted)}
+pre{background:#070d14;border:1px solid var(--border);border-radius:12px;padding:16px;overflow:auto;font-family:'Cascadia Code',Consolas,monospace;font-size:.8rem;line-height:1.6;color:#b9c9dc}
+pre .cm{color:#5b7d9c}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 0}
+.btn{padding:11px 20px;border-radius:10px;font-weight:700;font-size:.85rem;transition:.15s}
+.btn.solid{background:var(--accent);color:#04121a}
+.btn.solid:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{border:1px solid var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+@media(max-width:640px){.pipe{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.pipe{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="breadcrumb" href="../">← portfolio</a>
+  <h1>Web Scraping COVID-19 — <em>Dados Globais da Pandemia</em></h1>
+  <p class="sub">Extrai a tabela de casos por país da Wikipedia e estrutura em CSV — base limpa para análise temporal e geográfica.</p>
+
+  <div class="tags">
+    <span class="tag g">Python 3.10+</span><span class="tag g">BeautifulSoup</span>
+    <span class="tag">urllib</span><span class="tag">CSV</span>
+  </div>
+
+  <h2>O problema</h2>
+  <div class="card">
+    <p>Durante a pandemia, os dados oficiais de casos por país estavam espalhados em tabelas da Wikipedia — <b>sem formato estruturado</b> para consumo analítico. O objetivo era gerar um <b>dataset CSV reutilizável</b> para análises de evolução da doença.</p>
+  </div>
+
+  <h2>Arquitetura do pipeline</h2>
+  <div class="pipe">
+    <div class="step"><span class="ic">🌐</span><div class="k">Extract</div><p><code>urlopen</code> na fonte pública + <code>BeautifulSoup</code> localiza a <code>wikitable</code></p></div>
+    <div class="step"><span class="ic">🧹</span><div class="k">Transform</div><p>Iteração por linhas/células (<code>th</code>/<code>td</code>) com <code>get_text().strip()</code></p></div>
+    <div class="step"><span class="ic">💾</span><div class="k">Load</div><p>Gravação em <code>Dataset.csv</code> (UTF-8) com o módulo <code>csv</code></p></div>
+  </div>
+
+  <h2>Destaque do código</h2>
+  <pre><span class="cm"># ETL clássico em funções reutilizáveis + docstrings</span>
+def fetch_wikitable() -&gt; list:
+    <span class="cm">"""Extract: localiza a tabela 'wikitable' na página da Wikipedia."""</span>
+    soup = BeautifulSoup(urlopen(DATA_URL), "html.parser")
+    return soup.find_all("table", {"class": "wikitable"})[0].find_all("tr")
+
+def rows_to_csv(rows: list, output_path: str = OUTPUT_CSV) -&gt; None:
+    <span class="cm">"""Transform/Load: itera as linhas HTML e grava o CSV (novo='' evita linhas em branco)."""</span>
+    with open(output_path, "wt+", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        for row in rows:
+            cells = row.find_all(["td", "th"])
+            writer.writerow([cell.get_text().strip() for cell in cells])</pre>
+
+  <h2>Insights que o dataset gera</h2>
+  <div class="card"><p>✔ Dataset estruturado para <code>pd.read_csv</code> · ✔ base para <b>evolução temporal</b> e comparação entre países · ✔ demonstração de pipeline ETL de ponta a ponta em ~60 linhas</p></div>
+
+  <h2>Como executar</h2>
+  <pre>pip install beautifulsoup4
+python scripts/coletar_covid.py   <span class="cm"># gera Dataset.csv na raiz</span></pre>
+
+  <div class="cta">
+    <a class="btn solid" href="https://github.com/KleberHerlon/portfolio/tree/main/Web_scrapping_Covid" target="_blank" rel="noopener">Ver código no GitHub</a>
+    <a class="btn ghost" href="../">Voltar ao portfolio</a>
+  </div>
+</main>
+</body>
+</html>
