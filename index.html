@@ -177,6 +177,34 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
 .mini:hover{border-color:var(--accent);color:var(--accent)}
 .mini.solid:hover{color:#04121a;filter:brightness(1.1)}
 
+/* ---------- truncated code snippet ---------- */
+.code{
+  margin-top:6px;background:#070d14;border:1px solid var(--border);
+  border-radius:11px;overflow:hidden;
+}
+.code>summary{
+  cursor:pointer;list-style:none;padding:9px 14px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;
+  color:var(--accent);user-select:none;display:flex;align-items:center;gap:8px;
+}
+.code>summary::-webkit-details-marker{display:none}
+.code>summary::before{content:"▸";transition:.2s;display:inline-block}
+.code[open]>summary::before{transform:rotate(90deg)}
+.code>summary:hover{background:rgba(46,230,197,.06)}
+.code pre{
+  margin:0;padding:14px;border-top:1px solid var(--border);
+  max-height:150px;overflow:auto;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;line-height:1.55;
+  color:#b9c9dc;white-space:pre;
+}
+.code pre::-webkit-scrollbar{width:8px;height:8px}
+.code pre::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
+.code .clip{
+  display:block;padding:7px 14px;border-top:1px dashed var(--border);
+  font-size:.68rem;color:var(--muted);text-align:center;
+  font-family:'JetBrains Mono',monospace;
+}
+
 /* ---------- DASHBOARD PREVIEW ---------- */
 .dash{padding:0;overflow:hidden}
 .thumb{position:relative;aspect-ratio:16/9;background:#0a1119;border-bottom:1px solid var(--border);overflow:hidden}
@@ -302,7 +330,7 @@ footer a{color:var(--accent)}
   <div class="hero-in">
     <span class="eyebrow"><span class="pulse" aria-hidden="true"></span> Disponível para oportunidades remotas</span>
     <h1>Analista de Dados<br><em>Health Analytics &amp; BI</em></h1>
-    <p class="sub">Transformo dados brutos em decisões. Ciclo completo: extração em SQL, modelagem em Power Query e Python, e visualização em Power BI — com olhar crítico de quem tem background clínico e gestão operacional.</p>
+    <p class="sub">Sou fisioterapeuta de formação e analista de dados por vocação. Traduzo a realidade clínica — avaliação, evolução, prontuário, CIF — em indicadores que a gestão entende, com o mesmo rigor que uso na prática baseada em evidências.</p>
 
     <div class="cta">
       <a class="btn primary" href="./assets/Curriculo_Kleber_Carboni.pdf" download>⬇ Baixar Currículo</a>
@@ -311,9 +339,9 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="kpis" role="list" aria-label="Indicadores de carreira">
-      <div class="kpi" role="listitem"><div class="num" data-count="16" data-suffix="+">0</div><div class="lbl">anos de experiência com dados</div></div>
+      <div class="kpi" role="listitem"><div class="num" data-count="16" data-suffix="+">0</div><div class="lbl">anos de formação (dupla graduação)</div></div>
+      <div class="kpi" role="listitem"><div class="num" data-count="4" data-suffix="">0</div><div class="lbl">anos de experiência em dados</div></div>
       <div class="kpi" role="listitem"><div class="num" data-count="6" data-suffix="">0</div><div class="lbl">dashboards Power BI em produção</div></div>
-      <div class="kpi" role="listitem"><div class="num" data-count="4" data-suffix="">0</div><div class="lbl">empresas em 4 setores distintos</div></div>
       <div class="kpi" role="listitem"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">foco em remoto e impacto real</div></div>
     </div>
   </div>
@@ -325,25 +353,25 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-title">01 — Sobre</div>
-      <h2>Dados, saúde e operação no mesmo painel</h2>
-      <p class="lead">Dupla graduação unindo tecnologia e saúde. Atuo em todo o ciclo de dados — da extração via SQL e processos de ETL até a modelagem avançada e a visualização que o gestor realmente usa para decidir.</p>
+      <h2>Quando o dado encontra a clínica</h2>
+      <p class="lead">Dupla graduação: Fisioterapia e Análise e Desenvolvimento de Sistemas. Não preciso perguntar ao terapeuta o que uma coluna significa — eu sei. Isso muda completamente a qualidade de um indicador de saúde.</p>
     </div>
 
     <div class="grid g3">
       <article class="card reveal">
-        <div class="tags"><span class="tag">Ciclo completo</span></div>
-        <h3>Do dado à decisão</h3>
-        <p>Extração, ETL, modelagem, DAX e dashboards. Entrego painéis que respondem perguntas de negócio — não apenas gráficos bonitos.</p>
+        <div class="tags"><span class="tag">Fisioterapia</span></div>
+        <h3>Leitura clínica do dado</h3>
+        <p>Séries temporais de dor, amplitude de movimento, força e evolução de sessões só fazem sentido se quem lê entende a prática. Interpreto os números com o olhar de quem atende paciente.</p>
       </article>
       <article class="card reveal">
         <div class="tags"><span class="tag b">Health Analytics</span></div>
-        <h3>Background clínico</h3>
-        <p>Formação em Fisioterapia e atuação em Health Analytics dão contexto técnico para interpretar indicadores de saúde com precisão.</p>
+        <h3>Dado de saúde bem modelado</h3>
+        <p>CIF, escalas validadas, red flags, banderas amarelas, histories de sessão: sei quais campos existem, o que é obrigatório por norma (COFFITO/CFM) e como modelar isso para virar KPI confiável.</p>
       </article>
       <article class="card reveal">
         <div class="tags"><span class="tag y">Operações</span></div>
-        <h3>Visão de gestão</h3>
-        <p>Histórico como Supervisor de Operações: sei quais KPIs mudam comportamento e o que precisa estar no topo do painel.</p>
+        <h3>Do dado à decisão</h3>
+        <p>Extração em SQL, ETL, modelagem em Power Query e Python, visualização em Power BI. Painel que responde pergunta de negócio — e não apenas gráfico bonito.</p>
       </article>
     </div>
   </div>
@@ -538,15 +566,15 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-title">03 — Projetos</div>
-      <h2>Soluções e automações</h2>
-      <p class="lead">Projetos que unem engenharia de software, análise de dados e mercado financeiro.</p>
+      <h2>Soluções na interseção saúde × dados</h2>
+      <p class="lead">Onde minha formação clínica e minha analítica se encontram — mais automações e coleta de dados.</p>
     </div>
 
     <div class="grid g3">
       <article class="card reveal">
-        <div class="tags"><span class="tag">Health Analytics</span><span class="tag b">React · PWA</span></div>
-        <h3>Sasyra</h3>
-        <p>Progressive Web App em React para suporte à decisão clínica e gestão de prontuários em fisioterapia. Une background de saúde à engenharia de software para otimizar fluxos clínicos.</p>
+        <div class="tags"><span class="tag">Saúde · Dados</span><span class="tag b">React · PWA</span></div>
+        <h3>Sasyra — Assistente Clínico</h3>
+        <p>Sistema de apoio à decisão em fisioterapia ortopédica: anamnese, testes especiais, avaliação de risco, evolução de sessões e classificação pela CIF. Tudo estruturado como dado desde o início — o prontuário vira base analítica sem digitação extra.</p>
         <div class="links"><a class="mini solid" href="https://kleberherlon.github.io/Sasyra/" target="_blank" rel="noopener">Ver demo</a></div>
       </article>
 
@@ -554,6 +582,26 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Automação</span><span class="tag b">MQL5 · MT5</span></div>
         <h3>Automação no Mercado Financeiro</h3>
         <p>Scripts em MQL5 para MetaTrader 5 executando estratégias de day trade, com backtesting, testes de estresse e leitura de dados em tempo real sob alta volatilidade.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>class KPIEngine:
+    """Calcula todos os KPIs a partir das trades."""
+
+    def analyze(self, trades):
+        # Filtrar apenas trades com profit (excluir depósitos)
+        closed = [t for t in trades
+                  if t.get('profit') is not None]
+        if not closed:
+            return {'error': 'Nenhuma operação fechada'}
+
+        closed.sort(key=lambda t: t.get('open_time')
+                    or datetime.min)
+        analysis = {
+            'summary': self._summary_kpis(closed),
+            'daily':   self._aggregate_by_period(
+                           closed, 'day'),
+        }</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini solid" href="./PerformanceRoboMetatrader/">Ver analisador</a><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/PerformanceRoboMetatrader" target="_blank" rel="noopener">Código</a></div>
       </article>
 
@@ -561,6 +609,21 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Dashboard</span><span class="tag b">HTML · JS</span></div>
         <h3>Robot Dashboard Online</h3>
         <p>Painel web para monitoramento de robôs, com interface em tema escuro e leitura de dados em tempo real.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>function renderTabela(data) {
+  const linhas = data.map(d =&gt; `
+    &lt;tr&gt;
+      &lt;td&gt;${d.nome}&lt;/td&gt;
+      &lt;td class="${gpCls(d.pnl)}"&gt;
+        ${format(d.pnl)}
+      &lt;/td&gt;
+    &lt;/tr&gt;`);
+  tbody.innerHTML = linhas.join('');
+}
+
+function renderHistorico(historico) { /* … */ }</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini solid" href="./dash_online/">Ver projeto</a></div>
       </article>
 
@@ -568,6 +631,24 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Web</span><span class="tag b">HTML · CSS</span></div>
         <h3>Landing Page &amp; Checkout</h3>
         <p>Página de vendas com checkout, construída em HTML/CSS puro, com foco em conversão.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>&lt;section class="hero"&gt;
+  &lt;h1&gt;BreaKeltner v3.0&lt;/h1&gt;
+  &lt;p class="sub"&gt;
+    Sistema de breakout profissional
+    para o mercado futuro (WIN)
+  &lt;/p&gt;
+  &lt;a href="#checkout" class="cta"&gt;
+    Garantir acesso
+  &lt;/a&gt;
+&lt;/section&gt;
+
+&lt;style&gt;
+  body { background:#0A0E14;
+         color:#C8D6E5; }
+&lt;/style&gt;</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini solid" href="./breakeltner-site/">Ver projeto</a></div>
       </article>
 
@@ -575,6 +656,21 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Data Science</span><span class="tag b">Python</span></div>
         <h3>Cotação de FIIs</h3>
         <p>Web scraping para capturar cotações atuais de fundos imobiliários brasileiros e consolidar os dados para análise.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>header = {'User-Agent': 'Mozilla/5.0 ...'}
+url = 'https://www.fundsexplorer.com.br/ranking'
+
+request = requests.get(url, headers=header)
+df = pd.read_html(request.text)
+
+# enumerando DataFrames
+for i, tabela in enumerate(df):
+    print('---------------------------')
+
+# tabela principal =&gt; DataFrame 0
+df = pd.DataFrame(df[0])</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/Cotacao_FIIs" target="_blank" rel="noopener">Ver código</a></div>
       </article>
 
@@ -582,6 +678,23 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Data Science</span><span class="tag b">Python</span></div>
         <h3>Web Scraping Covid</h3>
         <p>Extração de dados de casos de Covid no mundo para análise e acompanhamento da evolução da pandemia.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import pandas as pd
+
+html   = urlopen("https://bit.ly/3jpMFRW")
+soup   = BeautifulSoup(html, "html.parser")
+table  = soup.findAll("table",
+           {"class": "wikitable"})[0]
+rows   = table.findAll("tr")
+
+with open("Dataset.csv", "wt+", newline="") as f:
+    writer = csv.writer(f)
+    for row in rows:
+        writer.writerow(row)</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/Web_scrapping_Covid" target="_blank" rel="noopener">Ver código</a></div>
       </article>
 
@@ -589,6 +702,19 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Dados</span><span class="tag b">Formulário</span></div>
         <h3>Formulário de Pesquisa</h3>
         <p>Formulário de pesquisa de satisfação com validação e estruturação de coleta de respostas.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>document.querySelector("form")
+  .addEventListener("submit",
+    function(event) {
+      this.style.display = "none";
+      document.querySelector(
+        "#success-message"
+      ).style.display = "block";
+      submitAnswers();
+    }
+  );</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini solid" href="./Form-Pesquisa/">Ver projeto</a></div>
       </article>
 
@@ -596,6 +722,20 @@ footer a{color:var(--accent)}
         <div class="tags"><span class="tag">Web</span><span class="tag b">Responsivo</span></div>
         <h3>Portfólio Pessoal</h3>
         <p>Site pessoal com seção sobre, projetos e contato, com layout responsivo para desktop, tablet e mobile.</p>
+        <details class="code"><summary>código (truncateado)</summary>
+<pre>&lt;article class="profile-card"&gt;
+  &lt;h1&gt;Kleber Carboni&lt;/h1&gt;
+  &lt;span class="profile__text"&gt;
+    Sou Analista de Dados com formação
+    em Fisioterapia
+  &lt;/span&gt;
+&lt;/article&gt;
+
+@media (max-width: 768px) {
+  .profile-card { flex-direction: column; }
+}</pre>
+<span class="clip">… trecho truncado · código completo no repositório</span>
+</details>
         <div class="links"><a class="mini solid" href="./Portfolio/">Ver projeto</a></div>
       </article>
     </div>
@@ -606,8 +746,8 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-title">04 — Competências</div>
-      <h2>Stack técnica</h2>
-      <p class="lead">Ferramentas que uso no dia a dia para extrair, modelar e comunicar dados.</p>
+      <h2>Stack técnica + domínio clínico</h2>
+      <p class="lead">Ferramentas que uso no dia a dia, somadas ao vocabulário da prática fisioterapêutica — a combinação que faz a diferença em projetos de health analytics.</p>
     </div>
 
     <div class="skill-set">
@@ -615,6 +755,8 @@ footer a{color:var(--accent)}
       <div class="skill-box reveal"><h4>📊 BI &amp; Visualização</h4><ul><li>Power BI</li><li>Looker Studio</li><li>Excel Avançado</li><li>SAP HANA</li></ul></div>
       <div class="skill-box reveal"><h4>⚙️ Engenharia de Dados</h4><ul><li>ETL</li><li>Power Query</li><li>Feature Engineering</li><li>Modelagem</li><li>Web Scraping</li></ul></div>
       <div class="skill-box reveal"><h4>🤖 IA &amp; Automação</h4><ul><li>Engenharia de Prompt</li><li>LLMs</li><li>Automação de relatórios</li><li>Testes A/B</li></ul></div>
+      <div class="skill-box reveal"><h4>🩺 Saúde &amp; Fisioterapia</h4><ul><li>Avaliação clínica</li><li>Testes ortopédicos</li><li>CIF (Classificação Internacional)</li><li>Escalas validadas</li><li>Red flags / Bandeiras</li><li>Prontuário &amp; COFFITO</li><li>Base evidências (PEDro)</li></ul></div>
+      <div class="skill-box reveal"><h4>🏥 Health Analytics</h4><ul><li>Modelagem de dados clínicos</li><li>KPIs de assistência</li><li>Evolução de sessões</li><li>Indicadores de qualidade</li><li>LGPD em saúde</li></ul></div>
     </div>
 
     <div class="bars" role="list" aria-label="Nível de domínio por ferramenta">
