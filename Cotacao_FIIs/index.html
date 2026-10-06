@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotacao de FIIs — Pipeline ETL | Kleber Carboni</title>
+<meta name="description" content="Pipeline ETL que captura cotações de fundos imobiliários brasileiros (FundsExplorer) e carrega em Google Sheets. Python, Pandas e gspread.">
+<style>
+:root{
+  --bg:#06090f;--bg2:#0a1018;--surface:#0e1621;--surface2:#131d2b;
+  --border:#1e2a3a;--muted:#8fa3bd;--text:#dbe6f2;
+  --accent:#2ee6c5;--accent2:#4ea8ff;--accent3:#ffd166;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:40px 22px 64px}
+.breadcrumb{font-size:.8rem;color:var(--muted);margin-bottom:18px;font-family:Consolas,'Courier New',monospace}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.15;margin-bottom:8px}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-size:1rem;margin-bottom:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tag{font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(78,168,255,.1);border:1px solid rgba(78,168,255,.3);color:#c6e0ff}
+.tag.g{background:rgba(46,230,197,.08);border-color:rgba(46,230,197,.3);color:#aef3e6}
+h2{font-size:1.15rem;letter-spacing:.04em;margin:34px 0 12px;color:var(--accent)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.card+.card{margin-top:12px}
+.card h3{font-size:.95rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.9rem}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.step .ic{font-size:1.3rem}
+.step .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin:6px 0 2px;font-family:Consolas,monospace}
+.step p{font-size:.78rem;color:var(--muted)}
+pre{background:#070d14;border:1px solid var(--border);border-radius:12px;padding:16px;overflow:auto;font-family:'Cascadia Code',Consolas,monospace;font-size:.8rem;line-height:1.6;color:#b9c9dc}
+pre .cm{color:#5b7d9c}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);font-size:.85rem}
+th{color:var(--accent);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+td{color:var(--muted)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 0}
+.btn{padding:11px 20px;border-radius:10px;font-weight:700;font-size:.85rem;transition:.15s}
+.btn.solid{background:var(--accent);color:#04121a}
+.btn.solid:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{border:1px solid var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+@media(max-width:640px){.pipe{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.pipe{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="breadcrumb" href="../">← portfolio</a>
+  <h1>Cotacao de FIIs — <em>Pipeline ETL</em></h1>
+  <p class="sub">Web scraping → normalização → Google Sheets. Ranking atualizado de fundos imobiliários brasileiros pronto para BI.</p>
+
+  <div class="tags">
+    <span class="tag g">Python 3.10+</span><span class="tag g">Pandas (ETL)</span>
+    <span class="tag">requests</span><span class="tag">gspread</span><span class="tag">Google Sheets API</span>
+  </div>
+
+  <h2>O problema</h2>
+  <div class="card">
+    <p>Quem investe em FIIs precisa de um ranking <b>consolidado e comparável</b> — dividend yield, VPA, preço e vacância de todos os fundos em um só lugar. O recurso original entrega esses dados como <b>texto misturado com <code>R$</code>, <code>%</code> e vírgulas</b>, inviabilizando agregação direta.</p>
+  </div>
+
+  <h2>Arquitetura do pipeline</h2>
+  <div class="pipe">
+    <div class="step"><span class="ic">🌐</span><div class="k">Extract</div><p><code>requests</code> + <code>pandas.read_html</code> no ranking do FundsExplorer</p></div>
+    <div class="step"><span class="ic">🧹</span><div class="k">Transform</div><p>Limpeza de <code>R$</code>, <code>%</code> e separadores; conversão para <code>float</code></p></div>
+    <div class="step"><span class="ic">☁️</span><div class="k">Load</div><p>Gravação em Google Sheets (<code>A1:Z400</code>) via <code>gspread</code></p></div>
+    <div class="step"><span class="ic">📊</span><div class="k">Consumo</div><p>Power BI / Excel / Looker lêem diretamente a planilha</p></div>
+  </div>
+
+  <h2>Destaque do código</h2>
+  <pre><span class="cm"># ETL desacoplado: Extract → Transform → Load, com tipagem e tratamento HTTP</span>
+def fetch_ranking_frame() -&gt; pd.DataFrame:
+    <span class="cm">"""Extract: captura a tabela principal do ranking (com timeout e erro explícito)."""</span>
+    resp = requests.get(RANKING_URL,
+                        headers={"User-Agent": USER_AGENT}, timeout=30)
+    resp.raise_for_status()
+    frames = pd.read_html(resp.text)
+    if not frames:
+        raise ValueError("Nenhuma tabela encontrada na p\u00e1gina.")
+    return pd.DataFrame(frames[0])
+
+def clean_frame(frame: pd.DataFrame) -&gt; pd.DataFrame:
+    <span class="cm">"""Transform: normaliza %, R$ e milhar para float (base analis\u00e1vel)."""</span>
+    df = frame.copy()
+    for col in PERCENT_COLUMNS + CURRENCY_COLUMNS:
+        if col in df.columns:
+            df[col] = (df[col].astype(str)
+                       .str.replace("%", "", regex=False)
+                       .str.replace("R$", "", regex=False)
+                       .str.replace(",", ".", regex=False)
+                       .astype(float))
+    return df.fillna(0)</pre>
+
+  <h2>Insights que a automatização gera</h2>
+  <div class="card"><p>✔ Ranking de <b>dy (12M)</b> comparável entre todos os FIIs · ✔ base numérica <b>pronta para BI</b>, sem retrabalho de tipos · ✔ atualização recorrente via agendamento (cron)</p></div>
+
+  <h2>Como executar</h2>
+  <pre>pip install pandas requests gspread
+python scripts/cotacao_fiis.py   <span class="cm"># com GOOGLE_SERVICE_ACCOUNT definido</span></pre>
+
+  <div class="cta">
+    <a class="btn solid" href="https://github.com/KleberHerlon/portfolio/tree/main/Cotacao_FIIs" target="_blank" rel="noopener">Ver código no GitHub</a>
+    <a class="btn ghost" href="../">Voltar ao portfolio</a>
+  </div>
+</main>
+</body>
+</html>
