@@ -205,6 +205,32 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
   font-family:'JetBrains Mono',monospace;
 }
 
+/* ---------- leituras ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.fbtn{
+  font:inherit;font-size:.76rem;font-weight:700;cursor:pointer;
+  background:transparent;border:1px solid var(--border);color:var(--text);
+  padding:7px 14px;border-radius:999px;transition:.15s;
+}
+.fbtn:hover{border-color:var(--accent);color:var(--accent)}
+.fbtn.on{background:var(--accent);border-color:var(--accent);color:#04121a}
+.read-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.book{
+  color:var(--text);text-align:left;display:flex;flex-direction:column;gap:4px;
+  padding:13px 14px;border-radius:13px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+  border:1px solid var(--border);transition:.18s;
+}
+.book:hover{border-color:var(--accent);transform:translateY(-2px)}
+.book .n{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.08em}
+.book h4{font-size:.86rem;line-height:1.28;margin:2px 0 0}
+.book .a{font-size:.74rem;color:var(--muted)}
+.book .cat{font-size:.62rem;color:var(--accent2,#d9a7ff);letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
+.book.hide{display:none}
+@media (max-width:1060px){.read-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.read-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.read-grid{grid-template-columns:1fr}}
+
 /* ---------- DASHBOARD PREVIEW ---------- */
 .dash{padding:0;overflow:hidden}
 .thumb{position:relative;aspect-ratio:16/9;background:#0a1119;border-bottom:1px solid var(--border);overflow:hidden}
@@ -318,6 +344,7 @@ footer a{color:var(--accent)}
       <a href="#dashboards">Dashboards</a>
       <a href="#projetos">Projetos</a>
       <a href="#competencias">Competências</a>
+      <a href="#leitura">Leituras</a>
       <a href="#experiencia">Experiência</a>
       <a href="#contato">Contato</a>
     </div>
@@ -342,7 +369,7 @@ footer a{color:var(--accent)}
       <div class="kpi" role="listitem"><div class="num" data-count="16" data-suffix="+">0</div><div class="lbl">anos de formação (dupla graduação)</div></div>
       <div class="kpi" role="listitem"><div class="num" data-count="4" data-suffix="">0</div><div class="lbl">anos de experiência em dados</div></div>
       <div class="kpi" role="listitem"><div class="num" data-count="6" data-suffix="">0</div><div class="lbl">dashboards Power BI em produção</div></div>
-      <div class="kpi" role="listitem"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">foco em remoto e impacto real</div></div>
+      <div class="kpi" role="listitem"><div class="num" data-count="52" data-suffix="">0</div><div class="lbl">livros lidos em 2026</div></div>
     </div>
   </div>
 </header>
@@ -770,10 +797,84 @@ with open("Dataset.csv", "wt+", newline="") as f:
   </div>
 </section>
 
+<section id="leitura">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-title">05 — Leituras</div>
+      <h2>52 livros lidos em 2026</h2>
+      <p class="lead">De Marx a Machado, de Fanon a Sagan: a leitura é a base do meu pensamento crítico — o mesmo que aplico para questionar, modelar e interpretar dados.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar livros por categoria">
+      <button class="fbtn on" data-cat="todas" aria-pressed="true">Todas</button>
+      <button class="fbtn" data-cat="Literatura" aria-pressed="false">Literatura</button>
+      <button class="fbtn" data-cat="História" aria-pressed="false">História</button>
+      <button class="fbtn" data-cat="Política" aria-pressed="false">Política &amp; Sociedade</button>
+      <button class="fbtn" data-cat="Ciência" aria-pressed="false">Ciência</button>
+      <button class="fbtn" data-cat="Filosofia" aria-pressed="false">Filosofia</button>
+    </div>
+
+    <div class="read-grid" id="bookGrid">
+      <article class="book" data-cat="História"><span class="n">01</span><h4>A Noite</h4><span class="a">Elie Wiesel</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Política"><span class="n">02</span><h4>Do Socialismo Utópico ao Socialismo Científico</h4><span class="a">Friedrich Engels</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Política"><span class="n">03</span><h4>As Três Montanhas</h4><span class="a">Samuel (Vergonha Alheia)</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Política"><span class="n">04</span><h4>Os Condenados da Terra</h4><span class="a">Frantz Fanon</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="História"><span class="n">05</span><h4>Paz, Pão e Terra</h4><span class="a">João Pedro Fragoso</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">06</span><h4>O Alienista</h4><span class="a">Machado de Assis</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">07</span><h4>A Metamorfose</h4><span class="a">Franz Kafka</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Política"><span class="n">08</span><h4>Raça, Classe e Revolução</h4><span class="a">Clóvis Moura</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Ciência"><span class="n">09</span><h4>Bilhões e Bilhões</h4><span class="a">Carl Sagan</span><span class="cat">Ciência</span></article>
+      <article class="book" data-cat="Ciência"><span class="n">10</span><h4>O Mundo Assombrado pelos Demônios</h4><span class="a">Carl Sagan</span><span class="cat">Ciência</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">11</span><h4>O Manto Amarelo</h4><span class="a">Liu Cixin</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="História"><span class="n">12</span><h4>Sobre a Grande Guerra Patriótica</h4><span class="a">João Pitilo</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">13</span><h4>Aço Vermelho</h4><span class="a">João Pitilo</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">14</span><h4>O Exército Vermelho na Mira de Vargas</h4><span class="a">João Pitilo</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">15</span><h4>Noites Brancas</h4><span class="a">Fiódor Dostoiévski</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">16</span><h4>Gente Pobre</h4><span class="a">Fiódor Dostoiévski</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">17</span><h4>Bruxas da Noite</h4><span class="a">Ritanna Armeni</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">18</span><h4>O Caderno Rosa de Lori Lamby</h4><span class="a">Hilda Hilst</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Ciência"><span class="n">19</span><h4>Casa das Estrelas</h4><span class="a">Javier Naranjo</span><span class="cat">Ciência</span></article>
+      <article class="book" data-cat="História"><span class="n">20</span><h4>A Guerra Não Tem Rosto de Mulher</h4><span class="a">Svetlana Aleksiévitch</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">21</span><h4>O Último da Tribo</h4><span class="a">Monte Reel</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">22</span><h4>Escravidão e Pós-Abolição no Vale do Paraíba Paulista</h4><span class="a">Mário de Souza Martins Neto</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Política"><span class="n">23</span><h4>Pedagogia do Oprimido</h4><span class="a">Paulo Freire</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Política"><span class="n">24</span><h4>O Que o Dinheiro Não Compra</h4><span class="a">Michael J. Sandel</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="História"><span class="n">25</span><h4>Eu Sou o Último Judeu</h4><span class="a">Chil Rajchman</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">26</span><h4>Vozes de Tchernóbil</h4><span class="a">Svetlana Aleksiévitch</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">27</span><h4>Sangue Sobre Bright Haven</h4><span class="a">M. L. Wang</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">28</span><h4>Os Meninos do Brasil</h4><span class="a">Ira Levin</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">29</span><h4>Os Dois Morrem no Final</h4><span class="a">Adam Silvera</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Política"><span class="n">30</span><h4>O Príncipe</h4><span class="a">Nicolau Maquiavel</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="História"><span class="n">31</span><h4>O Despertar de Tudo</h4><span class="a">David Graeber &amp; David Wengrow</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">32</span><h4>Dívida: Os Primeiros 5.000 Anos</h4><span class="a">David Graeber</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">33</span><h4>Narrativa da Vida de Frederick Douglass</h4><span class="a">Frederick Douglass</span><span class="cat">História</span></article>
+      <article class="book" data-cat="História"><span class="n">34</span><h4>E Sojourner Truth Falou…</h4><span class="a">Sojourner Truth</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Política"><span class="n">35</span><h4>O Capital (Resumo/Introdução)</h4><span class="a">Karl Marx</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">36</span><h4>Nos Bastidores</h4><span class="a">Clarice Lispector</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="História"><span class="n">37</span><h4>Incidentes na Vida de uma Escrava</h4><span class="a">Harriet Jacobs</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">38</span><h4>Ami, o Menino das Estrelas</h4><span class="a">Enrique Barrios</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="História"><span class="n">39</span><h4>O Engenheiro da Morte</h4><span class="a">Mark Felton</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">40</span><h4>A Alpinista</h4><span class="a">Dino Buzzati</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="História"><span class="n">41</span><h4>Hiroshima</h4><span class="a">John Hersey</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">42</span><h4>Morte e Vida Severina</h4><span class="a">João Cabral de Melo Neto</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">43</span><h4>Vidas Secas</h4><span class="a">Graciliano Ramos</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="Política"><span class="n">44</span><h4>Veias Abertas da América Latina</h4><span class="a">Eduardo Galeano</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Filosofia"><span class="n">45</span><h4>Sobre a Brevidade da Vida</h4><span class="a">Sêneca</span><span class="cat">Filosofia</span></article>
+      <article class="book" data-cat="História"><span class="n">46</span><h4>História da Bruxaria</h4><span class="a">Jeffrey B. Russell</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Ciência"><span class="n">47</span><h4>Armas, Germes e Aço</h4><span class="a">Jared Diamond</span><span class="cat">Ciência</span></article>
+      <article class="book" data-cat="Política"><span class="n">48</span><h4>Calibã e a Bruxa</h4><span class="a">Silvia Federici</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Literatura"><span class="n">49</span><h4>O Homem que Calculava</h4><span class="a">Malba Tahan</span><span class="cat">Literatura</span></article>
+      <article class="book" data-cat="História"><span class="n">50</span><h4>Conquistadores</h4><span class="a">Roger Crowley</span><span class="cat">História</span></article>
+      <article class="book" data-cat="Política"><span class="n">51</span><h4>Do Bom Escravo ao Mau Cidadão</h4><span class="a">Clóvis de Moura</span><span class="cat">Política</span></article>
+      <article class="book" data-cat="Filosofia"><span class="n">52</span><h4>Homo Ludens</h4><span class="a">Johan Huizinga</span><span class="cat">Filosofia</span></article>
+    </div>
+  </div>
+</section>
+
 <section id="experiencia">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-title">05 — Experiência</div>
+      <div class="sec-title">06 — Experiência</div>
       <h2>Trajetória profissional</h2>
       <p class="lead">De desenvolvimento de sistemas a supervisão de operações com dados — sempre no ponto onde informação vira decisão.</p>
     </div>
@@ -815,7 +916,7 @@ with open("Dataset.csv", "wt+", newline="") as f:
 <section class="contact" id="contato">
   <div class="wrap contact-in">
     <div>
-      <div class="sec-title">06 — Contato</div>
+      <div class="sec-title">07 — Contato</div>
       <h2>Vamos conversar?</h2>
       <p class="lead">Aberto a oportunidades remotas em análise de dados, BI e health analytics.</p>
       <div class="contact-list">
@@ -901,6 +1002,19 @@ with open("Dataset.csv", "wt+", newline="") as f:
     },{rootMargin:'-45% 0px -50% 0px'});
     secs.forEach(function(s){so.observe(s)});
   }
+
+  /* filter de leituras */
+  var fbtns = document.querySelectorAll('.fbtn');
+  var books = document.querySelectorAll('.book');
+  fbtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var cat = btn.dataset.cat;
+      fbtns.forEach(function(b){ b.classList.toggle('on', b === btn); b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      books.forEach(function(b){
+        b.classList.toggle('hide', cat !== 'todas' && b.dataset.cat !== cat);
+      });
+    });
+  });
 })();
 </script>
 
