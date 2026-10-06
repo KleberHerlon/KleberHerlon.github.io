@@ -231,6 +231,58 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
 @media (max-width:760px){.read-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){.read-grid{grid-template-columns:1fr}}
 
+/* ---------- sasyra spotlight ---------- */
+.spotlight{
+  position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;
+  border:1px solid rgba(46,230,197,.35);border-radius:20px;padding:30px 32px;margin:26px 0 34px;
+  background:
+    radial-gradient(900px 320px at 12% -10%,rgba(46,230,197,.13),transparent 60%),
+    radial-gradient(700px 300px at 95% 110%,rgba(34,154,255,.12),transparent 60%),
+    linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));
+  box-shadow:0 0 0 1px rgba(46,230,197,.08),0 24px 60px -30px rgba(0,0,0,.55);
+}
+.spotlight::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(46,230,197,.05) 50%,transparent 62%);
+  background-size:260% 100%;animation:shine 7s linear infinite;
+}
+@keyframes shine{0%{background-position:130% 0}100%{background-position:-130% 0}}
+.spotlight .flag{
+  display:inline-flex;align-items:center;gap:7px;font-size:.68rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:#04121a;
+  background:linear-gradient(90deg,var(--accent),#7ef3dd);
+  padding:5px 12px;border-radius:999px;margin-bottom:14px;
+}
+.spotlight h3{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.12;margin:0 0 10px}
+.spotlight h3 em{font-style:normal;color:var(--accent)}
+.spotlight p{color:var(--muted);font-size:.94rem;line-height:1.6;margin:0 0 14px}
+.spotlight .big{color:var(--text);font-size:1.02rem}
+.spotlight .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.spotlight .statline{
+  display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);
+}
+.spotlight .statline b{color:var(--accent);font-weight:700}
+.pipe{border-left:1px solid var(--border);padding-left:24px}
+.pipe h4{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.step{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);position:relative}
+.step:last-child{border-bottom:0}
+.step .ic{
+  flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:9px;font-size:.95rem;
+  background:rgba(46,230,197,.1);border:1px solid rgba(46,230,197,.25);
+}
+.step .tx h5{font-size:.86rem;margin:0 0 2px}
+.step .tx p{font-size:.76rem;margin:0;color:var(--muted);line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.chip{
+  font-size:.7rem;font-weight:600;color:#cfe3f7;padding:5px 11px;border-radius:999px;
+  background:rgba(120,160,255,.1);border:1px solid rgba(120,160,255,.25);
+}
+.chip.g{background:rgba(46,230,197,.08);border-color:rgba(46,230,197,.28);color:#aef3e6}
+.chip.y{background:rgba(255,196,0,.07);border-color:rgba(255,196,0,.28);color:#ffe3a3}
+.chip.p{background:rgba(208,140,255,.08);border-color:rgba(208,140,255,.28);color:#e6c6ff}
+@media (max-width:900px){.spotlight{grid-template-columns:1fr}.pipe{border-left:0;border-top:1px solid var(--border);padding:22px 0 0}}
+
 /* ---------- DASHBOARD PREVIEW ---------- */
 .dash{padding:0;overflow:hidden}
 .thumb{position:relative;aspect-ratio:16/9;background:#0a1119;border-bottom:1px solid var(--border);overflow:hidden}
@@ -593,19 +645,48 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-title">03 — Projetos</div>
-      <h2>Soluções na interseção saúde × dados</h2>
-      <p class="lead">Onde minha formação clínica e minha analítica se encontram — mais automações e coleta de dados.</p>
+      <h2>O carro-chefe: Sasyra</h2>
+      <p class="lead">Meu projeto principal é software, mas ele nasce da minha primeira formação: <strong>Análise e Desenvolvimento de Sistemas</strong>. É um sistema real de saúde em que cada atendimento vira dado estruturado e analisável.</p>
+    </div>
+
+    <div class="spotlight reveal">
+      <div>
+        <span class="flag">★ Carro-chefe</span>
+        <h3>Sasyra — Assistente Clínico <em>Inteligente</em></h3>
+        <p class="big">Plataforma completa de avaliação e acompanhamento em fisioterapia e saúde. O fisioterapeuta atende de forma natural (fala, clique, toque) e o sistema <strong>estrutura tudo em dado</strong>: condição detectada, sinais, medidas, escalas, classificação e evolução. Você deixa de digitar planilha — o prontuário digital nasce analítico.</p>
+        <p>É o exemplo de que sei <strong>modelar dados de saúde</strong>: conheço o domínio clínico, sei o que separar em campo, tabela e medida, e sei calcular indicadores válidos a partir disso.</p>
+        <div class="statline">
+          <span><b>10</b> especialidades em fisioterapia</span>
+          <span><b>+CrossFit</b> &amp; <b>Ed. Física</b></span>
+          <span><b>36</b> escalas validadas</span>
+          <span><b>38+</b> testes especiais</span>
+          <span><b>36</b> vídeos de teste</span>
+          <span><b>11</b> códigos CIF</span>
+          <span><b>100%</b> offline-capaz</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="https://kleberherlon.github.io/Sasyra/" target="_blank" rel="noopener">▶ Ver demonstração</a>
+          <a class="btn ghost" href="#contato">Fale comigo sobre o projeto</a>
+        </div>
+      </div>
+
+      <div class="pipe">
+        <h4>Como os dados se integram à saúde</h4>
+        <div class="step"><span class="ic">🎤</span><div class="tx"><h5>1 · Captura natural</h5><p>Queixa, HDA e palpação por dígito ou <b>transcrição de voz</b> (pt-BR). Nada de questionário frio.</p></div></div>
+        <div class="step"><span class="ic">🧭</span><div class="tx"><h5>2 · Estruturação</h5><p>Detecção automática de <b>+20 condições</b>, local da dor com lateralidade (D/E), BodyMap 34 áreas, HDA, fatores de melhora/piora, red flags e yellow flags.</p></div></div>
+        <div class="step"><span class="ic">📏</span><div class="tx"><h5>3 · Medição</h5><p>Goniometria com ângulos normativos, força MRC em 12 grupos, <b>38+ testes especiais com vídeo</b> e <b>36 escalas validadas</b> (cálculo e MCID/MDC automáticos).</p></div></div>
+        <div class="step"><span class="ic">🏛️</span><div class="tx"><h5>4 · Classificação</h5><p><b>CIF automatizada</b>: códigos e qualificadores (0–4) gerados a partir dos dados da avaliação + base de evidências PEDro e guias de prática clínica.</p></div></div>
+        <div class="step"><span class="ic">🤖</span><div class="tx"><h5>5 · Inteligência</h5><p>IA contextual (Claude) analisa <b>todos</b> os dados e gera análise clínica e plano baseado em evidência, com histórico por paciente.</p></div></div>
+        <div class="step"><span class="ic">📊</span><div class="tx"><h5>6 · Painel &amp; Insight</h5><p><b>Dashboard global</b> cruza módulos, red flags e EVA média; ponte de transição entre módulos (fisio → Ed. Física); relatório multidisciplinar imprimível.</p></div></div>
+        <div class="step"><span class="ic">🗓️</span><div class="tx"><h5>7 · Gestão completa</h5><p>Pacientes (IMC automático), log de evolução por sessão, <b>agenda</b> e <b>financeiro</b> com honorários CREFITO por região.</p></div></div>
+      </div>
+
+      <div class="chips" style="grid-column:1/-1">
+        <span class="chip g">Anamnese inteligente (voz)</span><span class="chip g">BodyMap frontal/posterior</span><span class="chip g">36 escalas + MCID/MDC</span><span class="chip g">CIF automatizada</span><span class="chip g">IA clínica + evidências PEDro</span><span class="chip g">Relatório multidisciplinar</span><span class="chip g">Dashboard global de pacientes</span><span class="chip">Reconhece +20 condições</span><span class="chip">38+ testes com 36 vídeos</span><span class="chip">Goniometria + MRC 12 grupos</span><span class="chip">Red flags por condição</span><span class="chip">Yellow flags psicossociais</span><span class="chip">Exame físico completo</span><span class="chip">Log de evolução por sessão</span><span class="chip">Agenda inteligente</span><span class="chip">Financeiro CREFITO</span><span class="chip">Login profissional</span><span class="chip">PWA instalável (desktop/mobile)</span><span class="chip">Temas claro/escuro</span><span class="chip">i18n pt-BR / English</span><span class="chip p">Supabase opcional (backup em nuvem)</span><span class="chip p">Ponte de transição fisio → Ed. Física</span><span class="chip y">React 19 + Vite</span>
+      </div>
     </div>
 
     <div class="grid g3">
-      <article class="card reveal">
-        <div class="tags"><span class="tag">Saúde · Dados</span><span class="tag b">React · PWA</span></div>
-        <h3>Sasyra — Assistente Clínico</h3>
-        <p>Sistema de apoio à decisão em fisioterapia ortopédica: anamnese, testes especiais, avaliação de risco, evolução de sessões e classificação pela CIF. Tudo estruturado como dado desde o início — o prontuário vira base analítica sem digitação extra.</p>
-        <div class="links"><a class="mini solid" href="https://kleberherlon.github.io/Sasyra/" target="_blank" rel="noopener">Ver demo</a></div>
-      </article>
-
-      <article class="card reveal">
         <div class="tags"><span class="tag">Automação</span><span class="tag b">MQL5 · MT5</span></div>
         <h3>Automação no Mercado Financeiro</h3>
         <p>Scripts em MQL5 para MetaTrader 5 executando estratégias de day trade, com backtesting, testes de estresse e leitura de dados em tempo real sob alta volatilidade.</p>
