@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+API REST (Flask) do analisador de performance de robôs MetaTrader 5.
+
+Rotas:
+    GET  /api/files    → lista relatórios disponíveis em reports/
+    POST /api/analyze  → processa todos os relatórios e retorna KPIs
+"""
+
 from flask import Flask, render_template, jsonify, request
 from mt5_parser import MT5ReportParser
 from kpi_engine import KPIEngine

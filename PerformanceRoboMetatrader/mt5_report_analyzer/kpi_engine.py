@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Motor de cálculo de KPIs de trading a partir de operações (trades).
+
+Responsável por transformar uma lista de trades (dicts padronizados) em
+métricas de risco/retorno, séries temporais e agregações por símbolo.
+"""
+
 from collections import defaultdict
 from datetime import datetime
 import math
@@ -146,7 +154,7 @@ class KPIEngine:
             elif profit < 0:
                 p['losses'] += 1
 
-        # Calular win_rate para cada período
+        # Calcular win_rate para cada período
         result = {}
         for key, data in sorted(periods.items()):
             data['win_rate'] = round((data['wins'] / data['trades'] * 100) if data['trades'] > 0 else 0, 2)

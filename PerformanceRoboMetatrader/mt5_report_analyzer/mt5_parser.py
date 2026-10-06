@@ -1,11 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Parser de relatórios HTML do MetaTrader 5.
+
+Extrai as operações (trades) e as informações do relatório a partir dos
+arquivos exportados pela plataforma, com tolerância a encoding e a variações
+de cabeçalho (PT/EN, múltiplas versões).
+"""
+
 from bs4 import BeautifulSoup, NavigableString
 from datetime import datetime
 import re
 
 def get_text_deep(element):
-    if element is None: return ''
-    if isinstance(element, NavigableString): return str(element).strip()
-    return ' '.join(filter(None, (get_text_deep(c) for c in element.children))).strip().replace('\xa0', ' ')
+    if element is None:
+        return ''
+    if isinstance(element, NavigableString):
+        return str(element).strip()
+    return (
+        ' '.join(filter(None, (get_text_deep(c) for c in element.children)))
+        .strip()
+        .replace('\xa0', ' ')
+    )
 
 
 class MT5ReportParser:
