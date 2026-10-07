@@ -483,7 +483,7 @@ footer a{color:var(--accent)}
             <g fill="#4ea8ff"><circle cx="66" cy="146" r="3"/><circle cx="180" cy="112" r="3"/><circle cx="332" cy="66" r="3"/></g>
             <text x="40" y="32" fill="#9db0c6" font-size="11" font-family="monospace">Ações concluídas · evolução</text>
           </svg>
-          <img src="./assets/dashboards/evpro.png" alt="Print do dashboard EVPro de evolução de projetos e ações" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/evpro.png" alt="Print do dashboard EVPro de evolução de projetos e ações" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Gestão de Ações</span></div>
@@ -513,7 +513,7 @@ footer a{color:var(--accent)}
             </g>
             <text x="30" y="32" fill="#9db0c6" font-size="11" font-family="monospace">Portfólio por situação atual</text>
           </svg>
-          <img src="./assets/dashboards/projetos.png" alt="Print do dashboard de projetos e melhorias" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/projetos.png" alt="Print do dashboard de projetos e melhorias" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Portfólio</span></div>
@@ -539,7 +539,7 @@ footer a{color:var(--accent)}
             <text x="45" y="34" fill="#9db0c6" font-size="11" font-family="monospace">Pareto de NC · 80/20</text>
             <text x="330" y="55" fill="#ffd166" font-size="10" font-family="monospace">% acum.</text>
           </svg>
-          <img src="./assets/dashboards/nc-pareto.png" alt="Print do dashboard de Pareto de não conformidades" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/nc-pareto.png" alt="Print do dashboard de Pareto de não conformidades" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Qualidade</span></div>
@@ -569,7 +569,7 @@ footer a{color:var(--accent)}
             </g>
             <text x="50" y="34" fill="#9db0c6" font-size="11" font-family="monospace">Estoque × requisições</text>
           </svg>
-          <img src="./assets/dashboards/mrp.png" alt="Print do dashboard de suprimentos MRP" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/mrp.png" alt="Print do dashboard de suprimentos MRP" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Suprimentos</span></div>
@@ -591,13 +591,14 @@ footer a{color:var(--accent)}
             <g stroke="#1c2836"><line x1="45" y1="180" x2="375" y2="180"/><line x1="45" y1="140" x2="375" y2="140"/><line x1="45" y1="100" x2="375" y2="100"/></g>
             <text x="45" y="34" fill="#9db0c6" font-size="11" font-family="monospace">Evolução das carteiras</text>
           </svg>
-          <img src="./assets/dashboards/carteiras.png" alt="Print do dashboard de evolução das carteiras" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/carteiras.png" alt="Print do dashboard de evolução das carteiras" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Financeiro</span></div>
           <h3>Evolução das Carteiras</h3>
           <p>Painel de acompanhamento da evolução de carteiras offshore, consolidando movimentação e performance ao longo do tempo.</p>
-          <div class="protected">🛡️ Demonstração higienizada (LGPD) — exibido via print</div>
+          <div class="links"><a class="mini solid" href="./evolucao_carteiras/">▶ Ver demonstração interativa</a><a class="mini" href="./assets/dashboards/carteiras.png" target="_blank" rel="noopener">Ver print em alta</a></div>
+          <div class="protected">🛡️ Demonstração higienizada (LGPD) — dados anonimizados</div>
         </div>
       </article>
 

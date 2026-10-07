@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evolução das Carteiras — Dashboard Interativo | Kleber Carboni</title>
+<meta name="description" content="Demonstração interativa de dashboard de acompanhamento de carteiras offshore com filtros dinâmicos, KPIs, gráficos e rankings. Dados anonimizados (LGPD).">
+<link rel="icon" href="../assets/og.png">
+<style>
+:root{
+  --bg:#06090f; --bg2:#0a1018; --surface:#0e1621; --surface2:#131d2b;
+  --border:#1c2836; --text:#e9f0f8; --muted:#9db0c6;
+  --accent:#2ee6c5; --accent2:#4ea8ff; --accent3:#ffd166; --danger:#ff6b81; --ok:#7bed9f;
+  --radius:16px; --maxw:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text); font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.55; padding-bottom:60px;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky; top:0; z-index:50;
+  background:rgba(6,9,15,.88); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.top .wrap{display:flex; align-items:center; gap:16px; height:64px}
+.brand{display:flex; align-items:center; gap:12px; min-width:0}
+.dot{width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px var(--accent); flex:none}
+.brand h1{font-size:15px; font-weight:700; letter-spacing:-.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.brand span{font-size:12px; color:var(--muted); font-weight:500}
+.top .spacer{flex:1}
+.back{
+  display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:600;
+  color:var(--text); background:var(--surface2); border:1px solid var(--border);
+  padding:8px 14px; border-radius:999px; transition:.18s; white-space:nowrap;
+}
+.back:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+
+/* ---------- hero ---------- */
+.hero{padding:38px 0 8px}
+.pill{
+  display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:700;
+  letter-spacing:.5px; text-transform:uppercase; color:var(--accent);
+  background:rgba(46,230,197,.09); border:1px solid rgba(46,230,197,.25);
+  padding:5px 12px; border-radius:999px; margin-bottom:14px;
+}
+.hero h2{font-size:clamp(26px,4vw,40px); line-height:1.15; letter-spacing:-1px; font-weight:800}
+.hero p{color:var(--muted); font-size:15.5px; max-width:820px; margin-top:10px}
+.lgpd{
+  margin-top:16px; display:flex; gap:9px; align-items:flex-start; font-size:13px; color:var(--muted);
+  background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent3);
+  border-radius:10px; padding:11px 14px; max-width:860px;
+}
+.lgpd b{color:var(--accent3)}
+
+/* ---------- filters ---------- */
+.filters{
+  margin-top:26px; background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px;
+}
+.filters-head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap}
+.filters-head h3{font-size:13px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); font-weight:700}
+.btn-reset{
+  font-size:12.5px; font-weight:600; color:var(--muted); background:none;
+  border:1px solid var(--border); padding:6px 13px; border-radius:999px; cursor:pointer; transition:.18s;
+}
+.btn-reset:hover{color:var(--danger); border-color:var(--danger)}
+.fgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px}
+.field label{display:block; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); margin-bottom:6px}
+select, input[type=search]{
+  width:100%; background:var(--surface2); color:var(--text); border:1px solid var(--border);
+  border-radius:10px; padding:10px 12px; font-size:13.5px; font-family:inherit; outline:none; transition:.18s;
+}
+select:focus, input[type=search]:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(46,230,197,.12)}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.chip{
+  font-size:12.5px; font-weight:600; color:var(--muted); background:var(--surface2);
+  border:1px solid var(--border); padding:7px 14px; border-radius:999px; cursor:pointer; transition:.16s; user-select:none;
+}
+.chip:hover{border-color:var(--accent); color:var(--text)}
+.chip.on{background:rgba(46,230,197,.14); border-color:var(--accent); color:var(--accent)}
+.active-note{margin-top:12px; font-size:12.5px; color:var(--muted)}
+.active-note b{color:var(--accent)}
+
+/* ---------- kpis ---------- */
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:14px; margin-top:22px}
+.kpi{
+  background:var(--surface); border:1px solid var(--border); border-radius:14px;
+  padding:16px; position:relative; overflow:hidden; transition:.2s;
+}
+.kpi:hover{border-color:#25374c; transform:translateY(-2px)}
+.kpi::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent)}
+.kpi.b2::before{background:var(--accent2)} .kpi.b3::before{background:var(--accent3)}
+.kpi.b4::before{background:var(--danger)} .kpi.b5::before{background:var(--ok)}
+.kpi .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--muted); font-weight:700}
+.kpi .val{font-size:27px; font-weight:800; letter-spacing:-1px; margin-top:7px; font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:11.5px; color:var(--muted); margin-top:3px}
+
+/* ---------- charts ---------- */
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+.card h4{font-size:14px; font-weight:700; letter-spacing:-.2px; display:flex; align-items:center; gap:8px}
+.card .hint{font-size:12px; color:var(--muted); margin-top:3px; margin-bottom:14px}
+.chart-box{position:relative; height:290px}
+.chart-fallback{
+  display:none; height:100%; align-items:center; justify-content:center; text-align:center;
+  color:var(--muted); font-size:13px; padding:20px; border:1px dashed var(--border); border-radius:12px;
+}
+
+/* ---------- rankings ---------- */
+.rank-row{display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:1px solid rgba(28,40,54,.6)}
+.rank-row:last-child{border-bottom:none}
+.rk{width:24px; height:24px; border-radius:7px; background:var(--surface2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--muted); flex:none}
+.rk.up{color:var(--ok); border-color:rgba(123,237,159,.35); background:rgba(123,237,159,.1)}
+.rk.dn{color:var(--danger); border-color:rgba(255,107,129,.35); background:rgba(255,107,129,.1)}
+.rname{flex:1; min-width:0; font-size:13.5px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.rmeta{font-size:11.5px; color:var(--muted); font-weight:500}
+.rpct{font-size:13.5px; font-weight:800; font-variant-numeric:tabular-nums; flex:none}
+.rpct.up{color:var(--ok)} .rpct.dn{color:var(--danger)}
+.rbar{height:5px; background:var(--surface2); border-radius:99px; overflow:hidden; margin-top:5px}
+.rbar i{display:block; height:100%; border-radius:99px}
+.empty{color:var(--muted); font-size:13px; padding:18px 0; text-align:center}
+
+/* ---------- table ---------- */
+.table-tools{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px}
+.table-tools input[type=search]{max-width:280px}
+.btn{
+  font-size:12.5px; font-weight:600; padding:9px 15px; border-radius:10px; cursor:pointer;
+  background:var(--surface2); color:var(--text); border:1px solid var(--border); transition:.18s; font-family:inherit;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn.accent{background:rgba(46,230,197,.12); border-color:rgba(46,230,197,.35); color:var(--accent)}
+.tbl-scroll{overflow-x:auto; border:1px solid var(--border); border-radius:12px}
+table{width:100%; border-collapse:collapse; font-size:13px; min-width:900px}
+thead th{
+  background:var(--surface2); color:var(--muted); font-size:11px; text-transform:uppercase;
+  letter-spacing:.6px; font-weight:700; text-align:left; padding:12px 14px; white-space:nowrap;
+  cursor:pointer; user-select:none; position:sticky; top:0; border-bottom:1px solid var(--border);
+}
+thead th:hover{color:var(--accent)}
+thead th .arr{opacity:.4; font-size:10px}
+thead th.sorted .arr{opacity:1; color:var(--accent)}
+tbody td{padding:11px 14px; border-bottom:1px solid rgba(28,40,54,.55); white-space:nowrap; font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(46,230,197,.035)}
+.tag{display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; letter-spacing:.3px}
+.tag.ok{background:rgba(123,237,159,.13); color:var(--ok); border:1px solid rgba(123,237,159,.3)}
+.tag.no{background:rgba(255,107,129,.13); color:var(--danger); border:1px solid rgba(255,107,129,.3)}
+.tag.esc{background:rgba(78,168,255,.13); color:var(--accent2); border:1px solid rgba(78,168,255,.3)}
+.pager{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; flex-wrap:wrap}
+.pager .info{font-size:12.5px; color:var(--muted)}
+.pgbtns{display:flex; gap:7px}
+.pg{
+  min-width:34px; height:34px; border-radius:9px; background:var(--surface2); border:1px solid var(--border);
+  color:var(--text); font-size:13px; font-weight:600; cursor:pointer; transition:.16s; font-family:inherit;
+}
+.pg:hover:not(:disabled){border-color:var(--accent); color:var(--accent)}
+.pg.on{background:rgba(46,230,197,.16); border-color:var(--accent); color:var(--accent)}
+.pg:disabled{opacity:.35; cursor:not-allowed}
+
+/* ---------- tech strip ---------- */
+.tech{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
+.tech span{
+  font-size:11.5px; font-weight:600; color:var(--muted); background:var(--surface2);
+  border:1px solid var(--border); padding:6px 12px; border-radius:8px; font-family:ui-monospace,Menlo,Consolas,monospace;
+}
+footer{margin-top:38px; padding-top:22px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; text-align:center}
+footer a{font-weight:600}
+
+@media (max-width:900px){
+  .grid2{grid-template-columns:1fr}
+  .brand span{display:none}
+}
+@media (max-width:560px){
+  .top .wrap{height:56px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
+  .kpi .val{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <h1>Evolução das Carteiras</h1>
+        <span>Demonstração interativa · dados anonimizados</span>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <a class="back" href="../index.html">← Voltar ao portfólio</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="pill">● Dashboard interativo</div>
+    <h2>Acompanhamento de carteiras offshore</h2>
+    <p>Painel de controle de execução de ordens de manutenção por carteira: aderência de horas programadas, situação das OMs por estrutura e desempenho individual da equipe técnica — com filtros dinâmicos que recalculam todos os indicadores em tempo real.</p>
+    <div class="lgpd">
+      <span>🛡️</span>
+      <div><b>Dados anonimizados (LGPD).</b> Esta é uma demonstração técnica com base de dados fictícia: nomes de técnicos, chaves de embarque e identificadores foram substituídos. Estrutura, métricas e lógica de negócio preservadas.</div>
+    </div>
+
+    <div class="filters">
+      <div class="filters-head">
+        <h3>🎛️ Filtros dinâmicos</h3>
+        <button class="btn-reset" id="btnReset">↺ Limpar filtros</button>
+      </div>
+      <div class="fgrid">
+        <div class="field">
+          <label for="fEstr">Estrutura</label>
+          <select id="fEstr"><option value="">Todas</option></select>
+        </div>
+        <div class="field">
+          <label for="fTec">Técnico</label>
+          <select id="fTec"><option value="">Todos</option></select>
+        </div>
+        <div class="field">
+          <label for="fAno">Ano</label>
+          <select id="fAno"><option value="">Todos</option></select>
+        </div>
+        <div class="field">
+          <label for="fMes">Mês</label>
+          <select id="fMes"><option value="">Todos</option></select>
+        </div>
+        <div class="field">
+          <label for="fSit">Situação da OM</label>
+          <select id="fSit">
+            <option value="">Todas</option>
+            <option value="ok">OM cumprida</option>
+            <option value="no">OM não cumprida</option>
+          </select>
+        </div>
+      </div>
+      <div class="chips" id="chipsEstr"></div>
+      <div class="active-note" id="activeNote">Mostrando <b>todos</b> os registros.</div>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid2">
+    <div class="card">
+      <h4>📈 Evolução mensal — horas programadas × confirmadas</h4>
+      <div class="hint">HH programado e HH confirmado acumulados por mês de início da carteira.</div>
+      <div class="chart-box">
+        <canvas id="chEvol"></canvas>
+        <div class="chart-fallback" id="fbEvol">Não foi possível carregar a biblioteca de gráficos (CDN bloqueado). Os demais filtros, KPIs e a tabela continuam funcionando.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>🏗️ Carteiras por estrutura</h4>
+      <div class="hint">Distribuição das carteiras considerando os filtros ativos.</div>
+      <div class="chart-box">
+        <canvas id="chEstr"></canvas>
+        <div class="chart-fallback" id="fbEstr">Não foi possível carregar a biblioteca de gráficos (CDN bloqueado).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h4>🏆 Ranking de aderência — melhores</h4>
+      <div class="hint">% de OMs cumpridas por técnico, considerando os filtros ativos.</div>
+      <div id="rankTop"></div>
+    </div>
+    <div class="card">
+      <h4>⚠️ Ranking de aderência — piores</h4>
+      <div class="hint">Foque o plano de ação onde a execução mais desviou do programado.</div>
+      <div id="rankBot"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h4>📋 Detalhamento das carteiras</h4>
+    <div class="hint">Clique no cabeçalho de uma coluna para ordenar. Exporte a visão filtrada em CSV.</div>
+    <div class="table-tools">
+      <input type="search" id="search" placeholder="Buscar carteira, técnico, chave…" aria-label="Buscar">
+      <button class="btn" id="btnCsv">⬇ Exportar CSV (filtrado)</button>
+      <button class="btn accent" id="btnPrint">🖨 Imprimir / PDF</button>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="carteira">Carteira <span class="arr">▲</span></th>
+            <th data-k="chave_embarque">Chave <span class="arr">▲</span></th>
+            <th data-k="tecnico">Técnico <span class="arr">▲</span></th>
+            <th data-k="estrutura">Estrutura <span class="arr">▲</span></th>
+            <th data-k="inicio">Período <span class="arr">▲</span></th>
+            <th data-k="dias">Dias <span class="arr">▲</span></th>
+            <th data-k="situacao">Situação OM <span class="arr">▲</span></th>
+            <th data-k="hh_programado">HH prog. <span class="arr">▲</span></th>
+            <th data-k="hh_confirmado">HH conf. <span class="arr">▲</span></th>
+            <th data-k="aderencia">Aderência <span class="arr">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <div class="info" id="pgInfo"></div>
+      <div class="pgbtns" id="pgBtns"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h4>🧩 Stack técnica desta demonstração</h4>
+    <div class="hint">Como este dashboard foi construído.</div>
+    <div class="tech">
+      <span>HTML5</span><span>CSS3 (variáveis de design)</span><span>JavaScript vanilla</span>
+      <span>Chart.js</span><span>Filtros reativos client-side</span><span>Aggregations em JS</span>
+      <span>Paginação + sorting + busca</span><span>Export CSV</span><span>Responsivo</span>
+      <span>Base JSON anonimizada (LGPD)</span>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted);margin-top:14px">
+      O modelo original foi produzido em <b style="color:var(--text)">Power BI</b> (Power Query / DAX, modelo estrela por carteira × técnico).
+      Esta reimplementação web prova a lógica de negócio de forma independente de ferramenta: todos os indicadores são recalculados
+      do zero a cada interação do usuário, sem servidor e em menos de 50 ms.
+    </p>
+  </section>
+
+  <footer>
+    <p>Projeto de portfólio de <b style="color:var(--text)">Kleber Carboni</b> — Analista de Dados · <a href="https://kleberherlon.github.io/portfolio/">voltar ao portfólio</a></p>
+    <p style="margin-top:6px;font-size:12px">Dados fictícios utilizados exclusivamente para demonstração técnica.</p>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+var ROWS = [];
+var MESES = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+var state = { estr:"", tec:"", ano:"", mes:"", sit:"", q:"", page:1, sortK:"inicio", sortA:1 };
+var PER_PAGE = 12;
+var charts = { evol:null, estr:null };
+
+function fmt(n, d){ d = (d==null?2:d); return Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function pct(n, d){ d = (d==null?1:d); return fmt(n,d)+"%"; }
+function num(n, d){ d = (d==null?2:d); return Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+function derivar(r){
+  r.situacao = (r.qtd_om_executadas > 0) ? "ok" : "no";
+  r.situacao_lbl = (r.situacao === "ok") ? "Cumprida" : "Não cumprida";
+  r.mesIdx = Number(r.mes) - 1;
+  r.aderencia = (Number(r.hh_programado) > 0) ? (Number(r.hh_confirmado) / Number(r.hh_programado)) * 100 : 0;
+  r.dtIni = (function(){
+    var p = String(r.inicio).split("/");
+    return p.length === 3 ? new Date(Number(p[2]), Number(p[1]) - 1, Number(p[0])).getTime() : 0;
+  })();
+  return r;
+}
+
+function filtrar(){
+  return ROWS.filter(function(r){
+    if (state.estr && r.estrutura !== state.estr) return false;
+    if (state.tec && r.tecnico !== state.tec) return false;
+    if (state.ano && String(r.ano) !== state.ano) return false;
+    if (state.mes && String(r.mes) !== state.mes) return false;
+    if (state.sit && r.situacao !== state.sit) return false;
+    if (state.q){
+      var q = state.q.toLowerCase();
+      var hay = (r.carteira + " " + r.chave_embarque + " " + r.tecnico + " " + r.estrutura).toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+}
+
+function agregar(rows){
+  var k = {
+    carteiras: rows.length,
+    om_exec: 0, om_nao: 0,
+    hh_prog: 0, hh_conf: 0
+  };
+  rows.forEach(function(r){
+    k.om_exec += Number(r.qtd_om_executadas) || 0;
+    k.om_nao  += Number(r.qtd_om_nao_cumpridas) || 0;
+    k.hh_prog += Number(r.hh_programado) || 0;
+    k.hh_conf += Number(r.hh_confirmado) || 0;
+  });
+  k.aderencia = k.carteiras > 0 ? (k.om_exec / k.carteiras) * 100 : 0;
+  k.hh_aderencia = k.hh_prog > 0 ? (k.hh_conf / k.hh_prog) * 100 : 0;
+  return k;
+}
+
+function renderKPIs(k){
+  var kpis = [
+    { cls:"", lbl:"Aderência de OMs", val:pct(k.aderencia), sub:k.om_exec+" cumpridas de "+k.carteiras },
+    { cls:"b2", lbl:"HH programado", val:num(k.hh_prog,1), sub:"horas-homem planejadas" },
+    { cls:"b3", lbl:"HH confirmado", val:num(k.hh_conf,1), sub:pct(k.hh_aderencia)+" do programado" },
+    { cls:"b5", lbl:"Carteiras", val:String(k.carteiras), sub:"no recorte atual" },
+    { cls:"b5", lbl:"OMs cumpridas", val:String(k.om_exec), sub:"executadas dentro do prazo" },
+    { cls:"b4", lbl:"OMs não cumpridas", val:String(k.om_nao), sub:"exigem plano de ação" }
+  ];
+  document.getElementById("kpis").innerHTML = kpis.map(function(x){
+    return '<div class="kpi '+x.cls+'"><div class="lbl">'+x.lbl+'</div><div class="val">'+x.val+'</div><div class="sub">'+x.sub+'</div></div>';
+  }).join("");
+}
+
+function mesesAtivos(rows){
+  var m = {};
+  rows.forEach(function(r){ m[r.mesIdx] = (m[r.mesIdx]||0) + 1; });
+  return Object.keys(m).map(Number).sort(function(a,b){ return a-b; });
+}
+
+function renderEvol(rows){
+  if (!window.Chart){ document.getElementById("fbEvol").style.display="flex"; return; }
+  var idxs = mesesAtivos(rows);
+  if (!idxs.length){ idxs = [0,1,2,3,4,5,6,7,8,9,10,11]; }
+  var labels = idxs.map(function(i){ return MESES[i]; });
+  var prog = idxs.map(function(i){
+    return rows.filter(function(r){ return r.mesIdx === i; })
+      .reduce(function(s,r){ return s + (Number(r.hh_programado)||0); }, 0);
+  });
+  var conf = idxs.map(function(i){
+    return rows.filter(function(r){ return r.mesIdx === i; })
+      .reduce(function(s,r){ return s + (Number(r.hh_confirmado)||0); }, 0);
+  });
+
+  var ctx = document.getElementById("chEvol");
+  if (charts.evol){ charts.evol.destroy(); }
+  charts.evol = new Chart(ctx, {
+    data:{
+      labels: labels,
+      datasets:[
+        { type:"bar", label:"HH programado", data:prog, backgroundColor:"rgba(78,168,255,.55)", borderColor:"#4ea8ff", borderWidth:1, borderRadius:5, maxBarThickness:34 },
+        { type:"line", label:"HH confirmado", data:conf, borderColor:"#2ee6c5", backgroundColor:"rgba(46,230,197,.14)", borderWidth:2.5, tension:.35, fill:true, pointRadius:3.5, pointBackgroundColor:"#2ee6c5", pointBorderColor:"#06090f", pointBorderWidth:2 }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:"index", intersect:false },
+      plugins:{
+        legend:{ labels:{ color:"#9db0c6", boxWidth:12, boxHeight:12, usePointStyle:true, pointStyle:"rectRounded", font:{ size:11.5, weight:"600" } } },
+        tooltip:{ backgroundColor:"#0e1621", borderColor:"#1c2836", borderWidth:1, titleColor:"#e9f0f8", bodyColor:"#9db0c6", padding:10, cornerRadius:8,
+          callbacks:{ label:function(c){ return " " + c.dataset.label + ": " + num(c.parsed.y,1) + " hh"; } } }
+      },
+      scales:{
+        x:{ grid:{ color:"rgba(28,40,54,.55)" }, ticks:{ color:"#9db0c6", font:{ size:11 } } },
+        y:{ beginAtZero:true, grid:{ color:"rgba(28,40,54,.55)" }, ticks:{ color:"#9db0c6", font:{ size:11 }, callback:function(v){ return num(v,0); } } }
+      }
+    }
+  });
+}
+
+function renderEstr(rows){
+  if (!window.Chart){ document.getElementById("fbEstr").style.display="flex"; return; }
+  var m = {};
+  rows.forEach(function(r){ m[r.estrutura] = (m[r.estrutura]||0) + 1; });
+  var labels = Object.keys(m).sort();
+  var data = labels.map(function(k){ return m[k]; });
+  var cores = ["#2ee6c5","#4ea8ff","#ffd166","#ff6b81","#7bed9f","#a78bfa"];
+
+  var ctx = document.getElementById("chEstr");
+  if (charts.estr){ charts.estr.destroy(); }
+  charts.estr = new Chart(ctx, {
+    type:"doughnut",
+    data:{ labels:labels, datasets:[{ data:data, backgroundColor:cores.map(function(c){ return c+"cc"; }), borderColor:"#0e1621", borderWidth:3, hoverOffset:10 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false, cutout:"62%",
+      plugins:{
+        legend:{ position:"right", labels:{ color:"#9db0c6", boxWidth:11, boxHeight:11, usePointStyle:true, pointStyle:"circle", padding:14, font:{ size:12, weight:"600" } } },
+        tooltip:{ backgroundColor:"#0e1621", borderColor:"#1c2836", borderWidth:1, titleColor:"#e9f0f8", bodyColor:"#9db0c6", padding:10, cornerRadius:8,
+          callbacks:{ label:function(c){ var t=c.dataset.data.reduce(function(a,b){return a+b;},0); var v=c.parsed||0;
+            return " " + c.label + ": " + v + " carteiras (" + pct(t? (v/t)*100 : 0,1) + ")"; } } }
+      }
+    }
+  });
+}
+
+function porTecnico(rows){
+  var m = {};
+  rows.forEach(function(r){
+    var a = m[r.tecnico] || (m[r.tecnico] = { nome:r.tecnico, n:0, exec:0, nao:0, hp:0, hc:0 });
+    a.n++; a.exec += Number(r.qtd_om_executadas)||0; a.nao += Number(r.qtd_om_nao_cumpridas)||0;
+    a.hp += Number(r.hh_programado)||0; a.hc += Number(r.hh_confirmado)||0;
+  });
+  return Object.keys(m).map(function(k){
+    var a = m[k];
+    a.pct = a.n > 0 ? (a.exec / a.n) * 100 : 0;
+    return a;
+  });
+}
+
+function rankHTML(list, up){
+  if (!list.length) return '<div class="empty">Sem registros para o recorte atual.</div>';
+  return list.map(function(a,i){
+    var cls = up ? "up" : "dn";
+    return '<div class="rank-row">' +
+      '<div class="rk '+cls+'">'+(i+1)+'</div>' +
+      '<div class="rname">'+esc(a.nome)+'<div class="rmeta">'+a.n+' carteira'+(a.n>1?'s':'')+' · '+fmt(a.hp,1)+' hh prog. · '+fmt(a.hc,1)+' hh conf.</div></div>' +
+      '<div style="width:120px;flex:none">' +
+        '<div class="rpct '+cls+'" style="text-align:right">'+pct(a.pct,1)+'</div>' +
+        '<div class="rbar"><i style="width:'+Math.max(0,Math.min(100,a.pct))+'%;background:'+(up?'#7bed9f':'#ff6b81')+'"></i></div>' +
+      '</div></div>';
+  }).join("");
+}
+
+function renderRankings(rows){
+  var list = porTecnico(rows).sort(function(a,b){ return b.pct - a.pct || b.n - a.n; });
+  var top = list.slice(0,5);
+  var bot = list.slice().reverse().slice(0,5).sort(function(a,b){ return a.pct - b.pct; });
+  document.getElementById("rankTop").innerHTML = rankHTML(top, true);
+  document.getElementById("rankBot").innerHTML = rankHTML(bot, false);
+}
+
+function ordenar(rows){
+  var k = state.sortK, dir = state.sortA;
+  return rows.slice().sort(function(a,b){
+    var x = a[k], y = b[k];
+    if (k === "dias" || k === "hh_programado" || k === "hh_confirmado" || k === "aderencia"){
+      x = Number(x)||0; y = Number(y)||0;
+      return (x - y) * dir;
+    }
+    x = String(x==null?"":x); y = String(y==null?"":y);
+    return x.localeCompare(y,"pt-BR") * dir;
+  });
+}
+
+function renderTable(rows){
+  var sorted = ordenar(rows);
+  var total = sorted.length;
+  var pages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (state.page > pages) state.page = pages;
+  var start = (state.page - 1) * PER_PAGE;
+  var slice = sorted.slice(start, start + PER_PAGE);
+
+  document.getElementById("tbody").innerHTML = slice.map(function(r){
+    var tag = r.situacao === "ok"
+      ? '<span class="tag ok">Cumprida</span>'
+      : '<span class="tag no">Não cumprida</span>';
+    return "<tr>" +
+      "<td><b>"+esc(r.carteira)+"</b></td>" +
+      "<td>"+esc(r.chave_embarque)+"</td>" +
+      "<td>"+esc(r.tecnico)+"</td>" +
+      '<td><span class="tag esc">'+esc(r.estrutura)+"</span></td>" +
+      "<td>"+esc(r.inicio)+" → "+esc(r.fim)+"</td>" +
+      "<td>"+(Number(r.dias)||0)+"</td>" +
+      "<td>"+tag+"</td>" +
+      "<td>"+fmt(r.hh_programado,1)+"</td>" +
+      "<td>"+fmt(r.hh_confirmado,1)+"</td>" +
+      "<td><b>"+pct(r.aderencia,1)+"</b></td>" +
+    "</tr>";
+  }).join("");
+
+  var info = total === 0
+    ? "Nenhum registro encontrado."
+    : "Exibindo " + (start+1) + "–" + (start + slice.length) + " de " + total + " carteiras · página " + state.page + " de " + pages;
+  document.getElementById("pgInfo").innerHTML = info;
+
+  var btns = "";
+  btns += '<button class="pg" data-p="prev" '+(state.page===1?"disabled":"")+'>‹</button>';
+  var from = Math.max(1, state.page - 2), to = Math.min(pages, state.page + 2);
+  for (var p = from; p <= to; p++){
+    btns += '<button class="pg '+(p===state.page?"on":"")+'" data-p="'+p+'">'+p+"</button>";
+  }
+  btns += '<button class="pg" data-p="next" '+(state.page===pages?"disabled":"")+'>›</button>';
+  document.getElementById("pgBtns").innerHTML = btns;
+
+  document.querySelectorAll("#tbl thead th").forEach(function(th){
+    th.classList.toggle("sorted", th.dataset.k === state.sortK);
+    var arr = th.querySelector(".arr");
+    if (arr) arr.textContent = (th.dataset.k === state.sortK && state.sortA === -1) ? "▼" : "▲";
+  });
+}
+
+function nota(rows){
+  var ativos = [];
+  if (state.estr) ativos.push("estrutura " + state.estr);
+  if (state.tec) ativos.push("técnico " + state.tec);
+  if (state.ano) ativos.push("ano " + state.ano);
+  if (state.mes) ativos.push("mês " + MESES[Number(state.mes)-1]);
+  if (state.sit) ativos.push(state.sit === "ok" ? "OM cumprida" : "OM não cumprida");
+  if (state.q) ativos.push('busca "' + state.q + '"');
+  var el = document.getElementById("activeNote");
+  if (!ativos.length){
+    el.innerHTML = "Mostrando <b>todos</b> os registros (" + rows.length + " de " + ROWS.length + ").";
+  } else {
+    el.innerHTML = "Filtros ativos: <b>" + esc(ativos.join(" · ")) + "</b> → " + rows.length + " de " + ROWS.length + " carteiras.";
+  }
+}
+
+function update(){
+  var rows = filtrar();
+  var k = agregar(rows);
+  renderKPIs(k);
+  renderEvol(rows);
+  renderEstr(rows);
+  renderRankings(rows);
+  renderTable(rows);
+  nota(rows);
+}
+
+function uniq(key){
+  var s = {};
+  ROWS.forEach(function(r){ s[String(r[key])] = true; });
+  return Object.keys(s).sort(function(a,b){
+    if (key === "ano") return Number(b) - Number(a);
+    if (key === "mes") return Number(a) - Number(b);
+    return a.localeCompare(b,"pt-BR");
+  });
+}
+
+function fillSelects(){
+  var estr = uniq("estrutura");
+  var sel = document.getElementById("fEstr");
+  estr.forEach(function(v){ var o=document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o); });
+
+  var tec = uniq("tecnico");
+  var sel2 = document.getElementById("fTec");
+  tec.forEach(function(v){ var o=document.createElement("option"); o.value=v; o.textContent=v; sel2.appendChild(o); });
+
+  var anos = uniq("ano");
+  var sel3 = document.getElementById("fAno");
+  anos.forEach(function(v){ var o=document.createElement("option"); o.value=v; o.textContent=v; sel3.appendChild(o); });
+
+  var sel4 = document.getElementById("fMes");
+  for (var i=1;i<=12;i++){ var o=document.createElement("option"); o.value=String(i); o.textContent=MESES[i-1]; sel4.appendChild(o); }
+
+  document.getElementById("chipsEstr").innerHTML =
+    '<span class="chip on" data-v="">Todas</span>' +
+    estr.map(function(v){ return '<span class="chip" data-v="'+esc(v)+'">'+esc(v)+'</span>'; }).join("");
+}
+
+function bind(){
+  function on(id, key){
+    document.getElementById(id).addEventListener("change", function(e){
+      state[key] = e.target.value; state.page = 1;
+      if (key === "estr"){
+        document.querySelectorAll("#chipsEstr .chip").forEach(function(c){
+          c.classList.toggle("on", c.dataset.v === state.estr);
+        });
+      }
+      update();
+    });
+  }
+  on("fEstr","estr"); on("fTec","tec"); on("fAno","ano"); on("fMes","mes"); on("fSit","sit");
+
+  document.getElementById("chipsEstr").addEventListener("click", function(e){
+    var c = e.target.closest(".chip"); if (!c) return;
+    state.estr = c.dataset.v; state.page = 1;
+    document.getElementById("fEstr").value = state.estr;
+    document.querySelectorAll("#chipsEstr .chip").forEach(function(x){ x.classList.toggle("on", x === c); });
+    update();
+  });
+
+  var tmr;
+  document.getElementById("search").addEventListener("input", function(e){
+    clearTimeout(tmr);
+    tmr = setTimeout(function(){ state.q = e.target.value.trim(); state.page = 1; update(); }, 160);
+  });
+
+  document.getElementById("btnReset").addEventListener("click", function(){
+    state.estr = state.tec = state.ano = state.mes = state.sit = state.q = "";
+    state.page = 1; state.sortK = "inicio"; state.sortA = 1;
+    ["fEstr","fTec","fAno","fMes","fSit"].forEach(function(id){ document.getElementById(id).value = ""; });
+    document.getElementById("search").value = "";
+    document.querySelectorAll("#chipsEstr .chip").forEach(function(c){ c.classList.toggle("on", c.dataset.v === ""); });
+    update();
+  });
+
+  document.getElementById("tbl").querySelector("thead").addEventListener("click", function(e){
+    var th = e.target.closest("th"); if (!th) return;
+    var k = th.dataset.k;
+    if (state.sortK === k){ state.sortA = state.sortA * -1; }
+    else { state.sortK = k; state.sortA = 1; }
+    renderTable(filtrar());
+  });
+
+  document.getElementById("pgBtns").addEventListener("click", function(e){
+    var b = e.target.closest(".pg"); if (!b || b.disabled) return;
+    var v = b.dataset.p;
+    var rows = filtrar();
+    var pages = Math.max(1, Math.ceil(rows.length / PER_PAGE));
+    if (v === "prev") state.page = Math.max(1, state.page - 1);
+    else if (v === "next") state.page = Math.min(pages, state.page + 1);
+    else state.page = Number(v);
+    renderTable(rows);
+    var tbl = document.getElementById("tbl");
+    if (tbl.scrollIntoView) tbl.scrollIntoView({ behavior:"smooth", block:"start" });
+  });
+
+  document.getElementById("btnCsv").addEventListener("click", function(){
+    var rows = ordenar(filtrar());
+    var head = ["Carteira","Chave","Tecnico","Estrutura","Inicio","Fim","Ano","Mes","Dias","Situacao OM","OM exec","OM nao cumpridas","HH programado","HH confirmado","Aderencia %"];
+    var lines = [head.join(";")];
+    rows.forEach(function(r){
+      lines.push([
+        r.carteira, r.chave_embarque, r.tecnico, r.estrutura, r.inicio, r.fim, r.ano, r.mes,
+        r.dias, r.situacao_lbl, r.qtd_om_executadas, r.qtd_om_nao_cumpridas,
+        fmt(r.hh_programado,2), fmt(r.hh_confirmado,2), fmt(r.aderencia,2)
+      ].join(";"));
+    });
+    var blob = new Blob(["\ufeff" + lines.join("\r\n")], { type:"text/csv;charset=utf-8;" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "carteiras_filtrado.csv";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  });
+
+  document.getElementById("btnPrint").addEventListener("click", function(){ window.print(); });
+}
+
+fetch("./data.json")
+  .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(function(d){
+    ROWS = (d.rows || []).map(derivar);
+    fillSelects();
+    bind();
+    update();
+  })
+  .catch(function(err){
+    document.getElementById("activeNote").innerHTML =
+      '<span style="color:#ff6b81">Falha ao carregar data.json (' + esc(err.message) + '). Abra via servidor HTTP.</span>';
+  });
+
+})();
+</script>
+</body>
+</html>
