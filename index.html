@@ -300,6 +300,15 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
   font-size:.76rem;color:var(--accent3);background:rgba(255,209,102,.07);
   border:1px solid rgba(255,209,102,.28);border-radius:9px;padding:8px 12px;
 }
+.fictitious-note{
+  display:flex;gap:14px;align-items:flex-start;
+  background:linear-gradient(135deg,rgba(255,209,102,.07),rgba(255,209,102,.03));
+  border:1px solid rgba(255,209,102,.32);border-left:4px solid var(--accent3);
+  border-radius:12px;padding:16px 18px;margin-bottom:26px;
+  font-size:.9rem;line-height:1.6;color:var(--muted);
+}
+.fictitious-note strong{color:var(--accent3);display:block;margin-bottom:3px;font-size:.95rem}
+.fictitious-note .fn-ic{font-size:1.35rem;line-height:1.3;flex:none}
 
 /* ---------- SKILLS ---------- */
 .skill-set{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:32px}
@@ -334,21 +343,6 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
 .job p b{color:var(--text);font-weight:700}
 .job .stack{font-size:.79rem;color:var(--muted);margin-top:11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 13px}
 .job .stack b{color:var(--accent)}
-
-/* ---------- VIDEO ---------- */
-.video-shell{
-  margin-top:34px;background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:14px;
-}
-.video-shell video,.video-shell .vplaceholder{
-  width:100%;border-radius:11px;display:block;aspect-ratio:16/9;background:#0a1119;
-}
-.vplaceholder{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-  color:var(--muted);border:1px dashed var(--border);text-align:center;padding:24px;
-}
-.vplaceholder .ic{font-size:2rem}
-.vplaceholder small{font-size:.8rem;max-width:340px}
 
 /* ---------- CONTATO ---------- */
 .contact{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -465,6 +459,17 @@ footer a{color:var(--accent)}
       <p class="lead">Relatórios Power BI construídos para operação, suprimentos, qualidade e gestão de projetos — com filtros dinâmicos, KPIs e visões por unidade de negócio.</p>
     </div>
 
+    <div class="fictitious-note reveal">
+      <span class="fn-ic" aria-hidden="true">🧪</span>
+      <div>
+        <strong>Todos os dados exibidos são fictícios.</strong>
+        Estes painéis são demonstrações técnicas: números, nomes, identificadores e empresas foram
+        substituídos por valores simulados e anonimizados, mantendo apenas a estrutura, a lógica de
+        negócio e o modelo de dados originais. Nenhum dado real de operação, cliente ou colaborador é
+        apresentado aqui. Os arquivos de origem (.pbix) não são disponibilizados para download.
+      </div>
+    </div>
+
     <div class="grid g2">
 
       <article class="card dash reveal">
@@ -489,7 +494,6 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Gestão de Ações</span></div>
           <h3>EVPro — Evolução de Projetos e Ações</h3>
           <p>Mais de 40 páginas acompanhando execução de ações e estudos: status (aprovadas, em andamento, não aprovadas), prazos cumpridos, atrasadas e concluídas, com visões consolidadas por descrição e por período.</p>
-          <div class="links"><a class="mini" href="./EVPro.pbix" download>⬇ Baixar .pbix</a></div>
         </div>
       </article>
 
@@ -519,7 +523,6 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Portfólio</span></div>
           <h3>Projetos &amp; Melhorias (GM)</h3>
           <p>Acompanhamento de projetos e gerências de melhoria por unidade de negócio, plataforma, etapa, prazo e líder responsável. Inclui visões de situação atual, ano de criação, atraso em dias e distribuição por unidade.</p>
-          <div class="links"><a class="mini" href="./Projetos.pbix" download>⬇ Baixar .pbix</a></div>
         </div>
       </article>
 
@@ -545,7 +548,6 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Qualidade</span></div>
           <h3>NC Pareto — Não Conformidades</h3>
           <p>Análise de Pareto de falhas por operação, com quantidade de ocorrências, % de não conformidade, % conforme e comparação contra meta. Base para atuar primeiro nas causas críticas.</p>
-          <div class="links"><a class="mini" href="./NC_Pareto.pbix" download>⬇ Baixar .pbix</a></div>
         </div>
       </article>
 
@@ -575,7 +577,6 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Suprimentos</span></div>
           <h3>Suprimentos — MRP</h3>
           <p>Controle de estoque e requisições integrado ao MRP: situação de estoque, ordens e remessas, prioridade de entrega, materiais parametrizados, centros, depósitos e ponto de reabastecimento.</p>
-          <div class="links"><a class="mini" href="./Suprimentos - MRP.pbix" download>⬇ Baixar .pbix</a></div>
         </div>
       </article>
 
@@ -598,7 +599,7 @@ footer a{color:var(--accent)}
           <h3>Evolução das Carteiras</h3>
           <p>Painel de acompanhamento da evolução de carteiras offshore, consolidando movimentação e performance ao longo do tempo.</p>
           <div class="links"><a class="mini solid" href="./evolucao_carteiras/">▶ Ver demonstração interativa</a><a class="mini" href="./assets/dashboards/carteiras.png" target="_blank" rel="noopener">Ver print em alta</a></div>
-          <div class="protected">🛡️ Demonstração higienizada (LGPD) — dados anonimizados</div>
+          <div class="protected">🧪 Dados 100% fictícios — demo técnica (LGPD)</div>
         </div>
       </article>
 
@@ -621,24 +622,16 @@ footer a{color:var(--accent)}
               <rect x="305" y="34" width="9" height="9" rx="2" fill="#2ee6c5"/><text x="319" y="42" fill="#9db0c6">HC</text>
             </g>
           </svg>
-          <img src="./assets/dashboards/hc-hp.png" alt="Print do dashboard de headcount versus headplan" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="this.remove()">
+          <img src="./assets/dashboards/hc-hp.png" alt="Print do dashboard de headcount versus headplan" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Pessoas</span></div>
           <h3>HC x HP — Headcount x Headplan</h3>
           <p>Comparativo entre quadro atual e planejado, acompanhando desvios de headcount por unidade para suporte à decisão de contratação e dimensionamento.</p>
-          <div class="protected">🛡️ Demonstração higienizada (LGPD) — exibido via print</div>
+          <div class="protected">🧪 Dados 100% fictícios — demo técnica (LGPD)</div>
         </div>
       </article>
 
-    </div>
-
-    <div class="video-shell reveal" id="videos">
-      <div class="vplaceholder" id="videoSlot">
-        <span class="ic" aria-hidden="true">🎬</span>
-        <strong>Espaço para vídeo do dashboard em ação</strong>
-        <small>Quando você tiver o print ou gravação, envie que eu incorporo aqui (MP4 ou link do YouTube/LinkedIn).</small>
-      </div>
     </div>
   </div>
 </section>

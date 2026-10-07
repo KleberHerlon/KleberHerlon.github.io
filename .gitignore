@@ -9,3 +9,6 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
+
+# Arquivos de origem Power BI (nao publicar)
+*.pbix
