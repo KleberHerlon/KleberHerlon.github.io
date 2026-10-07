@@ -1,0 +1,928 @@
+{
+ "meta": {
+  "anon": true,
+  "origem": "Power BI — Pareto de Não Conformidades",
+  "registros": "ocorrências agrupadas",
+  "periodo": "19/08/2025 a 18/08/2026",
+  "operacoes_total": 26631,
+  "static": {
+   "falhas_tipo": {
+    "titulo": "Principais descrições de falha",
+    "labels": [
+     "TIPO DE NOTA INCORRETO",
+     "TIPO DE MANUTENÇÃO INCORRETO",
+     "TIPO DE INTERVENÇÃO INCORRETO",
+     "TEXTO BREVE DA OPERAÇÃO INCORRETO"
+    ],
+    "series": [
+     {
+      "label": "Ocorrências",
+      "data": [
+       9,
+       14,
+       10,
+       3
+      ]
+     }
+    ]
+   },
+   "falhas_mes": {
+    "titulo": "% de falhas por mês",
+    "labels": [
+     "nov/25",
+     "dez/25",
+     "jan/26",
+     "fev/26",
+     "mar/26",
+     "abr/26",
+     "mai/26",
+     "jun/26",
+     "jul/26",
+     "ago/26",
+     "set/26"
+    ],
+    "series": [
+     {
+      "label": "% falhas",
+      "data": [
+       51.8,
+       49.7,
+       45.1,
+       40.2,
+       42.7,
+       54.4,
+       38.8,
+       47.0,
+       46.3,
+       40.4,
+       36.1
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "rows": [
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 1373,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 773,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 106,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 5,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 966,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 223,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 126,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 17,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "R_PE",
+   "etapa": "Suprimento",
+   "qtd": 1,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 157,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 112,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 63,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 9,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 79,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 2,
+   "meta": 100.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_CR",
+   "etapa": "Planejamento",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "BC",
+   "tipo_nc": "NC_CR",
+   "etapa": "Outros",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 713,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 402,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 55,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 3,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 502,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 116,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 65,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 9,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 82,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 58,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 33,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 5,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 41,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "ES",
+   "tipo_nc": "NC_CR",
+   "etapa": "Outros",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 645,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 363,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 50,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 2,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 454,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 105,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 59,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 8,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 74,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 53,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 30,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 4,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 37,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "GAD-AGP",
+   "tipo_nc": "NC_CR",
+   "etapa": "Outros",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 589,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 332,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 45,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 2,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 414,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 96,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 54,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 7,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 68,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 48,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 27,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 4,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 33,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "BUZ",
+   "tipo_nc": "NC_CR",
+   "etapa": "Outros",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 319,
+   "meta": 80.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 180,
+   "meta": 80.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 25,
+   "meta": 80.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 1,
+   "meta": 80.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 224,
+   "meta": 80.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 52,
+   "meta": 90.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 29,
+   "meta": 90.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 4,
+   "meta": 90.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 37,
+   "meta": 90.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 26,
+   "meta": 99.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 15,
+   "meta": 99.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 2,
+   "meta": 99.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 18,
+   "meta": 99.0
+  },
+  {
+   "unidade": "AM",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 215,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 121,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 17,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_GE",
+   "etapa": "Suprimento",
+   "qtd": 1,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 151,
+   "meta": 80.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 35,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 20,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 3,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 24,
+   "meta": 90.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 18,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 10,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 1,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 12,
+   "meta": 99.0
+  },
+  {
+   "unidade": "GAD",
+   "tipo_nc": "NC_CR",
+   "etapa": "Programação",
+   "qtd": 1,
+   "meta": 100.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 91,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 52,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 7,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 64,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 15,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 8,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 1,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 11,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 7,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 4,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_MO",
+   "etapa": "LOPAD",
+   "qtd": 1,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BS",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 5,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 51,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 29,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 4,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 36,
+   "meta": 80.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 8,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 5,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "R_PE",
+   "etapa": "LOPAD",
+   "qtd": 1,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 6,
+   "meta": 90.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 4,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 3,
+   "meta": 99.0
+  },
+  {
+   "unidade": "ARMADOR",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 3,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_GE",
+   "etapa": "Programação",
+   "qtd": 43,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_GE",
+   "etapa": "Planejamento",
+   "qtd": 24,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_GE",
+   "etapa": "LOPAD",
+   "qtd": 4,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_GE",
+   "etapa": "Outros",
+   "qtd": 30,
+   "meta": 80.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "R_PE",
+   "etapa": "Programação",
+   "qtd": 7,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "R_PE",
+   "etapa": "Planejamento",
+   "qtd": 4,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "R_PE",
+   "etapa": "Outros",
+   "qtd": 5,
+   "meta": 90.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_MO",
+   "etapa": "Programação",
+   "qtd": 4,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_MO",
+   "etapa": "Planejamento",
+   "qtd": 2,
+   "meta": 99.0
+  },
+  {
+   "unidade": "BA",
+   "tipo_nc": "NC_MO",
+   "etapa": "Outros",
+   "qtd": 2,
+   "meta": 99.0
+  }
+ ]
+}

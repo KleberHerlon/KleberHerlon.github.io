@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suprimentos / MRP — Demo de Dashboard</title>
+<meta name="description" content="Demonstração interativa do relatório Power BI de Suprimentos/MRP (SAP-MM) com filtros, KPIs, gráficos e tabela. Todos os dados são fictícios.">
+<link rel="icon" href="../assets/og.png">
+<link rel="stylesheet" href="../assets/pbi/pbi.css">
+</head>
+<body data-theme="petro">
+
+<header class="pbi-service">
+  <a class="pbi-logo" href="../index.html" title="Voltar ao portfólio">
+    <span class="pbi-mark"></span>
+    <h1>Suprimentos — MRP (SAP-MM)</h1>
+  </a>
+  <span class="sep"></span>
+  <span class="pbi-crumb">Página única · demonstração interativa</span>
+  <span class="grow"></span>
+  <button class="pbi-btn" id="btnClear" type="button">Limpar filtros</button>
+  <a class="pbi-btn ghost" href="../index.html">← Portfólio</a>
+</header>
+
+<div class="pbi-filterbar">
+  <div id="slicers"></div>
+  <div class="filter-summary" id="fsum"></div>
+</div>
+
+<main class="pbi-canvas">
+
+  <div class="pbi-pagehead">
+    <h2>Acompanhamento do MRP e conformidade</h2>
+    <span class="sub">Parâmetros, conformidade MRP x LTEC e impacto de falha</span>
+    <span class="lgpd">Dados 100% fictícios · demonstração técnica</span>
+  </div>
+
+  <div class="grid g-kpi" id="kpis"></div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="viz">
+      <div class="viz-head"><h3>Conformidade MRP x LTEC</h3></div>
+      <p class="hint">Série fixa do relatório original (não responde aos filtros)</p>
+      <div class="chart-box"><canvas data-chart="confStatic"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>NMs com MRP por unidade de negócio</h3></div>
+      <p class="hint">Série fixa do relatório original (não responde aos filtros)</p>
+      <div class="chart-box"><canvas data-chart="nmsUn"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Conformidade no recorte</h3></div>
+      <p class="hint">Materiais conforme x não conforme, conforme os filtros</p>
+      <div class="chart-box"><canvas data-chart="conf"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Impacto em caso de falha</h3></div>
+      <p class="hint">Classificação de impacto dos materiais</p>
+      <div class="chart-box"><canvas data-chart="impacto"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Materiais por unidade</h3></div>
+      <p class="hint">Distribuição por unidade de negócio</p>
+      <div class="chart-box"><canvas data-chart="un"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Top fabricantes</h3></div>
+      <p class="hint">8 fabricantes com mais materiais no recorte</p>
+      <div class="chart-box"><canvas data-chart="fab"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Por tipo de MRP</h3></div>
+      <p class="hint">Materiais agrupados pelo tipo de MRP</p>
+      <div class="chart-box"><canvas data-chart="tipo"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Quantidade por descrição</h3></div>
+      <p class="hint">Soma das quantidades por item (top 10)</p>
+      <div class="chart-box"><canvas data-chart="desc"></canvas></div>
+    </div>
+  </div>
+
+  <div class="viz" style="margin-top:12px">
+    <div class="viz-head"><h3>Detalhamento dos materiais</h3></div>
+    <p class="hint">Clique no cabeçalho de uma coluna para ordenar · busca filtra apenas a tabela</p>
+    <div class="tbl-tools">
+      <input id="search" class="srch" type="search" placeholder="Buscar material, descrição, fabricante…" aria-label="Buscar na tabela">
+      <button class="pbi-btn" id="btnCsv" type="button">⤓ Exportar CSV</button>
+      <button class="pbi-btn" id="btnPrint" type="button">Imprimir</button>
+      <span class="fict-badge">Dados fictícios</span>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="material">Material <span class="ar">▲</span></th>
+            <th data-k="descricao">Descrição <span class="ar">▲</span></th>
+            <th data-k="fabricante">Fabricante <span class="ar">▲</span></th>
+            <th data-k="unidade">Unidade <span class="ar">▲</span></th>
+            <th data-k="plataforma">Plataforma <span class="ar">▲</span></th>
+            <th data-k="centro">Centro <span class="ar">▲</span></th>
+            <th data-k="deposito">Depósito <span class="ar">▲</span></th>
+            <th data-k="tipo_mrp">Tipo MRP <span class="ar">▲</span></th>
+            <th data-k="parametrizado">Parametrizado <span class="ar">▲</span></th>
+            <th data-k="conformidade">Conformidade <span class="ar">▲</span></th>
+            <th data-k="impacto_falha">Impacto <span class="ar">▲</span></th>
+            <th data-k="quantidade">Qtd. <span class="ar">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="info" id="pgInfo"></span>
+      <span class="pbtns" id="pgBtns"></span>
+    </div>
+  </div>
+
+</main>
+
+<div class="pbi-tabs">
+  <span class="tab on">Visão geral</span>
+  <span class="grow"></span>
+  <span class="note" id="rowCount"></span>
+</div>
+
+<footer class="pbi-foot">
+  <span class="fict">Todos os dados exibidos são fictícios — esta é uma demonstração técnica; códigos de material, fornecedores e quantidades são simulados.</span>
+  <div>Relatório reconstruído em HTML/CSS/JavaScript sobre a estrutura do painel original. <a href="../index.html">Voltar ao portfólio</a></div>
+</footer>
+
+<script>
+window.PBI_REPORT = {
+  data: "./data.json",
+
+  filters: [
+    { key: "fabricante", label: "Fabricante", type: "select" },
+    { key: "unidade", label: "Unidade", type: "select" },
+    { key: "plataforma", label: "Plataforma", type: "select" },
+    { key: "centro", label: "Centro", type: "chips" },
+    { key: "deposito", label: "Depósito", type: "chips" },
+    { key: "tipo_mrp", label: "Tipo MRP", type: "chips" },
+    { key: "parametrizado", label: "Parametrizado", type: "chips" },
+    { key: "conformidade", label: "Conformidade", type: "chips" },
+    { key: "impacto_falha", label: "Impacto", type: "chips" }
+  ],
+
+  kpis: [
+    { lbl: "Materiais", val: function (r) { return PBI.num(r.length, 0); },
+      sub: function (r) { return r.length === PBI.total() ? "base completa" : "de " + PBI.num(PBI.total(), 0) + " no recorte"; } },
+    { lbl: "Conformidade MRP", tone: "ok",
+      val: function (r) { return PBI.pct(r.length ? pc(r, "conformidade", "Conforme") * 100 : 0); },
+      sub: function (r) { return PBI.num(cw(r, "conformidade", "Conforme"), 0) + " materiais conformes"; } },
+    { lbl: "Parametrizados",
+      val: function (r) { return PBI.pct(r.length ? pc(r, "parametrizado", "Sim") * 100 : 0); },
+      sub: function (r) { return PBI.num(cw(r, "parametrizado", "Sim"), 0) + " com MRP parametrizado"; } },
+    { lbl: "Impacto alto", tone: "bad",
+      val: function (r) { return PBI.num(cw(r, "impacto_falha", "Alto"), 0); },
+      sub: function (r) { return PBI.pct(r.length ? pc(r, "impacto_falha", "Alto") * 100 : 0) + " do recorte"; } },
+    { lbl: "Soma das quantidades",
+      val: function (r) { return PBI.num(PBI.agg(r, "quantidade"), 1); },
+      sub: function () { return "unidades somadas no recorte"; } },
+    { lbl: "Fabricantes",
+      val: function (r) { return PBI.num(uniqN(r, "fabricante"), 0); },
+      sub: function () { return "com material no recorte"; } }
+  ],
+
+  charts: {
+    confStatic: {
+      kind: "doughnut", fmt: "int",
+      data: function () {
+        var s = staticSerie("conformidade_mrp");
+        s.series[0].colors = ["#1aab40", "#d64550"];
+        return s;
+      }
+    },
+    nmsUn: {
+      kind: "bar", fmt: "int",
+      data: function () { return staticSerie("nms_por_un", { color: "#00695c" }); }
+    },
+    conf: {
+      kind: "doughnut", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "conformidade");
+        var k = ["Conforme", "Não Conforme"].filter(function (x) { return m[x]; });
+        return { labels: k, series: [{ label: "Materiais", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#1aab40", "#d64550"] }] };
+      }
+    },
+    impacto: {
+      kind: "bar", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "impacto_falha");
+        var k = ["Alto", "Médio", "Baixo"].filter(function (x) { return m[x]; });
+        return { labels: k, series: [{ label: "Materiais", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#d64550", "#d9b300", "#1aab40"] }] };
+      }
+    },
+    un: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) { return dynCount(r, "unidade", "#00695c"); }
+    },
+    fab: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) {
+        var d = dynCount(r, "fabricante", "#118dff");
+        d.labels = d.labels.slice(0, 8);
+        d.series[0].data = d.series[0].data.slice(0, 8);
+        return d;
+      }
+    },
+    tipo: {
+      kind: "bar", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "tipo_mrp");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Materiais", data: k.map(function (x) { return m[x]; }), color: "#f2c811" }] };
+      }
+    },
+    desc: {
+      kind: "bar-h", fmt: "num",
+      data: function (r) {
+        var m = {};
+        r.forEach(function (x) { var k = String(x.descricao); m[k] = (m[k] || 0) + (Number(x.quantidade) || 0); });
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; }).slice(0, 10);
+        return { labels: k, series: [{ label: "Quantidade", data: k.map(function (x) { return m[x]; }), color: "#744ec2" }] };
+      }
+    }
+  },
+
+  table: {
+    pageSize: 14,
+    file: "mrp_materiais_ficticios.csv",
+    sort: { k: "material", a: 1 },
+    columns: [
+      { k: "material", lbl: "Material", bold: true },
+      { k: "descricao", lbl: "Descrição" },
+      { k: "fabricante", lbl: "Fabricante" },
+      { k: "unidade", lbl: "Unidade" },
+      { k: "plataforma", lbl: "Plataforma" },
+      { k: "centro", lbl: "Centro" },
+      { k: "deposito", lbl: "Depósito" },
+      { k: "tipo_mrp", lbl: "Tipo MRP" },
+      { k: "parametrizado", lbl: "Parametrizado", render: function (r) {
+          return '<span class="pill ' + (r.parametrizado === "Sim" ? "ok" : "warn") + '">' + PBI.esc(r.parametrizado) + "</span>";
+        } },
+      { k: "conformidade", lbl: "Conformidade", render: function (r) {
+          return '<span class="pill ' + (r.conformidade === "Conforme" ? "ok" : "no") + '">' + PBI.esc(r.conformidade) + "</span>";
+        } },
+      { k: "impacto_falha", lbl: "Impacto", render: function (r) {
+          var c = r.impacto_falha === "Alto" ? "no" : r.impacto_falha === "Médio" ? "warn" : "";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.impacto_falha) + "</span>";
+        } },
+      { k: "quantidade", lbl: "Qtd.", fmt: "num" }
+    ]
+  }
+};
+
+function countMap(rows, key) {
+  var m = {};
+  rows.forEach(function (r) { var v = String(r[key]); m[v] = (m[v] || 0) + 1; });
+  return m;
+}
+function cw(rows, key, v) { var n = 0; rows.forEach(function (r) { if (String(r[key]) === v) n++; }); return n; }
+function pc(rows, key, v) { return rows.length ? cw(rows, key, v) / rows.length : 0; }
+function uniqN(rows, key) { var o = {}; rows.forEach(function (r) { o[String(r[key])] = 1; }); return Object.keys(o).length; }
+function dynCount(rows, key, color) {
+  var m = countMap(rows, key);
+  var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+  return { labels: k, series: [{ label: "Materiais", data: k.map(function (x) { return m[x]; }), color: color }] };
+}
+function staticSerie(name, style) {
+  var s = ((PBI.meta().static || {})[name] || { labels: [], series: [{ label: "", data: [] }] });
+  var st = style || {};
+  return { labels: s.labels, series: [{ label: s.series[0].label, data: s.series[0].data, color: st.color, fill: !!st.fill }] };
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/pbi/pbi.js"></script>
+</body>
+</html>

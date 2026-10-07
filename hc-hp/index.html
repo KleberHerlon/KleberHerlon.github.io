@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HC x HP Atualizado — Demo de Dashboard</title>
+<meta name="description" content="Demonstração interativa do relatório Power BI HC x HP (horas contratadas x horas planejadas) com filtros, KPIs, gráficos e tabela. Todos os dados são fictícios.">
+<link rel="icon" href="../assets/og.png">
+<link rel="stylesheet" href="../assets/pbi/pbi.css">
+</head>
+<body data-theme="navy">
+
+<header class="pbi-service">
+  <a class="pbi-logo" href="../index.html" title="Voltar ao portfólio">
+    <span class="pbi-mark"></span>
+    <h1>HC x HP Atualizado</h1>
+  </a>
+  <span class="sep"></span>
+  <span class="pbi-crumb">Página única · demonstração interativa</span>
+  <span class="grow"></span>
+  <button class="pbi-btn" id="btnClear" type="button">Limpar filtros</button>
+  <a class="pbi-btn ghost" href="../index.html">← Portfólio</a>
+</header>
+
+<div class="pbi-filterbar">
+  <div id="slicers"></div>
+  <div class="filter-summary" id="fsum"></div>
+</div>
+
+<main class="pbi-canvas">
+
+  <div class="pbi-pagehead">
+    <h2>Horas contratadas x horas planejadas</h2>
+    <span class="sub" id="periodo">Período do relatório original</span>
+    <span class="lgpd">Dados 100% fictícios · demonstração técnica</span>
+  </div>
+
+  <div class="grid g-kpi" id="kpis"></div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="viz">
+      <div class="viz-head"><h3>HH planejado x HH executado</h3></div>
+      <p class="hint">Série mensal consolidada conforme os filtros</p>
+      <div class="chart-box tall"><canvas data-chart="serie"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>% de execução por mês</h3></div>
+      <p class="hint">Executado ÷ planejado em cada mês</p>
+      <div class="chart-box tall"><canvas data-chart="execpct"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Carteiras por estrutura</h3></div>
+      <p class="hint">Ranking dinâmico conforme os filtros</p>
+      <div class="chart-box"><canvas data-chart="un"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Carteiras por empresa</h3></div>
+      <p class="hint">Contratada x cliente no recorte selecionado</p>
+      <div class="chart-box"><canvas data-chart="emp"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Carteiras por ano</h3></div>
+      <p class="hint">Empilhado por empresa responsável</p>
+      <div class="chart-box"><canvas data-chart="ano"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>HH por ano</h3></div>
+      <p class="hint">Planejado x executado consolidado por ano</p>
+      <div class="chart-box"><canvas data-chart="hhAno"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>HH executado por estrutura</h3></div>
+      <p class="hint">Horas executadas no recorte</p>
+      <div class="chart-box"><canvas data-chart="hhUn"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Composição das carteiras (100%)</h3></div>
+      <p class="hint">Participação de cada ano dentro da estrutura</p>
+      <div class="chart-box"><canvas data-chart="mix"></canvas></div>
+    </div>
+  </div>
+
+  <div class="viz" style="margin-top:12px">
+    <div class="viz-head"><h3>Detalhamento mensal</h3></div>
+    <p class="hint">Clique no cabeçalho de uma coluna para ordenar · busca filtra apenas a tabela</p>
+    <div class="tbl-tools">
+      <input id="search" class="srch" type="search" placeholder="Buscar estrutura, empresa…" aria-label="Buscar na tabela">
+      <button class="pbi-btn" id="btnCsv" type="button">⤓ Exportar CSV</button>
+      <button class="pbi-btn" id="btnPrint" type="button">Imprimir</button>
+      <span class="fict-badge">Dados fictícios</span>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="ano">Ano <span class="ar">▲</span></th>
+            <th data-k="mes_label">Mês <span class="ar">▲</span></th>
+            <th data-k="estrutura">Estrutura <span class="ar">▲</span></th>
+            <th data-k="empresa">Empresa <span class="ar">▲</span></th>
+            <th data-k="carteiras">Carteiras <span class="ar">▲</span></th>
+            <th data-k="hh_planejado">HH planejado <span class="ar">▲</span></th>
+            <th data-k="hh_executado">HH executado <span class="ar">▲</span></th>
+            <th data-k="exec_pct">Execução <span class="ar">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="info" id="pgInfo"></span>
+      <span class="pbtns" id="pgBtns"></span>
+    </div>
+  </div>
+
+</main>
+
+<div class="pbi-tabs">
+  <span class="tab on">Visão geral</span>
+  <span class="grow"></span>
+  <span class="note" id="rowCount"></span>
+</div>
+
+<footer class="pbi-foot">
+  <span class="fict">Todos os dados exibidos são fictícios — esta é uma demonstração técnica; horas, carteiras e estruturas são simuladas.</span>
+  <div>Relatório reconstruído em HTML/CSS/JavaScript sobre a estrutura do painel original. <a href="../index.html">Voltar ao portfólio</a></div>
+</footer>
+
+<script>
+window.PBI_REPORT = {
+  data: "./data.json",
+
+  filters: [
+    { key: "ano", label: "Ano", type: "chips" },
+    { key: "estrutura", label: "Estrutura", type: "select" },
+    { key: "empresa", label: "Empresa", type: "chips" },
+    { key: "mes_label", label: "Mês", type: "chips",
+      order: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"] }
+  ],
+
+  kpis: [
+    { lbl: "HH planejado", val: function (r) { return PBI.num(PBI.agg(r, "hh_planejado"), 1); },
+      sub: function (r) { return r.length === PBI.total() ? "base completa" : "de " + PBI.num(PBI.total(), 0) + " registros"; } },
+    { lbl: "HH executado", val: function (r) { return PBI.num(PBI.agg(r, "hh_executado"), 1); },
+      sub: function () { return "horas executadas no recorte"; } },
+    { lbl: "Execução", tone: "ok",
+      val: function (r) { return PBI.pct(pctExec(r)); },
+      sub: function () { return "executado ÷ planejado"; } },
+    { lbl: "Saldo de horas",
+      val: function (r) { return PBI.num(PBI.agg(r, "hh_executado") - PBI.agg(r, "hh_planejado"), 1); },
+      sub: function (r) { return PBI.agg(r, "hh_executado") >= PBI.agg(r, "hh_planejado") ? "horas acima do planejado" : "horas abaixo do planejado"; } },
+    { lbl: "Carteiras", val: function (r) { return PBI.num(PBI.agg(r, "carteiras"), 0); },
+      sub: function () { var t = (PBI.meta().static || {}).kpis || {}; return "total do relatório: " + PBI.num(t.carteiras_total || 0, 0); } },
+    { lbl: "Estruturas", val: function (r) { return PBI.num(uniqN(r, "estrutura"), 0); },
+      sub: function () { return "com carteira no recorte"; } }
+  ],
+
+  charts: {
+    serie: {
+      kind: "line", fmt: "num",
+      data: function (r) {
+        var g = monthAgg(r);
+        return {
+          labels: g.labels,
+          series: [
+            { label: "HH planejado", data: g.labels.map(function (l) { return g.m[l].hp; }), color: "#4ea8ff" },
+            { label: "HH executado", data: g.labels.map(function (l) { return g.m[l].he; }), color: "#2ee6c5", fill: true }
+          ]
+        };
+      }
+    },
+    execpct: {
+      kind: "line", fmt: "pct",
+      data: function (r) {
+        var g = monthAgg(r);
+        return {
+          labels: g.labels,
+          series: [{
+            label: "% de execução",
+            data: g.labels.map(function (l) { var x = g.m[l]; return x.hp ? x.he / x.hp * 100 : 0; }),
+            color: "#ffd166", fill: true
+          }]
+        };
+      }
+    },
+    un: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) { return dynCount(r, "estrutura", "carteiras", "#4ea8ff"); }
+    },
+    emp: {
+      kind: "doughnut", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "carteiras", "empresa");
+        var k = ["Contratada", "Cliente"].filter(function (x) { return m[x]; });
+        if (!k.length) k = Object.keys(m);
+        return { labels: k, series: [{ label: "Carteiras", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#4ea8ff", "#2ee6c5"] }] };
+      }
+    },
+    ano: {
+      kind: "stack", fmt: "int",
+      data: function (r) {
+        var anos = uniqN2(r, "ano").sort();
+        var emps = uniqN2(r, "empresa");
+        var cols = ["#4ea8ff", "#2ee6c5", "#ffd166"];
+        return {
+          labels: anos,
+          series: emps.map(function (e, i) {
+            return {
+              label: e, color: cols[i % cols.length],
+              data: anos.map(function (a) {
+                return r.filter(function (x) { return String(x.ano) === String(a) && x.empresa === e; })
+                        .reduce(function (s, x) { return s + x.carteiras; }, 0);
+              })
+            };
+          })
+        };
+      }
+    },
+    hhAno: {
+      kind: "bar", fmt: "num",
+      data: function (r) {
+        var anos = uniqN2(r, "ano").sort();
+        return {
+          labels: anos,
+          series: [
+            { label: "HH planejado", data: anos.map(function (a) { return sumWhere(r, "hh_planejado", "ano", a); }), color: "#4ea8ff" },
+            { label: "HH executado", data: anos.map(function (a) { return sumWhere(r, "hh_executado", "ano", a); }), color: "#2ee6c5" }
+          ]
+        };
+      }
+    },
+    hhUn: {
+      kind: "bar-h", fmt: "num",
+      data: function (r) { return dynCount(r, "estrutura", "hh_executado", "#2ee6c5"); }
+    },
+    mix: {
+      kind: "stack100", fmt: "pct",
+      data: function (r) {
+        var m = {};
+        r.forEach(function (x) { m[x.estrutura] = (m[x.estrutura] || 0) + x.carteiras; });
+        var ests = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; }).slice(0, 8);
+        var anos = uniqN2(r, "ano").sort();
+        var cols = ["#4ea8ff", "#2ee6c5", "#ffd166"];
+        return {
+          labels: ests,
+          series: anos.map(function (a, i) {
+            return {
+              label: String(a), color: cols[i % cols.length],
+              data: ests.map(function (e) {
+                return r.filter(function (x) { return x.estrutura === e && String(x.ano) === String(a); })
+                        .reduce(function (s, x) { return s + x.carteiras; }, 0);
+              })
+            };
+          })
+        };
+      }
+    }
+  },
+
+  table: {
+    pageSize: 14,
+    file: "hc_hp_ficticio.csv",
+    sort: { k: "ano", a: 1 },
+    derive: function (r) {
+      r.exec_pct = r.hh_planejado ? r.hh_executado / r.hh_planejado * 100 : 0;
+    },
+    columns: [
+      { k: "ano", lbl: "Ano", cls: "num" },
+      { k: "mes_label", lbl: "Mês", bold: true },
+      { k: "estrutura", lbl: "Estrutura" },
+      { k: "empresa", lbl: "Empresa", render: function (r) {
+          return '<span class="pill ' + (r.empresa === "Contratada" ? "" : "pur") + '">' + PBI.esc(r.empresa) + "</span>";
+        } },
+      { k: "carteiras", lbl: "Carteiras", fmt: "int" },
+      { k: "hh_planejado", lbl: "HH planejado", fmt: "num" },
+      { k: "hh_executado", lbl: "HH executado", fmt: "num" },
+      { k: "exec_pct", lbl: "Execução", fmt: "pct", render: function (r) {
+          var v = r.exec_pct;
+          var c = v >= 100 ? "ok" : v >= 85 ? "" : v >= 70 ? "warn" : "no";
+          return '<span class="pill ' + c + '">' + PBI.pct(v, 1) + "</span>";
+        } }
+    ]
+  }
+};
+
+function countMap(rows, val, key) {
+  var m = {};
+  rows.forEach(function (r) { var k = String(r[key]); m[k] = (m[k] || 0) + (Number(r[val]) || 0); });
+  return m;
+}
+function uniqN2(rows, key) { var o = {}; rows.forEach(function (r) { o[String(r[key])] = 1; }); return Object.keys(o); }
+function uniqN(rows, key) { return uniqN2(rows, key).length; }
+function sumWhere(rows, val, key, v) {
+  return rows.reduce(function (s, r) { return String(r[key]) === String(v) ? s + (Number(r[val]) || 0) : s; }, 0);
+}
+function pctExec(r) {
+  var hp = PBI.agg(r, "hh_planejado");
+  return hp ? PBI.agg(r, "hh_executado") / hp * 100 : 0;
+}
+function monthAgg(rows) {
+  var m = {}, labels = [];
+  rows.forEach(function (r) {
+    var l = r.mes_label + "/" + r.ano;
+    if (!m[l]) { m[l] = { hp: 0, he: 0, ano: r.ano, mes: r.mes }; labels.push(l); }
+    m[l].hp += r.hh_planejado || 0;
+    m[l].he += r.hh_executado || 0;
+  });
+  labels.sort(function (a, b) {
+    return m[a].ano - m[b].ano || m[a].mes - m[b].mes;
+  });
+  if (labels.length > 24) labels = labels.slice(labels.length - 24);
+  return { labels: labels, m: m };
+}
+function dynCount(rows, key, val, color) {
+  var m = countMap(rows, val, key);
+  var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+  return { labels: k, series: [{ label: val === "carteiras" ? "Carteiras" : "HH", data: k.map(function (x) { return m[x]; }), color: color }] };
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/pbi/pbi.js"></script>
+</body>
+</html>

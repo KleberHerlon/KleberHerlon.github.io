@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos &amp; Melhorias — Demo de Dashboard</title>
+<meta name="description" content="Demonstração interativa do relatório Power BI Projetos &amp; Melhorias (MAC/OFFS) com filtros, KPIs, gráficos e tabela. Todos os dados são fictícios.">
+<link rel="icon" href="../assets/og.png">
+<link rel="stylesheet" href="../assets/pbi/pbi.css">
+</head>
+<body data-theme="petro">
+
+<header class="pbi-service">
+  <a class="pbi-logo" href="../index.html" title="Voltar ao portfólio">
+    <span class="pbi-mark"></span>
+    <h1>Projetos &amp; Melhorias — MAC/OFFS</h1>
+  </a>
+  <span class="sep"></span>
+  <span class="pbi-crumb">Página única · demonstração interativa</span>
+  <span class="grow"></span>
+  <button class="pbi-btn" id="btnClear" type="button">Limpar filtros</button>
+  <a class="pbi-btn ghost" href="../index.html">← Portfólio</a>
+</header>
+
+<div class="pbi-filterbar">
+  <div id="slicers"></div>
+  <div class="filter-summary" id="fsum"></div>
+</div>
+
+<main class="pbi-canvas">
+
+  <div class="pbi-pagehead">
+    <h2>Carteira de projetos e melhorias</h2>
+    <span class="sub">OMs, gestões de mudança, fases e horas-homem</span>
+    <span class="lgpd">Dados 100% fictícios · demonstração técnica</span>
+  </div>
+
+  <div class="grid g-kpi" id="kpis"></div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="viz">
+      <div class="viz-head"><h3>Ordens de manutenção por ano</h3></div>
+      <p class="hint">Série fixa do relatório original (não responde aos filtros)</p>
+      <div class="chart-box"><canvas data-chart="omsAno"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Gestões de mudança por ano</h3></div>
+      <p class="hint">Série fixa do relatório original (não responde aos filtros)</p>
+      <div class="chart-box"><canvas data-chart="gmsAno"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Classificação das GMs por fase</h3></div>
+      <p class="hint">Distribuição fixa por fase da gestão de mudança</p>
+      <div class="chart-box"><canvas data-chart="gmsFase"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Fases de GM em atraso</h3></div>
+      <p class="hint">GMs no prazo x fora do prazo</p>
+      <div class="chart-box"><canvas data-chart="prazoGms"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Projetos por unidade</h3></div>
+      <p class="hint">Ranking dinâmico conforme os filtros</p>
+      <div class="chart-box"><canvas data-chart="un"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Por tipo de iniciativa</h3></div>
+      <p class="hint">Projetos, demandas e melhorias operacionais</p>
+      <div class="chart-box"><canvas data-chart="iniciativa"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Por disciplina</h3></div>
+      <p class="hint">Contagem de projetos por disciplina técnica</p>
+      <div class="chart-box"><canvas data-chart="disc"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Inícios por ano</h3></div>
+      <p class="hint">Projetos iniciados por ano (dinâmico)</p>
+      <div class="chart-box"><canvas data-chart="ano"></canvas></div>
+    </div>
+  </div>
+
+  <div class="viz" style="margin-top:12px">
+    <div class="viz-head"><h3>Detalhamento da carteira</h3></div>
+    <p class="hint">Clique no cabeçalho de uma coluna para ordenar · busca filtra apenas a tabela</p>
+    <div class="tbl-tools">
+      <input id="search" class="srch" type="search" placeholder="Buscar na tabela…" aria-label="Buscar na tabela">
+      <button class="pbi-btn" id="btnCsv" type="button">⤓ Exportar CSV</button>
+      <button class="pbi-btn" id="btnPrint" type="button">Imprimir</button>
+      <span class="fict-badge">Dados fictícios</span>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="id">ID <span class="ar">▲</span></th>
+            <th data-k="projeto">Projeto <span class="ar">▲</span></th>
+            <th data-k="unidade">Unidade <span class="ar">▲</span></th>
+            <th data-k="plataforma">Plataforma <span class="ar">▲</span></th>
+            <th data-k="disciplina">Disciplina <span class="ar">▲</span></th>
+            <th data-k="tipo_iniciativa">Iniciativa <span class="ar">▲</span></th>
+            <th data-k="prioridade">Prioridade <span class="ar">▲</span></th>
+            <th data-k="fase">Fase <span class="ar">▲</span></th>
+            <th data-k="etapa">Etapa <span class="ar">▲</span></th>
+            <th data-k="ano_inicio">Ano <span class="ar">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="info" id="pgInfo"></span>
+      <span class="pbtns" id="pgBtns"></span>
+    </div>
+  </div>
+
+</main>
+
+<div class="pbi-tabs">
+  <span class="tab on">Visão geral</span>
+  <span class="grow"></span>
+  <span class="note" id="rowCount"></span>
+</div>
+
+<footer class="pbi-foot">
+  <span class="fict">Todos os dados exibidos são fictícios — esta é uma demonstração técnica; projetos, lideranças e datas são simulados.</span>
+  <div>Relatório reconstruído em HTML/CSS/JavaScript sobre a estrutura do painel original. <a href="../index.html">Voltar ao portfólio</a></div>
+</footer>
+
+<script>
+window.PBI_REPORT = {
+  data: "./data.json",
+
+  filters: [
+    { key: "unidade", label: "Unidade", type: "select" },
+    { key: "plataforma", label: "Plataforma", type: "select" },
+    { key: "disciplina", label: "Disciplina", type: "select" },
+    { key: "tipo_iniciativa", label: "Tipo de iniciativa", type: "select" },
+    { key: "fase", label: "Fase", type: "chips" },
+    { key: "prioridade", label: "Prioridade", type: "chips" },
+    { key: "ano_inicio", label: "Ano de início", type: "chips" }
+  ],
+
+  kpis: [
+    { lbl: "Projetos", val: function (r) { return PBI.num(r.length, 0); },
+      sub: function (r) { return r.length === PBI.total() ? "base completa" : "de " + PBI.num(PBI.total(), 0) + " no recorte"; } },
+    { lbl: "Concluídos", tone: "ok",
+      val: function (r) { return PBI.pct(r.length ? pctWhere(r, "fase", "Concluída") * 100 : 0); },
+      sub: function (r) { return PBI.num(countWhere(r, "fase", "Concluída"), 0) + " em fase concluída"; } },
+    { lbl: "Em execução", tone: "warn",
+      val: function (r) { return PBI.num(countWhere(r, "fase", "Execução"), 0); },
+      sub: function () { return "projetos na fase de execução"; } },
+    { lbl: "Prioridade alta",
+      val: function (r) { return PBI.pct(r.length ? pctWhere(r, "prioridade", "Alta") * 100 : 0); },
+      sub: function (r) { return PBI.num(countWhere(r, "prioridade", "Alta"), 0) + " projetos"; } },
+    { lbl: "HH planejado", val: function () { return PBI.num(staticKpi().hh_planejado, 1); },
+      sub: function () { return "horas-homem · valor fixo do relatório"; } },
+    { lbl: "HH restante", val: function () { return PBI.num(staticKpi().hh_restante, 1); },
+      sub: function () { return "realizado " + PBI.num(staticKpi().hh_realizado, 1) + " hh · fixo"; } }
+  ],
+
+  charts: {
+    omsAno: {
+      kind: "line", fmt: "int",
+      data: function () { return staticSeries("oms_por_ano", { color: "#118dff", fill: true }); }
+    },
+    gmsAno: {
+      kind: "bar", fmt: "int",
+      data: function () { return staticSeries("gms_por_ano", { color: "#00695c" }); }
+    },
+    gmsFase: {
+      kind: "bar-h", fmt: "int",
+      data: function () { return staticSeries("gms_por_fase", { color: "#f2c811" }); }
+    },
+    prazoGms: {
+      kind: "doughnut", fmt: "int",
+      data: function () {
+        var s = staticSeries("prazo_gms");
+        s.series[0].colors = ["#1aab40", "#d64550"];
+        return s;
+      }
+    },
+    un: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) { return dynCount(r, "unidade", "#00695c"); }
+    },
+    iniciativa: {
+      kind: "doughnut", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "tipo_iniciativa");
+        var k = PBI.keys(m, false);
+        return { labels: k, series: [{ label: "Projetos", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#118dff", "#744ec2", "#f2c811", "#1aab40", "#d64550"] }] };
+      }
+    },
+    disc: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) { return dynCount(r, "disciplina", "#744ec2"); }
+    },
+    ano: {
+      kind: "bar", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "ano_inicio");
+        var k = Object.keys(m).sort(function (a, b) { return Number(a) - Number(b); });
+        return { labels: k, series: [{ label: "Inícios", data: k.map(function (x) { return m[x]; }), color: "#118dff" }] };
+      }
+    }
+  },
+
+  table: {
+    pageSize: 12,
+    file: "projetos_carteira_ficticia.csv",
+    sort: { k: "id", a: 1 },
+    columns: [
+      { k: "id", lbl: "ID", bold: true },
+      { k: "projeto", lbl: "Projeto" },
+      { k: "unidade", lbl: "Unidade" },
+      { k: "plataforma", lbl: "Plataforma" },
+      { k: "disciplina", lbl: "Disciplina" },
+      { k: "tipo_iniciativa", lbl: "Iniciativa" },
+      { k: "prioridade", lbl: "Prioridade", render: function (r) {
+          return '<span class="pill ' + (r.prioridade === "Alta" ? "warn" : "") + '">' + PBI.esc(r.prioridade) + "</span>";
+        } },
+      { k: "fase", lbl: "Fase", render: function (r) {
+          var c = r.fase === "Concluída" ? "ok" : r.fase === "Execução" ? "" : "pur";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.fase) + "</span>";
+        } },
+      { k: "etapa", lbl: "Etapa", render: function (r) {
+          var c = r.etapa === "Concluída" ? "ok" : r.etapa === "Não iniciada" ? "warn" : "";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.etapa) + "</span>";
+        } },
+      { k: "ano_inicio", lbl: "Ano", cls: "num" }
+    ]
+  }
+};
+
+function countMap(rows, key) {
+  var m = {};
+  rows.forEach(function (r) { var v = String(r[key]); m[v] = (m[v] || 0) + 1; });
+  return m;
+}
+function countWhere(rows, key, v) { var n = 0; rows.forEach(function (r) { if (String(r[key]) === v) n++; }); return n; }
+function pctWhere(rows, key, v) { return rows.length ? countWhere(rows, key, v) / rows.length : 0; }
+function dynCount(rows, key, color) {
+  var m = countMap(rows, key);
+  var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+  return { labels: k, series: [{ label: "Projetos", data: k.map(function (x) { return m[x]; }), color: color }] };
+}
+function staticKpi() { return (PBI.meta().static || {}).kpi_hh || { hh_planejado: 0, hh_realizado: 0, hh_restante: 0 }; }
+function staticSeries(name, style) {
+  var s = ((PBI.meta().static || {})[name] || { labels: [], series: [{ label: "", data: [] }] });
+  var st = style || {};
+  return {
+    labels: s.labels,
+    series: [{ label: s.series[0].label, data: s.series[0].data, color: st.color, fill: !!st.fill }]
+  };
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/pbi/pbi.js"></script>
+</body>
+</html>

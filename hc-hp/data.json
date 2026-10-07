@@ -1,0 +1,4046 @@
+{
+ "meta": {
+  "anon": true,
+  "origem": "Power BI — HC x HP Atualizado",
+  "registros": "carteiras por estrutura e mês",
+  "periodo": "02/01/2024 a 22/10/2027",
+  "static": {
+   "kpis": {
+    "carteiras_total": 2087,
+    "empresas": "Contratada e Cliente"
+   }
+  }
+ },
+ "rows": [
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 310.5,
+   "hh_executado": 255.1
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1942.0,
+   "hh_executado": 1751.4
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 449.6,
+   "hh_executado": 417.0
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 311.4,
+   "hh_executado": 264.4
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 843.4,
+   "hh_executado": 801.6
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 2005.7,
+   "hh_executado": 1734.3
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 987.9,
+   "hh_executado": 889.0
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1656.2,
+   "hh_executado": 1565.5
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1621.4,
+   "hh_executado": 1298.7
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 428.3,
+   "hh_executado": 322.7
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 559.2,
+   "hh_executado": 540.9
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 505.4,
+   "hh_executado": 448.3
+  },
+  {
+   "ano": 2024,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 187.7,
+   "hh_executado": 152.8
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 298.2,
+   "hh_executado": 233.9
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1563.1,
+   "hh_executado": 1485.1
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 431.2,
+   "hh_executado": 372.4
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 280.6,
+   "hh_executado": 216.5
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 781.8,
+   "hh_executado": 692.3
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1674.6,
+   "hh_executado": 1347.1
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 1109.3,
+   "hh_executado": 836.4
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1175.9,
+   "hh_executado": 1068.9
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1528.0,
+   "hh_executado": 1199.5
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 246.5,
+   "hh_executado": 213.9
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 360.6,
+   "hh_executado": 278.0
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 517.4,
+   "hh_executado": 456.3
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 223.1,
+   "hh_executado": 184.2
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 189.3,
+   "hh_executado": 146.4
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 2077.7,
+   "hh_executado": 1602.9
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 925.9,
+   "hh_executado": 793.2
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 334.9,
+   "hh_executado": 275.6
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 678.8,
+   "hh_executado": 565.8
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1110.0,
+   "hh_executado": 864.5
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1098.4,
+   "hh_executado": 828.7
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1215.9,
+   "hh_executado": 1145.1
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1952.0,
+   "hh_executado": 1834.2
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 558.9,
+   "hh_executado": 420.8
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 586.4,
+   "hh_executado": 513.9
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 415.5,
+   "hh_executado": 373.1
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 288.7,
+   "hh_executado": 268.6
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 295.9,
+   "hh_executado": 259.5
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1775.9,
+   "hh_executado": 1606.3
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 426.0,
+   "hh_executado": 383.3
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 248.6,
+   "hh_executado": 203.9
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 724.0,
+   "hh_executado": 559.0
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1630.6,
+   "hh_executado": 1399.2
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 951.0,
+   "hh_executado": 908.1
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1716.7,
+   "hh_executado": 1612.3
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1832.9,
+   "hh_executado": 1602.4
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 378.6,
+   "hh_executado": 287.6
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 551.9,
+   "hh_executado": 521.2
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 415.8,
+   "hh_executado": 330.2
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 184.7,
+   "hh_executado": 172.9
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 456.1,
+   "hh_executado": 339.6
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 9,
+   "hh_planejado": 2702.1,
+   "hh_executado": 2468.2
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 692.5,
+   "hh_executado": 635.4
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 247.8,
+   "hh_executado": 211.2
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 787.2,
+   "hh_executado": 593.2
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2476.5,
+   "hh_executado": 2153.1
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1369.5,
+   "hh_executado": 1235.8
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1365.3,
+   "hh_executado": 1266.5
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2358.0,
+   "hh_executado": 2225.4
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 623.7,
+   "hh_executado": 463.9
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1332.0,
+   "hh_executado": 1068.8
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 592.5,
+   "hh_executado": 446.2
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 441.0,
+   "hh_executado": 331.6
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 242.4,
+   "hh_executado": 218.9
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2321.0,
+   "hh_executado": 2083.9
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 649.8,
+   "hh_executado": 569.6
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 265.4,
+   "hh_executado": 225.1
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 644.0,
+   "hh_executado": 546.8
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1584.1,
+   "hh_executado": 1345.2
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1453.6,
+   "hh_executado": 1242.5
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1669.1,
+   "hh_executado": 1414.3
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1802.5,
+   "hh_executado": 1642.1
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 489.0,
+   "hh_executado": 438.8
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 908.6,
+   "hh_executado": 701.8
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 492.5,
+   "hh_executado": 408.7
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 260.6,
+   "hh_executado": 235.7
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 320.2,
+   "hh_executado": 285.9
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1931.1,
+   "hh_executado": 1551.6
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 399.0,
+   "hh_executado": 332.0
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 255.2,
+   "hh_executado": 223.7
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 995.9,
+   "hh_executado": 851.8
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1468.0,
+   "hh_executado": 1301.4
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1215.0,
+   "hh_executado": 1014.9
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1275.4,
+   "hh_executado": 1194.7
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1606.0,
+   "hh_executado": 1455.3
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 656.7,
+   "hh_executado": 548.8
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 673.5,
+   "hh_executado": 554.1
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 650.7,
+   "hh_executado": 528.8
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 304.6,
+   "hh_executado": 247.4
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 183.5,
+   "hh_executado": 136.7
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 9,
+   "hh_planejado": 2150.7,
+   "hh_executado": 1836.6
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 892.3,
+   "hh_executado": 666.6
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 326.2,
+   "hh_executado": 242.0
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 1185.2,
+   "hh_executado": 913.1
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1706.3,
+   "hh_executado": 1507.7
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1664.0,
+   "hh_executado": 1378.9
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1601.7,
+   "hh_executado": 1458.4
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 1466.2,
+   "hh_executado": 1202.8
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 370.3,
+   "hh_executado": 274.7
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 730.1,
+   "hh_executado": 608.7
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 789.7,
+   "hh_executado": 655.4
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 521.1,
+   "hh_executado": 433.6
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 203.4,
+   "hh_executado": 192.9
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 2251.4,
+   "hh_executado": 2181.2
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 473.1,
+   "hh_executado": 429.4
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 275.7,
+   "hh_executado": 255.0
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 904.8,
+   "hh_executado": 671.1
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1423.5,
+   "hh_executado": 1099.1
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1596.7,
+   "hh_executado": 1494.1
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1081.5,
+   "hh_executado": 906.4
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1567.4,
+   "hh_executado": 1493.3
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 655.5,
+   "hh_executado": 586.6
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 829.9,
+   "hh_executado": 703.2
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 433.7,
+   "hh_executado": 343.4
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 314.4,
+   "hh_executado": 289.5
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 277.1,
+   "hh_executado": 209.1
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1714.1,
+   "hh_executado": 1406.0
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 385.4,
+   "hh_executado": 303.8
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 273.8,
+   "hh_executado": 243.9
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 951.2,
+   "hh_executado": 884.5
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1692.9,
+   "hh_executado": 1289.1
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1095.7,
+   "hh_executado": 1036.2
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1467.4,
+   "hh_executado": 1351.2
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1364.7,
+   "hh_executado": 1119.9
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 198.2,
+   "hh_executado": 148.0
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 994.9,
+   "hh_executado": 857.3
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 448.6,
+   "hh_executado": 429.8
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 208.5,
+   "hh_executado": 165.9
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 289.1,
+   "hh_executado": 230.4
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1443.2,
+   "hh_executado": 1239.9
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 493.6,
+   "hh_executado": 437.8
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 216.1,
+   "hh_executado": 186.1
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 1018.8,
+   "hh_executado": 959.4
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1065.0,
+   "hh_executado": 797.0
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 864.9,
+   "hh_executado": 772.9
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1304.6,
+   "hh_executado": 1159.1
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1737.8,
+   "hh_executado": 1433.7
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 506.6,
+   "hh_executado": 468.3
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 935.1,
+   "hh_executado": 745.8
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 627.7,
+   "hh_executado": 493.9
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 260.0,
+   "hh_executado": 225.4
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 194.2,
+   "hh_executado": 148.7
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 1537.1,
+   "hh_executado": 1345.8
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 939.5,
+   "hh_executado": 898.0
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 324.8,
+   "hh_executado": 254.7
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1014.6,
+   "hh_executado": 928.1
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1935.1,
+   "hh_executado": 1691.1
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1592.3,
+   "hh_executado": 1346.9
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1771.1,
+   "hh_executado": 1684.5
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 1710.3,
+   "hh_executado": 1321.0
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 467.1,
+   "hh_executado": 367.9
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 955.1,
+   "hh_executado": 786.2
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 774.5,
+   "hh_executado": 577.0
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 416.9,
+   "hh_executado": 381.9
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 265.1,
+   "hh_executado": 200.2
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1817.2,
+   "hh_executado": 1591.1
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 400.8,
+   "hh_executado": 383.4
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 244.2,
+   "hh_executado": 198.9
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 900.7,
+   "hh_executado": 677.6
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 2029.8,
+   "hh_executado": 1718.8
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1220.5,
+   "hh_executado": 1101.1
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1625.4,
+   "hh_executado": 1287.2
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1418.8,
+   "hh_executado": 1266.7
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 322.5,
+   "hh_executado": 275.2
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 870.0,
+   "hh_executado": 762.9
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 606.6,
+   "hh_executado": 498.4
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 203.9,
+   "hh_executado": 171.3
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 198.4,
+   "hh_executado": 167.4
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1871.5,
+   "hh_executado": 1589.5
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 376.4,
+   "hh_executado": 335.9
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 273.8,
+   "hh_executado": 240.0
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 575.8,
+   "hh_executado": 485.2
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1242.7,
+   "hh_executado": 1048.0
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1271.4,
+   "hh_executado": 1118.9
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1592.1,
+   "hh_executado": 1519.1
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1288.3,
+   "hh_executado": 1181.7
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 541.5,
+   "hh_executado": 405.9
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 835.3,
+   "hh_executado": 799.8
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 375.5,
+   "hh_executado": 342.5
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 231.3,
+   "hh_executado": 187.9
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 224.8,
+   "hh_executado": 177.0
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 1736.5,
+   "hh_executado": 1532.2
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 762.5,
+   "hh_executado": 596.9
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 317.4,
+   "hh_executado": 242.7
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 787.7,
+   "hh_executado": 664.6
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1529.8,
+   "hh_executado": 1191.6
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1412.9,
+   "hh_executado": 1358.4
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1481.8,
+   "hh_executado": 1229.0
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1710.6,
+   "hh_executado": 1544.2
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 518.2,
+   "hh_executado": 483.7
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 658.2,
+   "hh_executado": 571.4
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 393.6,
+   "hh_executado": 325.5
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 642.6,
+   "hh_executado": 612.9
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 224.5,
+   "hh_executado": 169.6
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1933.6,
+   "hh_executado": 1460.9
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 603.4,
+   "hh_executado": 583.8
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 280.5,
+   "hh_executado": 219.2
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 783.0,
+   "hh_executado": 682.0
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1611.8,
+   "hh_executado": 1364.9
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1097.2,
+   "hh_executado": 975.6
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 982.8,
+   "hh_executado": 853.0
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1620.5,
+   "hh_executado": 1250.3
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 661.3,
+   "hh_executado": 567.8
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 686.7,
+   "hh_executado": 571.7
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 639.4,
+   "hh_executado": 551.5
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 228.1,
+   "hh_executado": 204.3
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 303.5,
+   "hh_executado": 280.4
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 10,
+   "hh_planejado": 2961.6,
+   "hh_executado": 2639.9
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 842.8,
+   "hh_executado": 655.2
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 284.3,
+   "hh_executado": 256.3
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1189.0,
+   "hh_executado": 1125.6
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 1444.5,
+   "hh_executado": 1196.2
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2066.6,
+   "hh_executado": 1537.2
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 2582.0,
+   "hh_executado": 2108.8
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 9,
+   "hh_planejado": 2399.8,
+   "hh_executado": 2207.1
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 365.3,
+   "hh_executado": 280.4
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 1267.0,
+   "hh_executado": 1218.8
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 965.3,
+   "hh_executado": 790.4
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 639.3,
+   "hh_executado": 590.3
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 255.9,
+   "hh_executado": 241.7
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 1758.0,
+   "hh_executado": 1403.4
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 717.6,
+   "hh_executado": 582.9
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 193.0,
+   "hh_executado": 153.1
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1114.6,
+   "hh_executado": 963.3
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2303.1,
+   "hh_executado": 1743.8
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1391.4,
+   "hh_executado": 1266.6
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1894.2,
+   "hh_executado": 1638.9
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2370.5,
+   "hh_executado": 2149.6
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 514.0,
+   "hh_executado": 465.4
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 643.8,
+   "hh_executado": 537.1
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 371.6,
+   "hh_executado": 314.7
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 321.1,
+   "hh_executado": 252.5
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 263.5,
+   "hh_executado": 252.1
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 2007.7,
+   "hh_executado": 1934.6
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 1007.0,
+   "hh_executado": 835.4
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 182.0,
+   "hh_executado": 139.4
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 884.0,
+   "hh_executado": 724.5
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1648.3,
+   "hh_executado": 1363.9
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1685.5,
+   "hh_executado": 1473.3
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1921.1,
+   "hh_executado": 1746.2
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1304.2,
+   "hh_executado": 1084.8
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 373.0,
+   "hh_executado": 302.8
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 989.5,
+   "hh_executado": 760.4
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 595.9,
+   "hh_executado": 574.2
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 329.1,
+   "hh_executado": 302.9
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 221.2,
+   "hh_executado": 210.1
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 9,
+   "hh_planejado": 1695.6,
+   "hh_executado": 1355.6
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 732.4,
+   "hh_executado": 647.9
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 261.7,
+   "hh_executado": 245.1
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 786.3,
+   "hh_executado": 706.7
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 1990.8,
+   "hh_executado": 1746.1
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1402.3,
+   "hh_executado": 1095.9
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2301.9,
+   "hh_executado": 2055.3
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 8,
+   "hh_planejado": 2617.7,
+   "hh_executado": 1982.8
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 567.3,
+   "hh_executado": 543.8
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 815.0,
+   "hh_executado": 735.2
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 751.4,
+   "hh_executado": 611.6
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "mes_label": "ago",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 452.6,
+   "hh_executado": 358.7
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 330.8,
+   "hh_executado": 294.2
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1868.8,
+   "hh_executado": 1405.1
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 382.6,
+   "hh_executado": 292.9
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 209.7,
+   "hh_executado": 189.1
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 782.2,
+   "hh_executado": 725.5
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1107.8,
+   "hh_executado": 972.9
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1333.0,
+   "hh_executado": 1023.3
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1219.9,
+   "hh_executado": 1016.7
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1452.3,
+   "hh_executado": 1181.7
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 383.0,
+   "hh_executado": 293.5
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 684.4,
+   "hh_executado": 568.7
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 678.2,
+   "hh_executado": 523.9
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "mes_label": "set",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 260.4,
+   "hh_executado": 231.2
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 250.8,
+   "hh_executado": 199.4
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1866.2,
+   "hh_executado": 1683.7
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 474.3,
+   "hh_executado": 398.7
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 273.0,
+   "hh_executado": 214.2
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 915.0,
+   "hh_executado": 755.0
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1339.8,
+   "hh_executado": 1290.2
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1376.1,
+   "hh_executado": 1173.7
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1121.9,
+   "hh_executado": 1034.5
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1840.4,
+   "hh_executado": 1772.1
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 519.2,
+   "hh_executado": 475.1
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 588.3,
+   "hh_executado": 502.6
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 495.9,
+   "hh_executado": 406.4
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "mes_label": "out",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 279.6,
+   "hh_executado": 265.0
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 198.7,
+   "hh_executado": 172.8
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1348.9,
+   "hh_executado": 1103.3
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 653.5,
+   "hh_executado": 627.4
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 315.9,
+   "hh_executado": 238.4
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 641.7,
+   "hh_executado": 522.3
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1497.4,
+   "hh_executado": 1413.4
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1099.4,
+   "hh_executado": 873.0
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1709.8,
+   "hh_executado": 1297.5
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1819.1,
+   "hh_executado": 1547.3
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 480.6,
+   "hh_executado": 443.5
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 935.8,
+   "hh_executado": 768.5
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 583.9,
+   "hh_executado": 560.0
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "mes_label": "nov",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 295.1,
+   "hh_executado": 258.4
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 324.1,
+   "hh_executado": 267.5
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2614.4,
+   "hh_executado": 2302.1
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 976.2,
+   "hh_executado": 735.5
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 220.6,
+   "hh_executado": 205.7
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1165.2,
+   "hh_executado": 990.2
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1943.8,
+   "hh_executado": 1457.8
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1754.4,
+   "hh_executado": 1540.3
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1911.1,
+   "hh_executado": 1468.5
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1335.5,
+   "hh_executado": 1234.5
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 512.3,
+   "hh_executado": 474.3
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 959.6,
+   "hh_executado": 856.9
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 508.6,
+   "hh_executado": 452.0
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "mes_label": "dez",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 601.7,
+   "hh_executado": 506.0
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 308.3,
+   "hh_executado": 271.3
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AM",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1561.1,
+   "hh_executado": 1236.7
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 636.4,
+   "hh_executado": 507.2
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 265.3,
+   "hh_executado": 230.5
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 679.1,
+   "hh_executado": 655.7
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1446.7,
+   "hh_executado": 1181.8
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 948.7,
+   "hh_executado": 730.1
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1050.3,
+   "hh_executado": 855.6
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1845.2,
+   "hh_executado": 1372.3
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 366.8,
+   "hh_executado": 302.8
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 632.5,
+   "hh_executado": 481.4
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 379.5,
+   "hh_executado": 365.8
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "mes_label": "jan",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 209.1,
+   "hh_executado": 181.7
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 180.4,
+   "hh_executado": 169.1
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1783.5,
+   "hh_executado": 1656.1
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 541.2,
+   "hh_executado": 465.0
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 280.7,
+   "hh_executado": 211.1
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 871.5,
+   "hh_executado": 839.0
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1416.8,
+   "hh_executado": 1345.4
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 5,
+   "hh_planejado": 1466.7,
+   "hh_executado": 1389.2
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1416.6,
+   "hh_executado": 1148.4
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 2368.0,
+   "hh_executado": 1784.2
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 429.9,
+   "hh_executado": 354.9
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 739.3,
+   "hh_executado": 693.1
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 432.9,
+   "hh_executado": 365.0
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "mes_label": "fev",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 244.0,
+   "hh_executado": 229.2
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 292.6,
+   "hh_executado": 240.9
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 9,
+   "hh_planejado": 1643.9,
+   "hh_executado": 1248.1
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 658.4,
+   "hh_executado": 568.0
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 304.1,
+   "hh_executado": 287.6
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 1000.1,
+   "hh_executado": 863.5
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BC",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2530.7,
+   "hh_executado": 2163.6
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BS",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1260.7,
+   "hh_executado": 1045.2
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2286.3,
+   "hh_executado": 2192.1
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 9,
+   "hh_planejado": 1938.9,
+   "hh_executado": 1562.6
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 610.4,
+   "hh_executado": 533.5
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 4,
+   "hh_planejado": 1302.7,
+   "hh_executado": 1052.1
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 841.3,
+   "hh_executado": 764.5
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "mes_label": "mar",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 549.8,
+   "hh_executado": 423.7
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AJUSTE",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 252.1,
+   "hh_executado": 222.6
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1690.6,
+   "hh_executado": 1540.3
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 660.5,
+   "hh_executado": 500.0
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 186.4,
+   "hh_executado": 166.1
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BA",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 751.6,
+   "hh_executado": 603.6
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1532.1,
+   "hh_executado": 1194.9
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1116.7,
+   "hh_executado": 963.8
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1643.2,
+   "hh_executado": 1458.7
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1983.7,
+   "hh_executado": 1760.7
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 432.9,
+   "hh_executado": 346.9
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 743.7,
+   "hh_executado": 669.6
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 365.5,
+   "hh_executado": 281.7
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "mes_label": "abr",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 320.7,
+   "hh_executado": 305.9
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 317.7,
+   "hh_executado": 279.7
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 2037.3,
+   "hh_executado": 1606.9
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 561.5,
+   "hh_executado": 522.3
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 232.8,
+   "hh_executado": 211.3
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 797.7,
+   "hh_executado": 724.0
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1836.4,
+   "hh_executado": 1570.0
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1005.1,
+   "hh_executado": 759.5
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1961.6,
+   "hh_executado": 1588.9
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 1778.1,
+   "hh_executado": 1397.1
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 364.0,
+   "hh_executado": 312.6
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "GAD-AGP",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 942.8,
+   "hh_executado": 833.8
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "ONSHORE",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 453.7,
+   "hh_executado": 420.5
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "mes_label": "mai",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 448.4,
+   "hh_executado": 404.7
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 324.2,
+   "hh_executado": 280.7
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 8,
+   "hh_planejado": 2559.3,
+   "hh_executado": 2040.7
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ARMADOR",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 816.4,
+   "hh_executado": 662.5
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 307.5,
+   "hh_executado": 261.0
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 4,
+   "hh_planejado": 1244.6,
+   "hh_executado": 1205.7
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1338.7,
+   "hh_executado": 1223.4
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1462.4,
+   "hh_executado": 1337.3
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "BUZ",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1887.1,
+   "hh_executado": 1531.2
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ES",
+   "empresa": "Cliente",
+   "carteiras": 7,
+   "hh_planejado": 1902.1,
+   "hh_executado": 1625.9
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 524.6,
+   "hh_executado": 463.8
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 783.8,
+   "hh_executado": 689.3
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 407.1,
+   "hh_executado": 328.7
+  },
+  {
+   "ano": 2026,
+   "mes": 6,
+   "mes_label": "jun",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 502.2,
+   "hh_executado": 431.9
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AJUSTE",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 273.9,
+   "hh_executado": 211.0
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AM",
+   "empresa": "Contratada",
+   "carteiras": 7,
+   "hh_planejado": 2033.5,
+   "hh_executado": 1509.5
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ARMADOR",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 464.6,
+   "hh_executado": 440.1
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "AUSÊNCIA",
+   "empresa": "Cliente",
+   "carteiras": 1,
+   "hh_planejado": 283.6,
+   "hh_executado": 235.6
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BA",
+   "empresa": "Cliente",
+   "carteiras": 3,
+   "hh_planejado": 902.0,
+   "hh_executado": 754.5
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BC",
+   "empresa": "Cliente",
+   "carteiras": 6,
+   "hh_planejado": 1208.1,
+   "hh_executado": 978.1
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BS",
+   "empresa": "Contratada",
+   "carteiras": 5,
+   "hh_planejado": 1649.4,
+   "hh_executado": 1282.8
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "BUZ",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1347.4,
+   "hh_executado": 1267.8
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ES",
+   "empresa": "Contratada",
+   "carteiras": 6,
+   "hh_planejado": 1609.6,
+   "hh_executado": 1337.4
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD",
+   "empresa": "Contratada",
+   "carteiras": 2,
+   "hh_planejado": 605.0,
+   "hh_executado": 477.8
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "GAD-AGP",
+   "empresa": "Contratada",
+   "carteiras": 3,
+   "hh_planejado": 736.0,
+   "hh_executado": 630.5
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "ONSHORE",
+   "empresa": "Cliente",
+   "carteiras": 2,
+   "hh_planejado": 630.8,
+   "hh_executado": 541.7
+  },
+  {
+   "ano": 2026,
+   "mes": 7,
+   "mes_label": "jul",
+   "estrutura": "TREINAMENTO",
+   "empresa": "Contratada",
+   "carteiras": 1,
+   "hh_planejado": 198.0,
+   "hh_executado": 178.3
+  }
+ ]
+}

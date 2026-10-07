@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVPro — Recomendações E&amp;P | Demo de Dashboard</title>
+<meta name="description" content="Demonstração interativa do relatório Power BI EVPro (Recomendações E&amp;P) com filtros, KPIs, gráficos e tabela. Todos os dados são fictícios.">
+<link rel="icon" href="../assets/og.png">
+<link rel="stylesheet" href="../assets/pbi/pbi.css">
+</head>
+<body data-theme="petro">
+
+<header class="pbi-service">
+  <a class="pbi-logo" href="../index.html" title="Voltar ao portfólio">
+    <span class="pbi-mark"></span>
+    <h1>EVPro — Recomendações E&amp;P</h1>
+  </a>
+  <span class="sep"></span>
+  <span class="pbi-crumb">Página única · demonstração interativa</span>
+  <span class="grow"></span>
+  <button class="pbi-btn" id="btnClear" type="button">Limpar filtros</button>
+  <a class="pbi-btn ghost" href="../index.html">← Portfólio</a>
+</header>
+
+<div class="pbi-filterbar">
+  <div id="slicers"></div>
+  <div class="filter-summary" id="fsum"></div>
+</div>
+
+<main class="pbi-canvas">
+
+  <div class="pbi-pagehead">
+    <h2>Acompanhamento das recomendações</h2>
+    <span class="sub">Visão por unidade, sistema, status e prazo</span>
+    <span class="lgpd">Dados 100% fictícios · demonstração técnica</span>
+  </div>
+
+  <div class="grid g-kpi" id="kpis"></div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="viz">
+      <div class="viz-head"><h3>Recomendações por status</h3></div>
+      <p class="hint">Contagem de recomendações por status do fluxo</p>
+      <div class="chart-box"><canvas data-chart="status"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Situação de execução</h3></div>
+      <p class="hint">Distribuição das recomendações por execução</p>
+      <div class="chart-box"><canvas data-chart="exec"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Recomendações por unidade</h3></div>
+      <p class="hint">Ranking de unidade operacional</p>
+      <div class="chart-box"><canvas data-chart="un"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Recomendações por sistema</h3></div>
+      <p class="hint">Contagem por sistema afetado</p>
+      <div class="chart-box"><canvas data-chart="sistema"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Ano de início das recomendações</h3></div>
+      <p class="hint">Série por ano de início (filtro aplicável)</p>
+      <div class="chart-box"><canvas data-chart="ano"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Top plataformas</h3></div>
+      <p class="hint">10 plataformas com mais recomendações</p>
+      <div class="chart-box"><canvas data-chart="plat"></canvas></div>
+    </div>
+  </div>
+
+  <div class="viz" style="margin-top:12px">
+    <div class="viz-head"><h3>Detalhamento das recomendações</h3></div>
+    <p class="hint">Clique no cabeçalho de uma coluna para ordenar · busca filtra apenas a tabela</p>
+    <div class="tbl-tools">
+      <input id="search" class="srch" type="search" placeholder="Buscar na tabela…" aria-label="Buscar na tabela">
+      <button class="pbi-btn" id="btnCsv" type="button">⤓ Exportar CSV</button>
+      <button class="pbi-btn" id="btnPrint" type="button">Imprimir</button>
+      <span class="fict-badge">Dados fictícios</span>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="id">ID <span class="ar">▲</span></th>
+            <th data-k="plataforma">Plataforma <span class="ar">▲</span></th>
+            <th data-k="unidade">Unidade <span class="ar">▲</span></th>
+            <th data-k="sistema">Sistema <span class="ar">▲</span></th>
+            <th data-k="tipo">Tipo <span class="ar">▲</span></th>
+            <th data-k="status_recomendacao">Status <span class="ar">▲</span></th>
+            <th data-k="execucao">Execução <span class="ar">▲</span></th>
+            <th data-k="prazo">Prazo <span class="ar">▲</span></th>
+            <th data-k="ano_inicio">Ano <span class="ar">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="info" id="pgInfo"></span>
+      <span class="pbtns" id="pgBtns"></span>
+    </div>
+  </div>
+
+</main>
+
+<div class="pbi-tabs">
+  <span class="tab on">Visão geral</span>
+  <span class="grow"></span>
+  <span class="note" id="rowCount"></span>
+</div>
+
+<footer class="pbi-foot">
+  <span class="fict">Todos os dados exibidos são fictícios — esta é uma demonstração técnica; números, IDs e rótulos são simulados.</span>
+  <div>Relatório reconstruído em HTML/CSS/JavaScript sobre a estrutura do painel original. <a href="../index.html">Voltar ao portfólio</a></div>
+</footer>
+
+<script>
+window.PBI_REPORT = {
+  data: "./data.json",
+
+  filters: [
+    { key: "plataforma", label: "Plataforma", type: "select" },
+    { key: "unidade", label: "Unidade", type: "select" },
+    { key: "sistema", label: "Sistema", type: "select" },
+    { key: "status_recomendacao", label: "Status", type: "select" },
+    { key: "execucao", label: "Execução", type: "chips" },
+    { key: "prazo", label: "Prazo", type: "chips" },
+    { key: "ano_inicio", label: "Ano de início", type: "chips" },
+    { key: "tipo", label: "Tipo", type: "chips" }
+  ],
+
+  kpis: [
+    { lbl: "Recomendações", val: function (r) { return PBI.num(r.length, 0); },
+      sub: function (r) { return r.length === PBI.total() ? "base completa" : "de " + PBI.num(PBI.total(), 0) + " no recorte"; } },
+    { lbl: "Em andamento", tone: "warn",
+      val: function (r) { return PBI.pct(pctBy(r, function (x) { return /Andamento|Atendimento/i.test(x.status_recomendacao); })); },
+      sub: function (r) { return PBI.num(countBy(r, function (x) { return /Andamento|Atendimento/i.test(x.status_recomendacao); }), 0) + " recomendações"; } },
+    { lbl: "Não iniciadas", tone: "bad",
+      val: function (r) { return PBI.pct(pctBy(r, function (x) { return x.status_recomendacao === "Não iniciada"; })); },
+      sub: function (r) { return PBI.num(countBy(r, function (x) { return x.status_recomendacao === "Não iniciada"; }), 0) + " recomendações"; } },
+    { lbl: "Executadas", tone: "ok",
+      val: function (r) { return PBI.pct(pctBy(r, function (x) { return x.execucao === "Executado"; })); },
+      sub: function (r) { return PBI.num(countBy(r, function (x) { return x.execucao === "Executado"; }), 0) + " concluídas"; } },
+    { lbl: "Com atraso", tone: "bad",
+      val: function (r) { return PBI.num(countBy(r, function (x) { return x.prazo === "Com atraso"; }), 0); },
+      sub: function () { return "recomendações fora do prazo"; } },
+    { lbl: "Plataformas", val: function (r) { return PBI.num(uniq(r, "plataforma").length, 0); },
+      sub: function () { return "com recomendações no recorte"; } }
+  ],
+
+  charts: {
+    status: {
+      kind: "bar",
+      fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "status_recomendacao");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }) }] };
+      }
+    },
+    exec: {
+      kind: "doughnut", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "execucao");
+        var order = ["Executado", "Em andamento", "Não executado"];
+        var k = order.filter(function (x) { return m[x]; });
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#1aab40", "#118dff", "#d64550"] }] };
+      }
+    },
+    un: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "unidade");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }), color: "#00695c" }] };
+      }
+    },
+    sistema: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "sistema");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }), color: "#118dff" }] };
+      }
+    },
+    ano: {
+      kind: "line", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "ano_inicio");
+        var k = Object.keys(m).sort(function (a, b) { return Number(a) - Number(b); });
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }),
+                 color: "#f2c811", fill: true }] };
+      }
+    },
+    plat: {
+      kind: "bar", fmt: "int",
+      data: function (r) {
+        var m = countMap(r, "plataforma");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; }).slice(0, 10);
+        return { labels: k, series: [{ label: "Recomendações", data: k.map(function (x) { return m[x]; }), color: "#744ec2" }] };
+      }
+    }
+  },
+
+  table: {
+    pageSize: 14,
+    file: "evpro_recomendacoes_ficticias.csv",
+    sort: { k: "id", a: 1 },
+    columns: [
+      { k: "id", lbl: "ID", bold: true },
+      { k: "plataforma", lbl: "Plataforma" },
+      { k: "unidade", lbl: "Unidade" },
+      { k: "sistema", lbl: "Sistema" },
+      { k: "tipo", lbl: "Tipo" },
+      { k: "status_recomendacao", lbl: "Status", render: function (r) {
+          var c = /Atendida|conclu/i.test(r.status_recomendacao) ? "ok"
+                : r.status_recomendacao === "Dispensada" ? "pur"
+                : r.status_recomendacao === "Não iniciada" ? "warn"
+                : r.status_recomendacao === "Postergada" ? "no" : "";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.status_recomendacao) + "</span>";
+        } },
+      { k: "execucao", lbl: "Execução", render: function (r) {
+          var c = r.execucao === "Executado" ? "ok" : r.execucao === "Não executado" ? "no" : "";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.execucao) + "</span>";
+        } },
+      { k: "prazo", lbl: "Prazo", render: function (r) {
+          var c = r.prazo === "No prazo" ? "ok" : r.prazo === "Com atraso" ? "no" : "";
+          return '<span class="pill ' + c + '">' + PBI.esc(r.prazo) + "</span>";
+        } },
+      { k: "ano_inicio", lbl: "Ano", cls: "num" }
+    ]
+  }
+};
+
+/* helpers locais (leem o resultado já filtrado) */
+function countMap(rows, key) {
+  var m = {};
+  rows.forEach(function (r) { var v = String(r[key]); m[v] = (m[v] || 0) + 1; });
+  return m;
+}
+function uniq(rows, key) {
+  var o = {};
+  rows.forEach(function (r) { o[String(r[key])] = 1; });
+  return Object.keys(o);
+}
+function countBy(rows, pred) { var n = 0; rows.forEach(function (r) { if (pred(r)) n++; }); return n; }
+function pctBy(rows, pred) { return rows.length ? countBy(rows, pred) / rows.length * 100 : 0; }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/pbi/pbi.js"></script>
+</body>
+</html>

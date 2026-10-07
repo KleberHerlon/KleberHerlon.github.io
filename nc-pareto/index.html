@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pareto de Não Conformidades — Demo de Dashboard</title>
+<meta name="description" content="Demonstração interativa do relatório Power BI de Pareto de Não Conformidades com filtros, KPIs, Pareto e tabela. Todos os dados são fictícios.">
+<link rel="icon" href="../assets/og.png">
+<link rel="stylesheet" href="../assets/pbi/pbi.css">
+</head>
+<body data-theme="light">
+
+<header class="pbi-service">
+  <a class="pbi-logo" href="../index.html" title="Voltar ao portfólio">
+    <span class="pbi-mark"></span>
+    <h1>Pareto de Não Conformidades</h1>
+  </a>
+  <span class="sep"></span>
+  <span class="pbi-crumb">Página única · demonstração interativa</span>
+  <span class="grow"></span>
+  <button class="pbi-btn" id="btnClear" type="button">Limpar filtros</button>
+  <a class="pbi-btn ghost" href="../index.html">← Portfólio</a>
+</header>
+
+<div class="pbi-filterbar">
+  <div id="slicers"></div>
+  <div class="filter-summary" id="fsum"></div>
+</div>
+
+<main class="pbi-canvas">
+
+  <div class="pbi-pagehead">
+    <h2>Análise de Pareto das não conformidades</h2>
+    <span class="sub" id="periodo">Período do relatório original</span>
+    <span class="lgpd">Dados 100% fictícios · demonstração técnica</span>
+  </div>
+
+  <div class="grid g-kpi" id="kpis"></div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="viz">
+      <div class="viz-head"><h3>Pareto de ocorrências por unidade</h3></div>
+      <p class="hint">Barras = ocorrências · linha = % acumulada (Pareto 80/95/100)</p>
+      <div class="chart-box tall"><canvas data-chart="pareto"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Participação por etapa</h3></div>
+      <p class="hint">Distribuição das ocorrências por etapa do processo</p>
+      <div class="chart-box tall"><canvas data-chart="etapa"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Ocorrências por tipo de NC</h3></div>
+      <p class="hint">Agrupamento por código do tipo de não conformidade</p>
+      <div class="chart-box"><canvas data-chart="tipo"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Unidade × etapa</h3></div>
+      <p class="hint">Ocorrências empilhadas por etapa dentro de cada unidade</p>
+      <div class="chart-box"><canvas data-chart="stack"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>% de falhas por mês</h3></div>
+      <p class="hint">Série fixa do relatório original (não responde aos filtros)</p>
+      <div class="chart-box"><canvas data-chart="falhasMes"></canvas></div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-head"><h3>Principais descrições de falha</h3></div>
+      <p class="hint">Ocorrências fixas por descrição (relatório original)</p>
+      <div class="chart-box"><canvas data-chart="falhasTipo"></canvas></div>
+    </div>
+  </div>
+
+  <div class="viz" style="margin-top:12px">
+    <div class="viz-head"><h3>Detalhamento das ocorrências</h3></div>
+    <p class="hint">Meta = faixa de acumulação do Pareto (80 / 90 / 99 / 100%). Clique no cabeçalho para ordenar.</p>
+    <div class="tbl-tools">
+      <input id="search" class="srch" type="search" placeholder="Buscar na tabela…" aria-label="Buscar na tabela">
+      <button class="pbi-btn" id="btnCsv" type="button">⤓ Exportar CSV</button>
+      <button class="pbi-btn" id="btnPrint" type="button">Imprimir</button>
+      <span class="fict-badge">Dados fictícios</span>
+    </div>
+    <div class="tbl-scroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-k="unidade">Unidade <span class="ar">▲</span></th>
+            <th data-k="tipo_nc">Tipo de NC <span class="ar">▲</span></th>
+            <th data-k="etapa">Etapa <span class="ar">▲</span></th>
+            <th data-k="qtd">Ocorrências <span class="ar">▲</span></th>
+            <th data-k="meta">Meta acumulada <span class="ar">▲</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="info" id="pgInfo"></span>
+      <span class="pbtns" id="pgBtns"></span>
+    </div>
+  </div>
+
+</main>
+
+<div class="pbi-tabs">
+  <span class="tab on">Visão geral</span>
+  <span class="grow"></span>
+  <span class="note" id="rowCount"></span>
+</div>
+
+<footer class="pbi-foot">
+  <span class="fict">Todos os dados exibidos são fictícios — esta é uma demonstração técnica; códigos, unidades e volumes são simulados.</span>
+  <div>Relatório reconstruído em HTML/CSS/JavaScript sobre a estrutura do painel original. <a href="../index.html">Voltar ao portfólio</a></div>
+</footer>
+
+<script>
+window.PBI_REPORT = {
+  data: "./data.json",
+
+  filters: [
+    { key: "unidade", label: "Unidade", type: "select" },
+    { key: "tipo_nc", label: "Tipo de NC", type: "chips" },
+    { key: "etapa", label: "Etapa", type: "chips" },
+    { key: "meta", label: "Meta (%)", type: "chips", order: [80, 90, 99, 100] }
+  ],
+
+  kpis: [
+    { lbl: "Ocorrências", val: function (r) { return PBI.num(PBI.agg(r, "qtd"), 0); },
+      sub: function (r) { return PBI.num(r.length, 0) + " agrupamentos no recorte"; } },
+    { lbl: "Operações no período", val: function () { return PBI.num(opsTotal(), 0); },
+      sub: function () { return "base total do relatório · fixo"; } },
+    { lbl: "Taxa de não conformidade", tone: "warn",
+      val: function (r) { return PBI.pct(opsTotal() ? PBI.agg(r, "qtd") / opsTotal() * 100 : 0); },
+      sub: function () { return "ocorrências ÷ operações"; } },
+    { lbl: "Maior concentração", tone: "bad",
+      val: function (r) { return PBI.num(topUnidade(r).v, 0); },
+      sub: function (r) { return "ocorrências · unidade " + (topUnidade(r).k || "—"); } },
+    { lbl: "Unidades afetadas", val: function (r) { return PBI.num(uniqN(r, "unidade"), 0); },
+      sub: function () { return "de " + PBI.num(uniqN(allRows(), "unidade"), 0) + " na base"; } },
+    { lbl: "Etapas afetadas", val: function (r) { return PBI.num(uniqN(r, "etapa"), 0); },
+      sub: function () { return "com ocorrência registrada"; } }
+  ],
+
+  charts: {
+    pareto: {
+      kind: "pareto", fmt: "int",
+      data: function (r) {
+        var m = sumMap(r, "qtd", "unidade");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Ocorrências", data: k.map(function (x) { return m[x]; }), color: "#118dff" }] };
+      }
+    },
+    etapa: {
+      kind: "doughnut", fmt: "int",
+      data: function (r) {
+        var m = sumMap(r, "qtd", "etapa");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Ocorrências", data: k.map(function (x) { return m[x]; }),
+                 colors: ["#118dff", "#744ec2", "#f2c811", "#1aab40", "#d64550"] }] };
+      }
+    },
+    tipo: {
+      kind: "bar-h", fmt: "int",
+      data: function (r) {
+        var m = sumMap(r, "qtd", "tipo_nc");
+        var k = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
+        return { labels: k, series: [{ label: "Ocorrências", data: k.map(function (x) { return m[x]; }), color: "#0f6cbd" }] };
+      }
+    },
+    stack: {
+      kind: "stack", fmt: "int", maxBarThickness: 40,
+      data: function (r) {
+        var etapas = uniqN2(r, "etapa");
+        var unidades = Object.keys(sumMap(r, "qtd", "unidade")).sort(function (a, b) {
+          return sumMap(r, "qtd", "unidade")[b] - sumMap(r, "qtd", "unidade")[a];
+        });
+        var cols = ["#118dff", "#744ec2", "#f2c811", "#1aab40", "#d64550"];
+        return {
+          labels: unidades,
+          series: etapas.map(function (e, i) {
+            return {
+              label: e,
+              color: cols[i % cols.length],
+              data: unidades.map(function (u) {
+                return r.filter(function (x) { return x.unidade === u && x.etapa === e; })
+                        .reduce(function (a, x) { return a + x.qtd; }, 0);
+              })
+            };
+          })
+        };
+      }
+    },
+    falhasMes: {
+      kind: "line", fmt: "num",
+      data: function () { return staticSerie("falhas_mes", { color: "#d9b300", fill: true }); }
+    },
+    falhasTipo: {
+      kind: "bar-h", fmt: "int",
+      data: function () {
+        var s = staticSerie("falhas_tipo", { color: "#d64550" });
+        s.series[0].data = s.series[0].data.slice().reverse();
+        s.labels = s.labels.slice().reverse();
+        return s;
+      }
+    }
+  },
+
+  table: {
+    pageSize: 12,
+    file: "nc_pareto_ficticio.csv",
+    sort: { k: "qtd", a: -1 },
+    columns: [
+      { k: "unidade", lbl: "Unidade", bold: true },
+      { k: "tipo_nc", lbl: "Tipo de NC" },
+      { k: "etapa", lbl: "Etapa" },
+      { k: "qtd", lbl: "Ocorrências", fmt: "int" },
+      { k: "meta", lbl: "Meta acumulada", fmt: "pct" }
+    ]
+  }
+};
+
+function allRows() { return (window.PBI_ROWS || []); }
+function opsTotal() { return (PBI.meta().operacoes_total || 0); }
+function sumMap(rows, val, key) {
+  var m = {};
+  rows.forEach(function (r) { var k = String(r[key]); m[k] = (m[k] || 0) + (Number(r[val]) || 0); });
+  return m;
+}
+function uniqN(rows, key) { var o = {}; rows.forEach(function (r) { o[String(r[key])] = 1; }); return Object.keys(o).length; }
+function uniqN2(rows, key) { var o = {}; rows.forEach(function (r) { o[String(r[key])] = 1; }); return Object.keys(o); }
+function topUnidade(r) {
+  var m = sumMap(r, "qtd", "unidade"), best = { k: "", v: 0 };
+  Object.keys(m).forEach(function (k) { if (m[k] > best.v) best = { k: k, v: m[k] }; });
+  return best;
+}
+function staticSerie(name, style) {
+  var s = ((PBI.meta().static || {})[name] || { labels: [], series: [{ label: "", data: [] }] });
+  var st = style || {};
+  return { labels: s.labels, series: [{ label: s.series[0].label, data: s.series[0].data, color: st.color, fill: !!st.fill }] };
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/pbi/pbi.js"></script>
+</body>
+</html>
