@@ -597,7 +597,7 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Financeiro</span></div>
           <h3>Evolução das Carteiras</h3>
           <p>Painel de acompanhamento da evolução de carteiras offshore, consolidando movimentação e performance ao longo do tempo.</p>
-          <div class="protected">🔒 Arquivo protegido (Microsoft Information Protection) — exibido via print</div>
+          <div class="protected">🛡️ Demonstração higienizada (LGPD) — exibido via print</div>
         </div>
       </article>
 
@@ -626,7 +626,7 @@ footer a{color:var(--accent)}
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Pessoas</span></div>
           <h3>HC x HP — Headcount x Headplan</h3>
           <p>Comparativo entre quadro atual e planejado, acompanhando desvios de headcount por unidade para suporte à decisão de contratação e dimensionamento.</p>
-          <div class="protected">🔒 Arquivo protegido (Microsoft Information Protection) — exibido via print</div>
+          <div class="protected">🛡️ Demonstração higienizada (LGPD) — exibido via print</div>
         </div>
       </article>
 
@@ -1097,6 +1097,136 @@ with open("Dataset.csv", "wt+", newline="") as f:
       });
     });
   });
+
+  /* Lightbox / Zoom de Dashboards */
+  var images = document.querySelectorAll('.card.dash .thumb img');
+  if (images.length) {
+    var modal = document.createElement('div');
+    modal.className = 'lightbox-modal';
+    Object.assign(modal.style, {
+      position: 'fixed',
+      inset: '0',
+      zIndex: '9999',
+      background: 'rgba(4, 6, 12, 0.94)',
+      backdropFilter: 'blur(8px)',
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      cursor: 'zoom-out',
+      transition: 'opacity 0.25s ease',
+      opacity: '0'
+    });
+
+    var wrapper = document.createElement('div');
+    Object.assign(wrapper.style, {
+      position: 'relative',
+      maxWidth: '1280px',
+      width: '100%',
+      maxHeight: '90vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'default'
+    });
+
+    var modalImg = document.createElement('img');
+    Object.assign(modalImg.style, {
+      maxWidth: '100%',
+      maxHeight: '80vh',
+      borderRadius: '8px',
+      boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+      border: '1px solid #1c2836',
+      objectFit: 'contain'
+    });
+
+    var infoBar = document.createElement('div');
+    Object.assign(infoBar.style, {
+      marginTop: '16px',
+      color: '#e9f0f8',
+      fontSize: '14px',
+      fontWeight: '500',
+      textAlign: 'center',
+      fontFamily: 'system-ui, sans-serif'
+    });
+
+    var closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    Object.assign(closeBtn.style, {
+      position: 'absolute',
+      top: '-48px',
+      right: '0',
+      background: 'none',
+      border: 'none',
+      color: '#9db0c6',
+      fontSize: '36px',
+      cursor: 'pointer',
+      padding: '8px',
+      lineHeight: '1',
+      transition: 'color 0.2s'
+    });
+    closeBtn.addEventListener('mouseenter', function() { closeBtn.style.color = '#e9f0f8'; });
+    closeBtn.addEventListener('mouseleave', function() { closeBtn.style.color = '#9db0c6'; });
+
+    var newTabLink = document.createElement('a');
+    newTabLink.textContent = '🔍 Abrir em tamanho real (Nova aba)';
+    newTabLink.target = '_blank';
+    Object.assign(newTabLink.style, {
+      display: 'inline-block',
+      marginTop: '10px',
+      color: '#2ee6c5',
+      fontSize: '12px',
+      textDecoration: 'none',
+      fontWeight: '600',
+      background: 'rgba(46, 230, 197, 0.1)',
+      border: '1px solid rgba(46, 230, 197, 0.2)',
+      padding: '6px 14px',
+      borderRadius: '20px',
+      transition: 'background 0.2s'
+    });
+    newTabLink.addEventListener('mouseenter', function() { newTabLink.style.background = 'rgba(46, 230, 197, 0.2)'; });
+    newTabLink.addEventListener('mouseleave', function() { newTabLink.style.background = 'rgba(46, 230, 197, 0.1)'; });
+
+    wrapper.appendChild(closeBtn);
+    wrapper.appendChild(modalImg);
+    wrapper.appendChild(infoBar);
+    wrapper.appendChild(newTabLink);
+    modal.appendChild(wrapper);
+    document.body.appendChild(modal);
+
+    images.forEach(function(img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalImg.src = img.src;
+        infoBar.textContent = img.alt || 'Visualização do Dashboard';
+        newTabLink.href = img.src;
+        modal.style.display = 'flex';
+        modal.offsetHeight; // force reflow
+        modal.style.opacity = '1';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    var closeModal = function() {
+      modal.style.opacity = '0';
+      setTimeout(function() {
+        if (modal.style.opacity === '0') {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }, 250);
+    };
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal || e.target === wrapper) closeModal();
+    });
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+  }
 })();
 </script>
 
