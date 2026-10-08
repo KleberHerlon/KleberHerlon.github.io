@@ -408,12 +408,7 @@
 
     <div class="header">
         <div>
-            <h1>
-                    <img src="mt5_report_analyzer/static/Comunismo.ico" 
-                        alt="Ícone" 
-                        style="width: 32px; height: 32px; vertical-align: middle; margin-right: 10px;">
-                    Performance de Automações no Metatrader
-                </h1>
+            <h1>Performance de Automações no Metatrader</h1>
             <div class="header-subtitle">Análise completa de relatórios do Strategy Tester</div>
         </div>
         <div class="controls">
@@ -580,8 +575,9 @@
         let currentRobot = 'all';
 
         document.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM Carregado. Iniciando sistema...");
+            console.log("DOM Carregado. Carregando análise publicada...");
             loadFiles();
+            analyzeReports();
         });
 
         // Formatação de moeda brasileira
@@ -605,40 +601,61 @@
             });
         }
 
+        const STATIC_DATA = 'data/analysis.json';
+        let staticCache = null;
+
+        async function fetchAnalysis(force = false) {
+            if (staticCache && !force) return staticCache;
+            const response = await fetch(STATIC_DATA + '?t=' + new Date().getTime());
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+            const data = await response.json();
+            if (!data.success) {
+                throw new Error(data.error || 'Falha ao carregar a análise publicada');
+            }
+            staticCache = data;
+            return data;
+        }
+
+        function renderFilesList(data) {
+            const container = document.getElementById('filesContainer');
+            const files = data.files || [];
+            const stamp = data.generated_at ? data.generated_at.replace('T', ' ') : '';
+
+            if (!files.length) {
+                container.innerHTML = `
+                <div style="padding: 15px; color: var(--yellow); background: var(--yellow-bg); border-radius: 6px;">
+                    ⚠️ Nenhum relatório no snapshot publicado.<br>
+                    <small>Rode <code>python mt5_report_analyzer/build_static.py</code> e publique novamente.</small>
+                </div>`;
+                return;
+            }
+
+            container.innerHTML = files.map(f => `
+            <div class="file-item">
+                <span>📄 ${f.name}</span>
+                <span style="color: var(--text-muted);">${f.size_kb.toFixed(1)} KB</span>
+            </div>
+        `).join('') + `
+            <div style="margin-top:10px;color:var(--text-muted);font-size:12px;">
+                📊 ${data.reports_analyzed} relatório(s) · ${data.experts.length} robô(s) ·
+                🗂 snapshot gerado em ${stamp}
+            </div>`;
+        }
+
         async function loadFiles() {
             const container = document.getElementById('filesContainer');
 
             try {
-                const response = await fetch('/api/files?t=' + new Date().getTime());
-
-                if (!response.ok) {
-                    throw new Error(`Erro HTTP: ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log("Arquivos recebidos:", data);
-
-                if (!data.files || data.files.length === 0) {
-                    container.innerHTML = `
-                    <div style="padding: 15px; color: var(--yellow); background: var(--yellow-bg); border-radius: 6px;">
-                        ⚠️ Nenhum arquivo HTML encontrado na pasta 'reports'.<br>
-                        <small>Coloque os relatórios exportados do MT5 lá dentro.</small>
-                    </div>`;
-                    return;
-                }
-
-                container.innerHTML = data.files.map(f => `
-                <div class="file-item">
-                    <span>📄 ${f.name}</span>
-                    <span style="color: var(--text-muted);">${f.size_kb.toFixed(1)} KB</span>
-                </div>
-            `).join('');
-
+                const data = await fetchAnalysis();
+                console.log("Snapshot carregado:", data.experts);
+                renderFilesList(data);
             } catch (error) {
-                console.error("Erro ao carregar lista:", error);
+                console.error("Erro ao carregar os dados:", error);
                 container.innerHTML = `
                 <div style="padding: 15px; color: var(--red); background: var(--red-bg); border-radius: 6px;">
-                    ❌ Erro ao conectar com o servidor.<br>
+                    ❌ Erro ao carregar a análise publicada.<br>
                     <small>${error.message}</small>
                 </div>`;
             }
@@ -657,18 +674,7 @@ async function analyzeReports() {
             errorMsg.classList.remove('active');
 
             try {
-                const response = await fetch('/api/analyze', { method: 'POST' });
-
-                if (!response.ok) {
-                    throw new Error(`Erro no servidor: ${response.status}`);
-                }
-
-                const data = await response.json();
-
-                if (!data.success) {
-                    throw new Error(data.error || 'Erro ao processar relatórios');
-                }
-
+                const data = await fetchAnalysis();
                 allAnalysisData = data;
 
                 // Popular seletor de robôs
@@ -690,7 +696,7 @@ async function analyzeReports() {
                     };
                 }
 
-                console.log("Análise gerada com sucesso.");
+                console.log("Análise carregada com sucesso.");
                 renderDashboard(data.analysis);
                 dashboard.classList.add('active');
 
