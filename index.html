@@ -150,7 +150,147 @@ nav{
   .hero h1 .ch{transition:none}
   .ch-val{transition:none}
 }
-.hero .sub{color:var(--muted);font-size:1.07rem;max-width:600px;margin-top:30px}
+.hero .sub{color:var(--muted);font-size:1.07rem;max-width:600px;margin-top:40px}
+/* ---------- visual do hero: cenas alternando com névoa ---------- */
+.hero-vis{
+  position:relative;margin-top:26px;border-radius:18px;overflow:hidden;isolation:isolate;
+  background:linear-gradient(160deg,rgba(46,230,197,.07),transparent 55%),#080d15;
+  border:1px solid var(--border);
+  box-shadow:0 34px 70px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04);
+  aspect-ratio:16/11;max-height:330px;
+}
+.hv-scene{
+  position:absolute;inset:0;padding:16px 18px;display:flex;flex-direction:column;gap:10px;
+  opacity:0;filter:blur(24px);transform:translate3d(-34px,0,0) scale(1.05);
+  transition:opacity 1.5s ease,filter 1.7s ease,transform 1.8s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity,filter,transform;
+}
+.hv-scene.on{
+  opacity:1;filter:blur(0);transform:none;
+  transition-duration:1.7s,1.9s,2s;
+}
+.hv-scene.blow{
+  opacity:0;filter:blur(30px);transform:translate3d(52px,0,0) scale(1.07);
+  transition-duration:.85s,1.05s,1.15s;
+}
+.hv-cap{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#7f93ab;
+}
+.hv-cap b{color:var(--accent);font-weight:700}
+.hv-body{flex:1;min-height:0;display:flex;align-items:flex-end}
+.hv-chart{width:100%;height:100%}
+.hv-bar{
+  transform:scaleY(.03);transform-box:fill-box;transform-origin:bottom;
+  transition:transform .95s cubic-bezier(.2,.9,.3,1.35);transition-delay:var(--d,0s);
+}
+.hv-scene.on .hv-bar{transform:scaleY(1)}
+.hv-kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex:1;min-height:0}
+.hv-k{
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:3px;justify-content:center;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .6s ease,transform .7s cubic-bezier(.2,.9,.3,1.3);transition-delay:var(--d,0s);
+}
+.hv-scene.on .hv-k{opacity:1;transform:none}
+.hv-k small{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#7f93ab}
+.hv-k b{font-size:1.28rem;letter-spacing:-.02em;color:var(--text)}
+.hv-k i{font-style:normal;font-size:.68rem;color:var(--accent);font-family:'JetBrains Mono',monospace}
+.hv-k.neg i{color:#ff7b8a}
+.hv-gauges{display:flex;gap:12px;align-items:center;justify-content:space-around;flex:1;min-height:0}
+.hv-g{position:relative;width:31%;max-width:96px;aspect-ratio:1}
+.hv-g svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hv-g circle{fill:none;stroke-width:9;stroke-linecap:round}
+.hv-g .bg{stroke:rgba(255,255,255,.07)}
+.hv-g .fg{
+  stroke-dasharray:226;stroke-dashoffset:226;
+  transition:stroke-dashoffset 1.6s cubic-bezier(.3,.8,.3,1);transition-delay:var(--d,0s);
+}
+.hv-scene.on .hv-g .fg{stroke-dashoffset:var(--off,60)}
+.hv-g span{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:700;color:var(--text);
+}
+.hv-g em{
+  position:absolute;left:0;right:0;bottom:-16px;text-align:center;font-style:normal;
+  font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#7f93ab;
+}
+.hv-legend{
+  display:flex;gap:14px;justify-content:center;font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;color:#7f93ab;font-family:'JetBrains Mono',monospace;
+}
+.hv-legend i{font-style:normal;color:var(--accent)}
+.hv-legend i.warn{color:#ffd166}
+.hv-legend i.risk{color:#ff7b8a}
+.hv-sheet{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.hv-fx{
+  font-family:'JetBrains Mono',monospace;font-size:.64rem;color:#7f93ab;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;padding:6px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.hv-fx b{color:var(--accent)}
+.hv-row{
+  display:grid;grid-template-columns:26px 1.3fr 1fr .9fr;gap:6px;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;color:#b7c6d6;
+  padding:5px 6px;border-radius:7px;background:rgba(255,255,255,.03);
+  opacity:0;transform:translateX(-14px);
+  transition:opacity .5s ease,transform .55s ease;transition-delay:var(--d,0s);
+}
+.hv-scene.on .hv-row{opacity:1;transform:none}
+.hv-row.head{background:rgba(46,230,197,.1);color:var(--accent);font-weight:700}
+.hv-row span:last-child{text-align:right}
+.hv-row .bad{color:#ff7b8a}
+.hv-row .ok{color:#5ce6a5}
+.hv-tag{
+  position:absolute;left:16px;bottom:14px;z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);background:rgba(6,11,18,.8);
+  border:1px solid rgba(46,230,197,.32);border-radius:999px;padding:4px 11px;
+  opacity:0;transform:translateY(6px);transition:.5s ease .4s;
+}
+.hv-tag.on{opacity:1;transform:none}
+.hv-mist{
+  position:absolute;inset:-25% -45%;z-index:2;pointer-events:none;filter:blur(16px);opacity:0;
+  background:
+    radial-gradient(closest-side at 18% 46%, rgba(226,242,255,.62), transparent 72%),
+    radial-gradient(closest-side at 46% 62%, rgba(150,214,255,.5), transparent 72%),
+    radial-gradient(closest-side at 72% 34%, rgba(255,255,255,.58), transparent 70%),
+    radial-gradient(closest-side at 92% 58%, rgba(46,230,197,.34), transparent 72%);
+}
+.hv-mist.a{animation:mistA 2.5s cubic-bezier(.3,.6,.3,1) forwards}
+.hv-mist.b{animation:mistB 3s cubic-bezier(.25,.7,.3,1) forwards}
+@keyframes mistA{
+  0%{opacity:0;transform:translate3d(-42%,0,0) scale(1.05)}
+  30%{opacity:.9}
+  72%{opacity:.6}
+  100%{opacity:0;transform:translate3d(58%,0,0) scale(1.3)}
+}
+@keyframes mistB{
+  0%{opacity:0;transform:translate3d(-56%,0,0) scale(1.25)}
+  38%{opacity:.75}
+  78%{opacity:.45}
+  100%{opacity:0;transform:translate3d(46%,0,0) scale(1.05)}
+}
+.hv-amb{
+  position:absolute;inset:-30%;z-index:1;pointer-events:none;opacity:.16;filter:blur(22px);
+  background:
+    radial-gradient(closest-side at 30% 50%, rgba(46,230,197,.5), transparent 70%),
+    radial-gradient(closest-side at 75% 45%, rgba(78,168,255,.42), transparent 70%);
+  animation:amb 16s ease-in-out infinite alternate;
+}
+@keyframes amb{from{transform:translate3d(-6%,-3%,0)}to{transform:translate3d(8%,4%,0)}}
+@media (min-width:1040px){
+  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:34px 44px;align-items:start}
+  .hero-txt{grid-column:1;grid-row:1}
+  .hero-vis{grid-column:2;grid-row:1;margin-top:6px;max-height:400px;aspect-ratio:5/4}
+  .hero .kpis{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){
+  .hv-scene,.hv-bar,.hv-k,.hv-g .fg,.hv-row{transition-duration:.4s!important;transition-delay:0s!important}
+  .hv-scene,.hv-scene.blow{transform:none;filter:none}
+  .hv-mist,.hv-amb{display:none}
+}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .btn{
   display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;
@@ -678,14 +818,99 @@ footer a{color:var(--accent)}
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="grid-lines" aria-hidden="true"></div>
   <div class="hero-in">
-    <span class="eyebrow"><span class="pulse" aria-hidden="true"></span> Disponível para oportunidades remotas</span>
-    <h1>Analista de Dados<br><em>Análise &amp; Engenharia de Dados · BI</em></h1>
-    <p class="sub">Analista de Dados com formação em <strong>Análise e Desenvolvimento de Sistemas</strong> e histórico de impacto mensurável: dashboard estratégico que zerou 100 dias de passivo operacional e automações SAP que eliminaram multas contratuais. Domínio do ciclo completo — SQL, ETL, Power Query/Python e Power BI (DAX/M) — em projetos de análise, automação e monitoramento em tempo real. A Fisioterapia é a formação complementar: um diferencial raro quando o dado é de saúde. 100% remoto.</p>
+    <div class="hero-txt">
+      <span class="eyebrow"><span class="pulse" aria-hidden="true"></span> Disponível para oportunidades remotas</span>
+      <h1>Analista de Dados<br><em>Análise &amp; Engenharia de Dados · BI</em></h1>
+      <p class="sub">Analista de Dados com formação em <strong>Análise e Desenvolvimento de Sistemas</strong> e histórico de impacto mensurável: dashboard estratégico que zerou 100 dias de passivo operacional e automações SAP que eliminaram multas contratuais. Domínio do ciclo completo — SQL, ETL, Power Query/Python e Power BI (DAX/M) — em projetos de análise, automação e monitoramento em tempo real. A Fisioterapia é a formação complementar: um diferencial raro quando o dado é de saúde. 100% remoto.</p>
 
-    <div class="cta">
-      <a class="btn primary" href="./assets/Curriculo_Kleber_Carboni.pdf" download>⬇ Baixar Currículo</a>
-      <a class="btn ghost" href="#dashboards">Ver dashboards</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/kleber-herlon-analista-de-dados" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="cta">
+        <a class="btn primary" href="./assets/Curriculo_Kleber_Carboni.pdf" download>⬇ Baixar Currículo</a>
+        <a class="btn ghost" href="#dashboards">Ver dashboards</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/kleber-herlon-analista-de-dados" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-vis" aria-hidden="true">
+      <span class="hv-amb"></span>
+
+      <div class="hv-scene on">
+        <div class="hv-cap"><span>Receita x meta</span><b>2026</b></div>
+        <div class="hv-body">
+          <svg class="hv-chart" viewBox="0 0 320 168" preserveAspectRatio="none">
+            <defs><linearGradient id="hvG1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2ee6c5"/><stop offset="1" stop-color="#0b6f5e"/>
+            </linearGradient>
+            <linearGradient id="hvG2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4ea8ff"/><stop offset="1" stop-color="#1b5f96"/>
+            </linearGradient></defs>
+            <g stroke="#1c2836" stroke-width="1">
+              <line x1="6" y1="34" x2="314" y2="34"/><line x1="6" y1="74" x2="314" y2="74"/>
+              <line x1="6" y1="114" x2="314" y2="114"/><line x1="6" y1="152" x2="314" y2="152"/>
+            </g>
+            <g>
+              <rect class="hv-bar" style="--d:.10s" x="22"  y="86"  width="22" height="66"  rx="4" fill="url(#hvG1)"/>
+              <rect class="hv-bar" style="--d:.22s" x="70"  y="58"  width="22" height="94"  rx="4" fill="url(#hvG2)"/>
+              <rect class="hv-bar" style="--d:.34s" x="118" y="104" width="22" height="48"  rx="4" fill="url(#hvG1)"/>
+              <rect class="hv-bar" style="--d:.46s" x="166" y="42"  width="22" height="110" rx="4" fill="url(#hvG2)"/>
+              <rect class="hv-bar" style="--d:.58s" x="214" y="70"  width="22" height="82"  rx="4" fill="url(#hvG1)"/>
+              <rect class="hv-bar" style="--d:.70s" x="262" y="26"  width="22" height="126" rx="4" fill="url(#hvG2)"/>
+            </g>
+            <g fill="#7f93ab" font-size="9" font-family="monospace" text-anchor="middle">
+              <text x="33" y="165">JAN</text><text x="81" y="165">FEV</text><text x="129" y="165">MAR</text>
+              <text x="177" y="165">ABR</text><text x="225" y="165">MAI</text><text x="273" y="165">JUN</text>
+            </g>
+          </svg>
+        </div>
+        <div class="hv-legend" style="justify-content:flex-start;padding-left:4px">
+          <span><i>■</i> realizado</span><span><i style="color:#4ea8ff">■</i> meta</span>
+        </div>
+      </div>
+
+      <div class="hv-scene">
+        <div class="hv-cap"><span>Painel executivo</span><b>AO VIVO</b></div>
+        <div class="hv-kpis">
+          <div class="hv-k" style="--d:.15s"><small>Receita</small><b>+18,4%</b><i>▲ acima do ano anterior</i></div>
+          <div class="hv-k" style="--d:.30s"><small>Conversão</small><b>7,2%</b><i>▲ +1,4 p.p.</i></div>
+          <div class="hv-k neg" style="--d:.45s"><small>Custo/lead</small><b>R$ 42</b><i>▼ -12% otimizado</i></div>
+          <div class="hv-k" style="--d:.60s"><small>SLA do ETL</small><b>99,9%</b><i>▲ 0 faltas</i></div>
+        </div>
+      </div>
+
+      <div class="hv-scene">
+        <div class="hv-cap"><span>Indicadores de operação</span><b>META</b></div>
+        <div class="hv-gauges">
+          <div class="hv-g" style="--d:.20s">
+            <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="36"/>
+            <circle class="fg" cx="40" cy="40" r="36" stroke="#2ee6c5" style="--off:45"/></svg>
+            <span>80%</span><em>qualidade</em>
+          </div>
+          <div class="hv-g" style="--d:.40s">
+            <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="36"/>
+            <circle class="fg" cx="40" cy="40" r="36" stroke="#ffd166" style="--off:86"/></svg>
+            <span>62%</span><em>cobertura</em>
+          </div>
+          <div class="hv-g" style="--d:.60s">
+            <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="36"/>
+            <circle class="fg" cx="40" cy="40" r="36" stroke="#4ea8ff" style="--off:23"/></svg>
+            <span>90%</span><em>performance</em>
+          </div>
+        </div>
+        <div class="hv-legend"><span><i>●</i> no alvo</span><span><i class="warn">●</i> atenção</span><span><i class="risk">●</i> risco</span></div>
+      </div>
+
+      <div class="hv-scene">
+        <div class="hv-cap"><span>Base tratada</span><b>CSV → DWH</b></div>
+        <div class="hv-sheet">
+          <div class="hv-fx">fx&nbsp;&nbsp;<b>=SOMASE</b>(base!C:C;"ok";base!D:D)</div>
+          <div class="hv-row head" style="--d:.10s"><span>#</span><span>nome</span><span>documento</span><span>valor</span></div>
+          <div class="hv-row" style="--d:.22s"><span>1</span><span>Maria Souza</span><span class="ok">válido</span><span>R$ 1.240</span></div>
+          <div class="hv-row" style="--d:.34s"><span>2</span><span>Carlos Lima</span><span class="bad">inválido</span><span>R$ 890</span></div>
+          <div class="hv-row" style="--d:.46s"><span>3</span><span>Ana Rocha</span><span class="ok">válido</span><span>R$ 3.500</span></div>
+          <div class="hv-row" style="--d:.58s"><span>4</span><span>Josefa Dias</span><span class="ok">válido</span><span>R$ 780</span></div>
+        </div>
+      </div>
+
+      <span class="hv-tag on">Gráfico de barras</span>
     </div>
 
     <div class="kpis" role="list" aria-label="Indicadores de carreira">
@@ -3128,7 +3353,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       tip.classList.toggle('below', below);
       tip.style.left = (el.offsetLeft + el.offsetWidth / 2) + 'px';
       tip.style.top = below
-        ? (el.offsetTop + el.offsetHeight + 8) + 'px'
+        ? (el.offsetTop + el.offsetHeight + 12) + 'px'
         : (el.offsetTop - 12) + 'px';
       tip.classList.add('on');
     }
@@ -3154,6 +3379,64 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
         el._k = setTimeout(function(){ leave(el); }, 1600);
       }, { passive:true });
     });
+  })();
+
+  /* ---------- visual do hero: vento de névoa alternando as cenas ---------- */
+  (function heroVis(){
+    var box = document.querySelector('.hero-vis');
+    if(!box) return;
+    var scenes = Array.prototype.slice.call(box.querySelectorAll('.hv-scene'));
+    if(scenes.length < 2) return;
+    var tag = box.querySelector('.hv-tag');
+    var labels = ['Gráfico de barras', 'KPIs e indicadores', 'Indicadores', 'Planilha tratada'];
+    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var i = 0, tOut = 0, tNext = 0, running = false;
+
+    function mist(kind){
+      var m = document.createElement('span');
+      m.className = 'hv-mist ' + kind;
+      box.appendChild(m);
+      setTimeout(function(){ if(m.parentNode) m.parentNode.removeChild(m); }, 3400);
+    }
+    function setTag(n){
+      if(!tag) return;
+      tag.classList.remove('on');
+      setTimeout(function(){
+        tag.textContent = labels[n] || '';
+        tag.classList.add('on');
+      }, 420);
+    }
+    function step(){
+      var cur = scenes[i];
+      var nx = (i + 1) % scenes.length;
+      if(!reduce) mist('a');
+      cur.classList.add('blow');
+      cur.classList.remove('on');
+      tOut = setTimeout(function(){
+        cur.classList.remove('blow');
+        if(!reduce) mist('b');
+        scenes[nx].classList.add('on');
+        setTag(nx);
+        i = nx;
+      }, reduce ? 450 : 1150);
+      tNext = setTimeout(step, reduce ? 5200 : 7600);
+    }
+    function start(){
+      if(running) return;
+      running = true;
+      tNext = setTimeout(step, 5000);
+    }
+    function stop(){
+      running = false;
+      clearTimeout(tOut);
+      clearTimeout(tNext);
+    }
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(en){
+        en.forEach(function(x){ if(x.isIntersecting) start(); else stop(); });
+      }, { threshold:.2 });
+      io.observe(box);
+    } else start();
   })();
 })();
 </script>
