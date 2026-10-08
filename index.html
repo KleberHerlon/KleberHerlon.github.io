@@ -2184,6 +2184,15 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* toda visita sem âncora começa no topo (sem restauração de rolagem) */
+  try{
+    if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var toTop = function(){ if(!location.hash) window.scrollTo(0, 0); };
+    toTop();
+    window.addEventListener('load', toTop);
+    window.addEventListener('pageshow', toTop);
+  }catch(e){}
+
   /* reveal on scroll */
   var revealEls = document.querySelectorAll('.reveal');
   if(reduce || !('IntersectionObserver' in window)){
@@ -2984,7 +2993,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
   }
 
   /* ---------- liga/desliga dos botões ---------- */
-  function runEtl(){
+  function runEtl(userAction){
     var card = cardOf('lab-etl');
     activateTab(card, 'sb');
     var now = function(){ return (window.performance && performance.now) ? performance.now() : Date.now(); };
@@ -3001,7 +3010,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       '✔ ' + stat.linhas + ' linhas → ' + stat.final + ' aproveitadas · ' +
       stat.dup + ' dup · ' + stat.nulos + ' nulos · ' +
       stat.cpf + ' CPF inv. · ' + stat.email + ' e-mail inv. · ' + ms + ' ms');
-    ensureVisible(document.getElementById('etlKpis'));
+    if(userAction) ensureVisible(document.getElementById('etlKpis'));
   }
   function runDag(){
     var card = cardOf('lab-airflow');
@@ -3023,7 +3032,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
   Array.prototype.forEach.call(document.querySelectorAll('[data-run]'), function(b){
     b.addEventListener('click', function(){
       var t = b.getAttribute('data-run');
-      if(t === 'etl') runEtl();
+      if(t === 'etl') runEtl(true);
       else if(t === 'dag') runDag();
       else if(t === 'med') runMed();
     });
@@ -3034,9 +3043,9 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     etlIn.value = sampleCsv();
     var gen = document.getElementById('etlGen');
     var run = document.getElementById('etlRun');
-    if(gen) gen.addEventListener('click', function(){ etlIn.value = randSample(); runEtl(); });
-    if(run) run.addEventListener('click', runEtl);
-    runEtl();
+    if(gen) gen.addEventListener('click', function(){ etlIn.value = randSample(); runEtl(true); });
+    if(run) run.addEventListener('click', function(){ runEtl(true); });
+    runEtl(false);
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.layer'), function(el){
