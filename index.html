@@ -171,8 +171,9 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
 .tag.y{color:var(--accent3);background:rgba(255,209,102,.09);border-color:rgba(255,209,102,.28)}
 .links{display:flex;gap:9px;flex-wrap:wrap;margin-top:4px}
 .mini{
-  font-size:.8rem;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:9px;
-  border:1px solid var(--border);color:var(--text);transition:.15s;
+  font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;text-decoration:none;
+  padding:8px 14px;border-radius:9px;
+  border:1px solid var(--border);color:var(--text);background:transparent;transition:.15s;
 }
 .mini.solid{background:var(--accent);border-color:var(--accent);color:#04121a}
 .mini:hover{border-color:var(--accent);color:var(--accent)}
@@ -371,6 +372,211 @@ footer a{color:var(--accent)}
   section{padding:56px 0}
   .bar-row{grid-template-columns:1fr;gap:7px}
 }
+/* ---------- LABS · ENGENHARIA DE DADOS ---------- */
+.labs{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+.lab{gap:13px}
+.lab h3{font-size:1.22rem}
+.lab p{flex:none}
+.lab-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.lab-n{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.16em;
+  color:var(--accent);background:rgba(46,230,197,.07);border:1px solid rgba(46,230,197,.28);
+  border-radius:999px;padding:4px 11px;flex:none;white-space:nowrap;
+}
+.tabs{display:flex;flex-wrap:wrap;gap:7px;padding-bottom:11px;border-bottom:1px solid var(--border);margin-top:2px}
+.tab{
+  font:inherit;font-size:.77rem;font-weight:700;cursor:pointer;
+  background:var(--bg2);border:1px solid var(--border);color:var(--muted);
+  padding:7px 14px;border-radius:999px;transition:.15s;
+}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:rgba(46,230,197,.12);border-color:var(--accent);color:var(--accent)}
+.panel{display:none}
+.panel.on{display:block;animation:labFade .3s ease}
+@keyframes labFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel .sub{
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;
+  color:var(--accent);margin:16px 0 6px;
+}
+.code\boxed{margin-top:12px;background:#070d14;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.cb-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:7px 12px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);
+}
+.cb-lang{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent2);
+}
+.cb-copy,.js-copy{
+  font:inherit;font-size:.7rem;font-weight:700;cursor:pointer;color:var(--muted);
+  background:transparent;border:1px solid var(--border);border-radius:8px;padding:5px 11px;transition:.15s;
+}
+.cb-copy:hover,.js-copy:hover{border-color:var(--accent);color:var(--accent)}
+.cb-copy.done{border-color:var(--ok);color:var(--ok)}
+.codebox pre{
+  margin:0;padding:15px;max-height:330px;overflow:auto;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;line-height:1.62;
+  color:#b9c9dc;white-space:pre;tab-size:2;
+}
+.codebox pre::-webkit-scrollbar{width:9px;height:9px}
+.codebox pre::-webkit-scrollbar-thumb{background:var(--border);border-radius:9px}
+.t-kw{color:#4ea8ff;font-weight:600}
+.t-str{color:#7bed9f}
+.t-com{color:#5d728a;font-style:italic}
+.t-num{color:#ffd166}
+.expl{counter-reset:expl;list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:11px}
+.expl li{position:relative;padding-left:28px;font-size:.83rem;color:var(--muted);line-height:1.58}
+.expl li::before{
+  content:counter(expl);counter-increment:expl;position:absolute;left:0;top:2px;
+  width:19px;height:19px;border-radius:6px;background:rgba(46,230,197,.1);
+  border:1px solid rgba(46,230,197,.28);color:var(--accent);
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:700;
+  display:grid;place-items:center;
+}
+.expl code,.lab code.inline,.sb-hint code{
+  font-family:'JetBrains Mono',monospace;font-size:.9em;color:var(--accent);
+  background:rgba(46,230,197,.08);border:1px solid rgba(46,230,197,.18);
+  padding:1px 6px;border-radius:6px;
+}
+.tbl-wrap{border:1px solid var(--border);border-radius:11px;overflow:auto;max-height:300px;background:#0a1018}
+.tbl{width:100%;border-collapse:collapse;font-size:.76rem;min-width:430px}
+.tbl th{
+  position:sticky;top:0;z-index:1;text-align:left;white-space:nowrap;
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);background:#0e1621;padding:9px 11px;border-bottom:1px solid var(--border);
+}
+.tbl td{
+  padding:8px 11px;border-bottom:1px solid rgba(255,255,255,.05);color:#cddced;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr:nth-child(even) td{background:rgba(255,255,255,.016)}
+.tbl td.bad{color:var(--danger);font-weight:700}
+.tbl td.ok{color:var(--ok)}
+.tbl td.mut{color:var(--muted)}
+.tbl tr.duprow td{color:#5d728a;text-decoration:line-through;opacity:.75}
+.scenario{
+  margin-top:12px;background:linear-gradient(135deg,rgba(78,168,255,.08),rgba(78,168,255,.02));
+  border:1px solid rgba(78,168,255,.26);border-left:4px solid var(--accent2);
+  border-radius:12px;padding:14px 16px;font-size:.87rem;color:var(--muted);line-height:1.62;
+}
+.scenario b{color:var(--accent2)}
+.scenario .sc-t{
+  display:block;font-size:.69rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent2);font-weight:800;margin-bottom:6px;
+}
+.sb-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:14px}
+.sb-hint{font-size:.73rem;color:var(--muted)}
+.sb-input{
+  width:100%;margin-top:10px;background:#070d14;border:1px solid var(--border);
+  border-radius:11px;color:#cddced;font-family:'JetBrains Mono',monospace;
+  font-size:.73rem;line-height:1.6;padding:12px;resize:vertical;min-height:118px;
+}
+.sb-input:focus{outline:none;border-color:var(--accent)}
+.dq-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
+@media (max-width:1080px){.dq-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:680px){.dq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dq{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:11px 13px}
+.dq .v{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--accent);line-height:1.1}
+.dq .l{font-size:.7rem;color:var(--muted);margin-top:4px;line-height:1.35}
+.dq.warn .v{color:var(--accent3)}
+.dq.bad .v{color:var(--danger)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:15px}
+.two-col>div{min-width:0}
+@media (max-width:860px){.two-col{grid-template-columns:1fr}}
+.col-t{
+  font-size:.76rem;text-transform:uppercase;letter-spacing:.11em;font-weight:800;
+  color:var(--accent);margin-bottom:8px;display:flex;align-items:baseline;gap:9px;
+}
+.col-s{font-size:.68rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.dg-controls{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:14px}
+.dg-state{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted)}
+.dg-view{display:none}
+.dg-view.on{display:block;animation:labFade .35s ease}
+.tables-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:13px}
+.erd{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.erd h6{
+  font-family:'JetBrains Mono',monospace;font-size:.71rem;letter-spacing:.07em;
+  padding:8px 12px;background:rgba(78,168,255,.1);border-bottom:1px solid var(--border);color:var(--accent2);
+}
+.erd.fact h6{background:rgba(46,230,197,.1);color:var(--accent)}
+.erd ul{list-style:none;padding:9px 12px;display:flex;flex-direction:column;gap:6px}
+.erd li{font-family:'JetBrains Mono',monospace;font-size:.69rem;color:#b9c9dc;display:flex;justify-content:space-between;gap:8px}
+.erd li em{font-style:normal;font-size:.6rem;color:var(--muted);letter-spacing:.06em}
+.erd li em.pk{color:var(--accent3)}
+.erd li em.fk{color:var(--accent2)}
+.erd li em.sk{color:var(--accent)}
+.dg-arrow{
+  text-align:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--accent);padding:14px 0;letter-spacing:.1em;
+}
+.star{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.star .fact{grid-column:1/-1}
+@media (max-width:760px){.star{grid-template-columns:1fr}.star .fact{grid-column:auto}}
+.medallion{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media (max-width:820px){.medallion{grid-template-columns:1fr}}
+.layer{
+  font:inherit;text-align:left;cursor:pointer;padding:16px 16px 18px;border-radius:13px;
+  border:1px solid var(--border);background:var(--bg2);color:var(--text);
+  transition:.18s;position:relative;overflow:hidden;
+}
+.layer:hover{transform:translateY(-3px)}
+.layer.on{border-color:rgba(46,230,197,.5);background:rgba(46,230,197,.05)}
+.layer .l-n{display:block;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.layer .l-t{display:block;font-size:1rem;font-weight:800;margin:5px 0 6px}
+.layer .l-d{display:block;font-size:.75rem;color:var(--muted);line-height:1.5}
+.layer .l-c{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);margin-top:9px;display:block;
+}
+.layer.bronze .l-t{color:#e0a268}
+.layer.silver .l-t{color:#c9d6e4}
+.layer.gold .l-t{color:#ffd166}
+.layer .l-fill{position:absolute;left:0;bottom:0;height:3px;width:0;transition:width .55s ease}
+.layer.bronze .l-fill{background:#e0a268}
+.layer.silver .l-fill{background:#c9d6e4}
+.layer.gold .l-fill{background:#ffd166}
+.layer.done .l-fill{width:100%}
+.layer-detail{
+  margin-top:14px;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:15px 17px;
+}
+.layer-detail h5{font-size:.92rem;margin-bottom:9px;color:var(--accent)}
+.layer-detail dl{display:grid;grid-template-columns:110px 1fr;gap:7px 14px;margin:0}
+@media (max-width:620px){.layer-detail dl{grid-template-columns:1fr;gap:2px 0}.layer-detail dd{margin-bottom:7px}}
+.layer-detail dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);font-weight:700;padding-top:2px}
+.layer-detail dd{margin:0;font-size:.81rem;color:var(--muted);line-height:1.55}
+.dag-top{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;justify-content:space-between;margin-top:14px}
+.dag-chart{
+  display:flex;align-items:flex-end;gap:6px;height:104px;margin-top:14px;padding:14px 12px 8px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:11px;
+}
+.dag-bar{
+  flex:1;min-width:7px;border-radius:5px 5px 0 0;transition:height .5s ease;
+  background:linear-gradient(180deg,var(--accent),rgba(46,230,197,.3));
+}
+.dag-bar.warn{background:linear-gradient(180deg,var(--accent3),rgba(255,209,102,.3))}
+.dag-bar.bad{background:linear-gradient(180deg,var(--danger),rgba(255,107,129,.3))}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;font-size:.67rem;font-weight:800;
+  padding:3px 10px;border-radius:999px;border:1px solid;letter-spacing:.03em;
+}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.ok{color:var(--ok);background:rgba(123,237,159,.08);border-color:rgba(123,237,159,.3)}
+.pill.warn{color:var(--accent3);background:rgba(255,209,102,.08);border-color:rgba(255,209,102,.32)}
+.pill.bad{color:var(--danger);background:rgba(255,107,129,.08);border-color:rgba(255,107,129,.32)}
+.lab-actions{
+  display:flex;flex-wrap:wrap;gap:9px;align-items:center;
+  margin-top:4px;padding-top:14px;border-top:1px solid var(--border);
+}
+.lab-actions .hint{font-size:.7rem;color:var(--muted);margin-left:auto}
+.ai-note{
+  display:flex;gap:9px;align-items:flex-start;font-size:.73rem;line-height:1.55;
+  color:var(--muted);background:rgba(255,255,255,.02);border:1px dashed var(--border);
+  border-radius:10px;padding:10px 13px;
+}
+.ai-note b{color:#cddced;font-weight:700}
+.ai-note .ai-ic{flex:none;font-size:.9rem;line-height:1.4}
+
 @media print{
   nav,.hero-bg,.grid-lines{display:none}
   body{background:#fff;color:#000}
@@ -390,6 +596,7 @@ footer a{color:var(--accent)}
       <a href="#sobre">Sobre</a>
       <a href="#dashboards">Dashboards</a>
       <a href="#projetos">Projetos</a>
+      <a href="#labs">Engenharia</a>
       <a href="#competencias">Competências</a>
       <a href="#leitura">Leituras</a>
       <a href="#experiencia">Experiência</a>
@@ -834,10 +1041,908 @@ with open("Dataset.csv", "wt+", newline="") as f:
   </div>
 </section>
 
+<section id="labs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-title">04 — Engenharia de Dados</div>
+      <h2>Laboratórios interativos de dados</h2>
+      <p class="lead">Cinco laboratórios do ciclo de engenharia de dados — do saneamento de registros ao Lakehouse. Abra as abas, copie o código e execute as simulações direto no navegador, sem instalar nada.</p>
+    </div>
+
+    <div class="fictitious-note reveal">
+      <span class="fn-ic" aria-hidden="true">🧪</span>
+      <div>
+        <strong>Todos os dados e conexões são simulados.</strong>
+        As bases, execuções de DAG e métricas exibidas são sintéticas e rodam localmente no seu navegador —
+        nenhum dado real de cliente, sistema ou ambiente de produção é acessado. Os blocos de código são
+        versões enxutas e comentadas dos scripts completos.
+      </div>
+    </div>
+
+    <div class="labs">
+
+      <!-- ============ LAB 01 · ETL ============ -->
+      <article class="card lab reveal" id="lab-etl">
+        <div class="lab-top">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag b">Pandas</span>
+            <span class="tag b">Polars</span>
+            <span class="tag y">Data Cleaning</span>
+            <span class="tag y">Data Quality</span>
+            <span class="tag">ETL</span>
+          </div>
+          <span class="lab-n">LAB 01</span>
+        </div>
+
+        <h3>Módulo Interativo de ETL &amp; Tratamento de Dados</h3>
+        <p><strong>Pipeline de Sanitização &amp; Validação de Dados:</strong> tratamento automatizado de CPFs/CNPJs, nulos e duplicados, padronização de datas, regex para e-mails e telefones e geração de métricas de qualidade (Data Quality Check).</p>
+
+        <div class="tabs" role="tablist" aria-label="Abas do laboratório de ETL">
+          <button class="tab on" type="button" role="tab" aria-selected="true" data-tab="sb">🧪 Sandbox</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="py">🐍 Script Python</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="dq">📋 Data Quality</button>
+        </div>
+
+        <div class="panel on" data-panel="sb" role="tabpanel">
+          <div class="sb-controls">
+            <button class="mini" type="button" id="etlGen">🎲 Gerar dados de teste</button>
+            <button class="mini solid" type="button" id="etlRun">▶ Executar simulação</button>
+            <span class="sb-hint">Formato: <code>nome,cpf,email,telefone,nascimento,valor</code> — cole os seus dados sujos ou edite a amostra.</span>
+          </div>
+          <textarea id="etlIn" class="sb-input" spellcheck="false" rows="8" aria-label="Dados de entrada (CSV) para o ETL"></textarea>
+          <div class="dq-grid" id="etlKpis" aria-live="polite"></div>
+          <div class="two-col">
+            <div>
+              <div class="col-t">Antes <span class="col-s">bruto, como veio da origem</span></div>
+              <div class="tbl-wrap"><table class="tbl" id="etlBefore"><tbody></tbody></table></div>
+            </div>
+            <div>
+              <div class="col-t">Depois <span class="col-s">padronizado e validado</span></div>
+              <div class="tbl-wrap"><table class="tbl" id="etlAfter"><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" data-panel="py" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">python · pandas + polars</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="python"># ============================================================
+# ETL · Sanitização &amp; Validação de Dados
+# leitura crua -> padronização -> validação -> Data Quality
+# ============================================================
+import re
+import pandas as pd
+import polars as pl
+
+EMAIL_RE = re.compile(r"^[A-Za-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
+
+def only_digits(v):
+    """Remove tudo que não for dígito (máscara de CPF/CNPJ)."""
+    return re.sub(r"\D", "", str(v))
+
+def is_valid_cpf(v):
+    """Valida os dígitos verificadores (mod 11) do CPF."""
+    c = only_digits(v)
+    if len(c) != 11 or c == c[0] * 11:
+        return False
+    dv = lambda s, w: sum(int(a) * b for a, b in zip(s, w)) % 11
+    d1 = dv(c[:9], range(10, 1, -1));  d1 = 0 if d1 &lt; 2 else 11 - d1
+    d2 = dv(c[:10], range(11, 1, -1)); d2 = 0 if d2 &lt; 2 else 11 - d2
+    return c[9] == str(d1) and c[10] == str(d2)
+
+def mask_cpf(v):
+    """12345678900 -> 123.445.678-90 (None se o tamanho não bate)."""
+    c = only_digits(v)
+    return f"{c[:3]}.{c[3:6]}.{c[6:9]}-{c[9:]}" if len(c) == 11 else None
+
+def norm_phone(v):
+    """(12) 98169-4128 | 12981694128 -> máscara padrão."""
+    d = only_digits(v)
+    return f"({d[:2]}) {d[2:-4]}-{d[-4:]}" if len(d) in (10, 11) else None
+
+def norm_date(v):
+    """dd/mm/yyyy, dd-mm-yyyy ou yyyy-mm-dd -> ISO (yyyy-mm-dd)."""
+    s = str(v).strip()
+    for fmt in ("%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d"):
+        try:
+            return pd.to_datetime(s, format=fmt).date().isoformat()
+        except (ValueError, TypeError):
+            continue
+    return None
+
+def money(v):
+    """'R$ 1.234,56' | '899,90' | '1500' -> float (padrão pt-BR)."""
+    s = re.sub(r"[^\d,.-]", "", str(v))
+    if not s:
+        return None
+    if "," in s:
+        s = s.replace(".", "").replace(",", ".")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+def clean_pipeline(df):
+    """Saneamento completo + relatório de qualidade (DQ report)."""
+    report = {}
+    df = df.apply(lambda c: c.astype(str).str.strip())      # 1. trim
+    df = df.replace({"": None, "nan": None, "None": None})  # 2. nulos reais
+    report["nulos"] = int(df.isna().sum().sum())
+
+    n = len(df)
+    df = df.drop_duplicates()                               # 3. duplicados
+    report["duplicados"] = n - len(df)
+
+    df["nome"] = df["nome"].str.title()                     # 4. padroniza
+    df["cpf"] = df["cpf"].map(mask_cpf)                     # 5. máscara
+    df["cpf_invalido"] = ~df["cpf"].map(lambda v: bool(v) and is_valid_cpf(v))
+    df.loc[df["cpf_invalido"], "cpf"] = None                # registro reprovado
+    df["email"] = df["email"].str.lower()
+    df["email_invalido"] = ~df["email"].fillna("").str.match(EMAIL_RE)
+    df["telefone"] = df["telefone"].map(norm_phone)         # 6. regex
+    df["nascimento"] = df["nascimento"].map(norm_date)      # 7. datas
+    df["valor"] = df["valor"].map(money)
+
+    report["cpf_invalido"] = int(df["cpf_invalido"].sum())
+    report["email_invalido"] = int(df["email_invalido"].sum())
+    report["datas_ok"] = int(df["nascimento"].notna().sum())
+    return df, report
+
+# ---------- execução ----------
+raw = pd.read_csv("dados_sujos.csv", dtype=str)
+clean, dq = clean_pipeline(raw)
+
+pl.from_pandas(clean).write_parquet("dados_limpos.parquet")  # saída analítica
+print("Data Quality Check:", dq)</code></pre>
+          </div>
+        </div>
+
+        <div class="panel" data-panel="dq" role="tabpanel">
+          <p class="scenario"><span class="sc-t">Regra de ouro</span>Nenhum registro entra na camada analítica sem passar pelos checks. O pipeline mede, bloqueia e reporta — <b>qualidade de dado é requisito, não detalhe de implementação</b>.</p>
+          <h5 class="sub">Checks aplicados a cada carga</h5>
+          <ul class="expl">
+            <li><b>Completude</b> — contagem de nulos por coluna; campos-chave (<code>cpf</code>, <code>email</code>) não podem ser nulos no load.</li>
+            <li><b>Unicidade</b> — <code>drop_duplicates()</code> sobre a linha normalizada; duplicidade é medida antes de contar métricas de negócio.</li>
+            <li><b>Forma (regex)</b> — e-mail contra <code>EMAIL_RE</code> e telefone contra a máscara <code>(DD) 99999-9999</code>.</li>
+            <li><b>Validade de domínio</b> — dígitos verificadores do CPF (mod 11) e datas em intervalo plausível, sem futuro.</li>
+            <li><b>Tipagem</b> — valores monetários pt-BR (<code>1.234,56</code>) convertidos para <code>float</code> antes do agregado.</li>
+          </ul>
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">python · data quality gate</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="python">def data_quality_gate(df):
+    """Levanta exceção e interrompe o load se algum check falhar."""
+    checks = {
+        "nulos_em_chave":  df["cpf"].isna().sum() == 0,
+        "unicidade":       not df.duplicated().any(),
+        "regex_email":     df["email"].fillna("").str.match(EMAIL_RE).all(),
+        "intervalo_valor": df["valor"].between(0, 1_000_000).all(),
+        "sem_data_futura": pd.to_datetime(df["nascimento"]).max()
+                           &lt; pd.Timestamp.today(),
+    }
+    failed = [k for k, ok in checks.items() if not ok]
+    if failed:
+        raise ValueError(f"Data Quality Check falhou: {failed}")
+    return True</code></pre>
+          </div>
+        </div>
+
+        <div class="lab-actions">
+          <button class="mini solid" type="button" data-run="etl">▶ Executar simulação</button>
+          <button class="mini js-copy" type="button">⧉ Copiar código</button>
+          <a class="mini" href="https://github.com/KleberHerlon?tab=repositories" target="_blank" rel="noopener">Ver no GitHub</a>
+          <span class="hint">Roda 100% no seu navegador · dados sintéticos</span>
+        </div>
+      </article>
+
+      <!-- ============ LAB 02 · SQL ============ -->
+      <article class="card lab reveal" id="lab-sql">
+        <div class="lab-top">
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag b">SQL Server</span>
+            <span class="tag b">Window Functions</span>
+            <span class="tag y">CTEs</span>
+            <span class="tag y">Query Optimization</span>
+          </div>
+          <span class="lab-n">LAB 02</span>
+        </div>
+
+        <h3>Laboratório Didático de SQL Avançado &amp; Analytics Engineering</h3>
+        <p><strong>SQL Analytics Lab:</strong> consultas avançadas cobrindo Window Functions (ROW_NUMBER, LAG/LEAD, NTILE), CTEs encadeadas, agregações complexas e otimização de queries para ecossistemas analíticos.</p>
+
+        <p class="scenario"><span class="sc-t">Cenário de negócio</span>
+          Operação de e-commerce com <b>24 meses de histórico</b> em modelo dimensional (<code>fato_vendas</code>, <code>dim_cliente</code>, <code>dim_tempo</code>). O time comercial precisa entender <b>retenção por coorte</b>, calcular <b>LTV e churn</b> e detectar queda de receita no dia seguinte. Cada aba mostra a consulta, <b>o porquê de cada função</b> e o resultado da simulação.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Abas do laboratório de SQL">
+          <button class="tab on" type="button" role="tab" aria-selected="true" data-tab="q1">① Média móvel</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="q2">② Ranking · QUALIFY</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="q3">③ Anomalias · LAG</button>
+        </div>
+
+        <div class="panel on" data-panel="q1" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">sql · postgres / t-sql</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sql">-- Média móvel de 7 dias + acumulado, em uma única passada
+WITH vendas_dia AS (
+    SELECT  t.data_pedido,
+            SUM(v.valor_total) AS receita_dia
+    FROM    fato_vendas v
+    JOIN    dim_tempo t ON t.sk_tempo = v.sk_tempo
+    GROUP BY t.data_pedido
+)
+SELECT  data_pedido,
+        receita_dia,
+        AVG(receita_dia) OVER (
+            ORDER BY data_pedido
+            ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+        ) AS media_movel_7d,
+        SUM(receita_dia) OVER (
+            ORDER BY data_pedido
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+        ) AS acumulado
+FROM    vendas_dia
+ORDER BY data_pedido;</code></pre>
+          </div>
+          <h5 class="sub">Por que assim — explicação linha a linha</h5>
+          <ul class="expl">
+            <li><b>CTE primeiro:</b> <code>vendas_dia</code> fixa a granularidade diária <b>antes</b> da janela — a agregação roda uma vez, e não a cada linha do resultado.</li>
+            <li><b><code>AVG() OVER (ORDER BY … ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)</code>:</b> janela deslizante fixa em <b>linhas</b> = média dos últimos 7 registros sem self-join correlacionada.</li>
+            <li><b><code>ROWS</code> e não <code>RANGE</code>:</b> <code>RANGE</code> agruparia datas empatadas e inflaria a janela; <code>ROWS</code> conta posições físicas e custa menos memória.</li>
+            <li><b>Acumulado na mesma passada:</b> <code>SUM() OVER (… UNBOUNDED PRECEDING)</code> resolve o running total sem segunda CTE nem variável de sessão.</li>
+            <li><b>Por que não subquery:</b> a versão correlacionada reprocessa a CTE para cada linha (O(n²)); a janela ordena uma vez e varre em O(n log n).</li>
+          </ul>
+          <div class="col-t" style="margin-top:16px">Resultado simulado <span class="col-s">base sintética · 8 dias</span></div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>data_pedido</th><th>receita_dia</th><th>media_movel_7d</th><th>acumulado</th></tr></thead>
+              <tbody>
+                <tr><td>2026-09-01</td><td>12.400,00</td><td>12.400,00</td><td>12.400,00</td></tr>
+                <tr><td>2026-09-02</td><td>14.150,00</td><td>13.275,00</td><td>26.550,00</td></tr>
+                <tr><td>2026-09-03</td><td>9.870,00</td><td>12.140,00</td><td>36.420,00</td></tr>
+                <tr><td>2026-09-04</td><td>16.320,00</td><td>13.185,00</td><td>52.740,00</td></tr>
+                <tr><td>2026-09-05</td><td>11.980,00</td><td>12.944,00</td><td>64.720,00</td></tr>
+                <tr><td>2026-09-06</td><td>8.460,00</td><td>12.196,67</td><td>73.180,00</td></tr>
+                <tr><td>2026-09-07</td><td>15.240,00</td><td>12.631,43</td><td>88.420,00</td></tr>
+                <tr><td>2026-09-08</td><td>17.010,00</td><td>13.290,00</td><td>105.430,00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" data-panel="q2" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">sql · top 3 por região + quartil de LTV</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sql">-- Ranking regional e bucket de LTV em uma única consulta
+WITH receita_cliente AS (
+    SELECT  c.sk_cliente,
+            c.regiao,
+            c.nome_cliente,
+            SUM(v.valor_total)  AS receita_90d,
+            COUNT(DISTINCT v.sk_pedido) AS pedidos
+    FROM    fato_vendas v
+    JOIN    dim_cliente c ON c.sk_cliente = v.sk_cliente
+    WHERE   v.data_pedido &gt;= CURRENT_DATE - INTERVAL '90 days'
+    GROUP BY c.sk_cliente, c.regiao, c.nome_cliente
+),
+ranked AS (
+    SELECT  *,
+            ROW_NUMBER() OVER (
+                PARTITION BY regiao ORDER BY receita_90d DESC
+            ) AS rn_regiao,
+            NTILE(4) OVER (ORDER BY receita_90d DESC) AS quartil_ltv
+    FROM    receita_cliente
+)
+SELECT  regiao, nome_cliente, receita_90d, pedidos, quartil_ltv
+FROM    ranked
+QUALIFY rn_regiao &lt;= 3
+ORDER BY regiao, receita_90d DESC;</code></pre>
+          </div>
+          <h5 class="sub">Por que assim — explicação linha a linha</h5>
+          <ul class="expl">
+            <li><b>CTE em dois estágios:</b> primeiro agrega para a métrica de negócio (<code>receita_90d</code>), depois ranqueia — separar agregação de classificação torna cada passo testável.</li>
+            <li><b><code>PARTITION BY regiao</code>:</b> zera o ranking a cada região; sem ele o <code>ROW_NUMBER</code> seria global e esconderia os top de cada praça.</li>
+            <li><b><code>NTILE(4)</code>:</b> divide a base em quartis de LTV já ordenados — pronto para campanha de retenção (Q1 = churn iminente, Q4 = melhor conta).</li>
+            <li><b><code>QUALIFY</code> em vez de subquery:</b> filtra o resultado da janela sem abrir mais um nível de leitura; o plano consegue avaliar o filtro junto com a partição.</li>
+            <li><b>Portabilidade:</b> <code>QUALIFY</code> é nativo de Snowflake/BigQuery/Redshift. Em <b>PostgreSQL/SQL Server</b> a equivalência é envolver a CTE <code>ranked</code> e aplicar <code>WHERE rn_regiao &lt;= 3</code> — mesmo plano, sem janela duplicada.</li>
+          </ul>
+          <div class="col-t" style="margin-top:16px">Resultado simulado <span class="col-s">top 3 de cada região · base sintética</span></div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>regiao</th><th>nome_cliente</th><th>receita_90d</th><th>pedidos</th><th>quartil_ltv</th></tr></thead>
+              <tbody>
+                <tr><td>Sudeste</td><td>Alfa Logística</td><td>184.320,00</td><td>96</td><td>1</td></tr>
+                <tr><td>Sudeste</td><td>Vega Comércio</td><td>142.980,00</td><td>71</td><td>1</td></tr>
+                <tr><td>Sudeste</td><td>Nimpes Indústria</td><td>118.450,00</td><td>64</td><td>1</td></tr>
+                <tr><td>Sul</td><td>Beta Distribuidora</td><td>96.770,00</td><td>52</td><td>1</td></tr>
+                <tr><td>Sul</td><td>Delta Serviços</td><td>78.240,00</td><td>43</td><td>2</td></tr>
+                <tr><td>Sul</td><td>Gama Telecom</td><td>61.910,00</td><td>38</td><td>2</td></tr>
+                <tr><td>Nordeste</td><td>Ômega Varejo</td><td>72.600,00</td><td>40</td><td>2</td></tr>
+                <tr><td>Nordeste</td><td>Zeta Alimentos</td><td>54.380,00</td><td>29</td><td>3</td></tr>
+                <tr><td>Nordeste</td><td>Sigma Construção</td><td>41.120,00</td><td>22</td><td>3</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" data-panel="q3" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">sql · detecção de anomalias com LAG</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sql">-- Variação D-1 e desvio da média de 30 dias (janela que exclui o dia corrente)
+WITH diario AS (
+    SELECT  t.data_pedido,
+            SUM(v.valor_total) AS receita
+    FROM    fato_vendas v
+    JOIN    dim_tempo t ON t.sk_tempo = v.sk_tempo
+    GROUP BY t.data_pedido
+),
+com_variacao AS (
+    SELECT  *,
+            LAG(receita, 1) OVER (ORDER BY data_pedido) AS receita_d1,
+            receita - LAG(receita, 1) OVER (ORDER BY data_pedido) AS delta,
+            AVG(receita) OVER (
+                ORDER BY data_pedido
+                ROWS BETWEEN 30 PRECEDING AND 1 PRECEDING
+            ) AS media_30d
+    FROM    diario
+)
+SELECT  data_pedido,
+        receita,
+        receita_d1,
+        ROUND(100.0 * delta / NULLIF(receita_d1, 0), 1) AS variacao_pct,
+        ROUND(media_30d, 2) AS media_30d,
+        CASE
+            WHEN receita &lt; media_30d * 0.6 THEN 'QUEDA ANOMALA'
+            WHEN receita &gt; media_30d * 1.6 THEN 'PICO ATIPICO'
+            ELSE 'Normal'
+        END AS status
+FROM    com_variacao
+WHERE   media_30d IS NOT NULL
+ORDER BY data_pedido;</code></pre>
+          </div>
+          <h5 class="sub">Por que assim — explicação linha a linha</h5>
+          <ul class="expl">
+            <li><b><code>LAG(receita, 1)</code>:</b> traz o valor da linha anterior dentro do mesmo resultado — substitui o self-join clássico <code>t1.data = t2.data - 1</code> com custo de ordenação única.</li>
+            <li><b><code>NULLIF(receita_d1, 0)</code>:</b> anula a divisão quando não há D-1; sem isso, o primeiro dia do histórico quebra a query com <code>division by zero</code>.</li>
+            <li><b><code>ROWS BETWEEN 30 PRECEDING AND 1 PRECEDING</code>:</b> a média de referência <b>exclui o dia corrente</b> — incluí-lo criaria vazamento (leakage) e suavizaria justamente o pico que queremos flagrar.</li>
+            <li><b><code>CASE</code> com limiares relativos:</b> 60% abaixo / 60% acima da média move junto com a sazonalidade da base, em vez de um número fixo de reais.</li>
+            <li><b>Otimização:</b> uma única ordenação atende as três janelas (<code>LAG</code>, aritmética e <code>AVG</code>) — o planner reutiliza o mesmo <code>Sort</code> + <code>WindowAgg</code>.</li>
+          </ul>
+          <div class="col-t" style="margin-top:16px">Resultado simulado <span class="col-s">julho/2026 · base sintética</span></div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>data_pedido</th><th>receita</th><th>receita_d1</th><th>variacao_pct</th><th>media_30d</th><th>status</th></tr></thead>
+              <tbody>
+                <tr><td>2026-08-10</td><td>11.240,00</td><td>10.980,00</td><td>2,4</td><td>11.105,00</td><td class="mut">Normal</td></tr>
+                <tr><td>2026-08-11</td><td>4.180,00</td><td>11.240,00</td><td class="bad">-62,8</td><td>11.087,10</td><td class="bad">QUEDA ANOMALA</td></tr>
+                <tr><td>2026-08-12</td><td>11.560,00</td><td>4.180,00</td><td class="ok">176,6</td><td>11.044,83</td><td class="mut">Normal</td></tr>
+                <tr><td>2026-08-13</td><td>24.970,00</td><td>11.560,00</td><td class="ok">116,0</td><td>11.061,94</td><td class="ok">PICO ATIPICO</td></tr>
+                <tr><td>2026-08-14</td><td>10.890,00</td><td>24.970,00</td><td>-56,4</td><td>11.107,42</td><td class="mut">Normal</td></tr>
+                <tr><td>2026-08-15</td><td>9.750,00</td><td>10.890,00</td><td>-10,5</td><td>11.142,86</td><td class="mut">Normal</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="lab-actions">
+          <button class="mini js-copy" type="button">⧉ Copiar código</button>
+          <a class="mini" href="https://github.com/KleberHerlon?tab=repositories" target="_blank" rel="noopener">Ver no GitHub</a>
+          <span class="hint">3 consultas · explicações linha a linha</span>
+        </div>
+      </article>
+
+      <!-- ============ LAB 03 · STAR SCHEMA ============ -->
+      <article class="card lab reveal" id="lab-model">
+        <div class="lab-top">
+          <div class="tags">
+            <span class="tag">Data Modeling</span>
+            <span class="tag b">Star Schema</span>
+            <span class="tag b">Kimball</span>
+            <span class="tag y">dbt</span>
+            <span class="tag y">Data Warehouse</span>
+          </div>
+          <span class="lab-n">LAB 03</span>
+        </div>
+
+        <h3>Pipeline de Dados Fato/Dimensão &amp; Modelagem Star Schema</h3>
+        <p><strong>Modelagem Dimensional (Kimball) &amp; Engenharia de Analytics:</strong> construção de arquitetura Star Schema (Fato e Dimensões) a partir de dados transacionais, incluindo tratamento de SCD Type 2 (Slowly Changing Dimensions).</p>
+
+        <div class="tabs" role="tablist" aria-label="Abas do laboratório de modelagem">
+          <button class="tab on" type="button" role="tab" aria-selected="true" data-tab="dg">📐 Diagrama · OLTP → Star</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="dbt">🔧 Script dbt / SQL</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="tst">✅ Testes de integridade</button>
+        </div>
+
+        <div class="panel on" data-panel="dg" role="tabpanel">
+          <div class="dg-controls">
+            <button class="mini solid" type="button" id="starToggle">→ Converter para Star Schema</button>
+            <span class="dg-state" id="starState">Estado atual: OLTP · 3ª forma normal · alta cardinalidade de joins</span>
+          </div>
+
+          <div class="dg-view on" data-view="oltp">
+            <div class="tables-row">
+              <div class="erd"><h6>pedidos (transacional)</h6><ul>
+                <li>id_pedido <em class="pk">PK</em></li>
+                <li>id_cliente <em class="fk">FK</em></li>
+                <li>data_pedido <em>datetime</em></li>
+                <li>canal <em>varchar</em></li>
+                <li>status <em>varchar</em></li>
+                <li>total <em>numeric</em></li>
+              </ul></div>
+              <div class="erd"><h6>clientes</h6><ul>
+                <li>id_cliente <em class="pk">PK</em></li>
+                <li>nome <em>varchar</em></li>
+                <li>regiao <em>varchar</em></li>
+                <li>segmento <em>varchar</em></li>
+                <li>criado_em <em>datetime</em></li>
+              </ul></div>
+              <div class="erd"><h6>produtos</h6><ul>
+                <li>id_produto <em class="pk">PK</em></li>
+                <li>descricao <em>varchar</em></li>
+                <li>categoria <em>varchar</em></li>
+                <li>custo <em>numeric</em></li>
+              </ul></div>
+              <div class="erd"><h6>itens_pedido</h6><ul>
+                <li>id_item <em class="pk">PK</em></li>
+                <li>id_pedido <em class="fk">FK</em></li>
+                <li>id_produto <em class="fk">FK</em></li>
+                <li>qtd <em>int</em></li>
+                <li>preco_unit <em>numeric</em></li>
+              </ul></div>
+            </div>
+            <div class="dg-arrow">6+ joins por consulta · medidas espalhadas · histórico misturado ▼</div>
+            <p class="scenario"><span class="sc-t">Problema do OLTP para análise</span>
+              Cada pergunta de negócio exige reconstruir a linha do tempo com joins encadeados, e a
+              <b>alteração de um cadastro apaga o histórico anterior</b>. A modelagem dimensional resolve os dois problemas.
+            </p>
+          </div>
+
+          <div class="dg-view" data-view="star">
+            <div class="star">
+              <div class="erd"><h6>dim_cliente · SCD 2</h6><ul>
+                <li>sk_cliente <em class="sk">SK</em></li>
+                <li>nk_cliente <em>chave de negócio</em></li>
+                <li>nome / regiao / segmento <em>atributos</em></li>
+                <li>valid_from <em>timestamp</em></li>
+                <li>valid_to <em>timestamp</em></li>
+                <li>is_current <em>boolean</em></li>
+              </ul></div>
+              <div class="erd"><h6>dim_produto</h6><ul>
+                <li>sk_produto <em class="sk">SK</em></li>
+                <li>nk_produto <em>chave de negócio</em></li>
+                <li>descricao / categoria <em>atributos</em></li>
+                <li>custo_padrao <em>numeric</em></li>
+              </ul></div>
+              <div class="erd"><h6>dim_tempo</h6><ul>
+                <li>sk_tempo <em class="sk">SK</em></li>
+                <li>data_pedido <em>date</em></li>
+                <li>ano / mes / trimestre <em>atributos</em></li>
+                <li>dia_semana / feriado <em>atributos</em></li>
+              </ul></div>
+              <div class="erd fact"><h6>fct_vendas · granularidade = item de pedido</h6><ul>
+                <li>sk_venda <em class="sk">PK</em></li>
+                <li>sk_cliente → dim_cliente <em class="fk">FK</em></li>
+                <li>sk_produto → dim_produto <em class="fk">FK</em></li>
+                <li>sk_tempo → dim_tempo <em class="fk">FK</em></li>
+                <li>qtd_itens / receita / custo <em>medidas aditivas</em></li>
+              </ul></div>
+            </div>
+            <div class="dg-arrow">3 joins fixos · medidas centralizadas · histórico preservado ▲</div>
+            <p class="scenario"><span class="sc-t">Resultado</span>
+              <b>1 fato + 3 dimensões</b> respondem 90% das perguntas com o mesmo plano de execução; a SCD 2 em
+              <code>dim_cliente</code> permite reprocessar qualquer data passada exatamente como era naquele momento.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel" data-panel="dbt" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">sql · dbt · fct_vendas.sql</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sql">{{ config(
+    materialized = 'incremental',
+    unique_key   = 'sk_venda'
+) }}
+
+-- FATO · granularidade = item de pedido (linha de venda)
+with pedidos as (
+    select * from {{ ref('stg_pedidos') }}
+    {% if is_incremental() %}
+      where atualizado_em &gt; (select coalesce(max(atualizado_em), '1900-01-01')
+                              from {{ this }})
+    {% endif %}
+),
+itens as (
+    select sk_pedido, sk_produto, sk_item, qtd, preco_unitario
+    from {{ ref('stg_itens_pedido') }}
+)
+select
+    p.sk_pedido || '-' || i.sk_item::text as sk_venda,
+    c.sk_cliente,
+    pr.sk_produto,
+    t.sk_tempo,
+    i.qtd                                  as qtd_itens,
+    i.qtd * i.preco_unitario               as receita,
+    case when p.canal = 'marketplace'
+         then 'Marketplace' else 'Direto' end as canal,
+    p.atualizado_em
+from pedidos p
+join itens i                       on i.sk_pedido   = p.sk_pedido
+join {{ ref('dim_cliente') }} c    on c.nk_cliente  = p.id_cliente
+                                  and c.is_current          -- 1 linha vigente
+join {{ ref('dim_produto') }} pr   on pr.nk_produto = i.id_produto
+join {{ ref('dim_tempo') }}   t    on t.data_pedido = p.data_pedido</code></pre>
+          </div>
+
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">sql · dbt · dim_cliente.sql (SCD Type 2)</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sql">{{ config(materialized = 'table') }}
+
+-- DIMENSÃO SCD TYPE 2 · preserva o histórico de mudanças
+with base as (
+    select *,
+           md5(concat_ws('|', nome, regiao, segmento)) as hash_attr
+    from {{ ref('stg_clientes') }}
+),
+vigente as (select * from {{ this }} where is_current),
+delta as (
+    select b.* from base b
+    join vigente v on v.nk_cliente = b.nk_cliente
+    where b.hash_attr &lt;&gt; v.hash_attr          -- só o que mudou de fato
+),
+novos as (
+    select b.* from base b
+    left join vigente v on v.nk_cliente = b.nk_cliente
+    where v.nk_cliente is null
+),
+fechados as (                                   -- encerra a linha anterior
+    select v.sk_cliente, v.nk_cliente, v.nome, v.regiao, v.segmento,
+           v.valid_from, current_timestamp as valid_to, false as is_current
+    from vigente v join delta d on d.nk_cliente = v.nk_cliente
+),
+abertos as (                                    -- abre a nova vigência
+    select {{ dbt_utils.generate_surrogate_key(['nk_cliente','hash_attr']) }}
+               as sk_cliente,
+           b.nk_cliente, b.nome, b.regiao, b.segmento,
+           current_timestamp as valid_from, null::timestamp as valid_to,
+           true as is_current
+    from (select * from delta union all select * from novos) b
+)
+select * from fechados union all select * from abertos</code></pre>
+          </div>
+
+          <h5 class="sub">Por que assim</h5>
+          <ul class="expl">
+            <li><b>Surrogate key (<code>sk_*</code>):</b> chave interna estável — a chave de negócio muda (reimportação, correção), a SK não, então histórico de vendas nunca fica órfão.</li>
+            <li><b>Hash de atributos:</b> <code>md5(concat_ws(...))</code> compara a linha inteira de uma vez; comparação barata e sem lista de colunas quebrada quando o schema muda.</li>
+            <li><b>Is incremental:</b> só processa <code>atualizado_em &gt; max(...)</code> — custo proporcional à novidade, não ao tamanho da tabela.</li>
+            <li><b><code>and c.is_current</code> no join:</b> garante 1 linha por cliente na resposta corrente; para análise histórica, troca-se por predicado de janela (<code>valid_from &lt;= data &lt; valid_to</code>).</li>
+          </ul>
+        </div>
+
+        <div class="panel" data-panel="tst" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">yaml · dbt · schema.yml</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="yaml"># dbt/schema.yml — integridade referencial e regras de negócio
+version: 2
+
+models:
+  - name: fct_vendas
+    description: "Fato de vendas — granularidade: item de pedido."
+    columns:
+      - name: sk_venda
+        tests: [unique, not_null]
+      - name: sk_cliente
+        tests:
+          - relationships:
+              to: ref('dim_cliente')
+              field: sk_cliente        # FK -> PK (integridade referencial)
+      - name: sk_produto
+        tests:
+          - relationships:
+              to: ref('dim_produto')
+              field: sk_produto
+      - name: receita
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "&gt;= 0"     # receita nunca negativa
+
+  - name: dim_cliente
+    description: "SCD Type 2 — exatamente 1 linha vigente por cliente."
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: &gt;-
+            count(*) filter (where is_current)
+            &lt;= count(distinct nk_cliente)
+    columns:
+      - name: sk_cliente
+        tests: [unique, not_null]
+      - name: valid_to
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "is null or valid_to &gt; valid_from"</code></pre>
+          </div>
+          <h5 class="sub">Rodando o gate de integridade</h5>
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">shell · dbt test</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="sh">$ dbt test --select fct_vendas dim_cliente
+
+PASS  fct_vendas.sk_venda           unique
+PASS  fct_vendas.sk_cliente         relationships (dim_cliente)
+PASS  fct_vendas.receita            expression_is_true &gt;= 0
+PASS  dim_cliente                   1 linha vigente por cliente
+PASS  dim_cliente.valid_to          valid_to &gt; valid_from</code></pre>
+          </div>
+          <ul class="expl">
+            <li><b><code>relationships</code></b> valida FK → PK a cada execução: dado órfão é pego no repositório, não no dashboard do CEO.</li>
+            <li><b><code>unique</code> + <code>not_null</code></b> na SK protegem a cardinalidade do fato — uma SK duplicada duplicaria a receita.</li>
+            <li><b><code>expression_is_true</code></b> formaliza regra de negócio (receita ≥ 0, SCD coesa) que nenhum tipo de coluna garante sozinho.</li>
+          </ul>
+        </div>
+
+        <div class="lab-actions">
+          <button class="mini js-copy" type="button">⧉ Copiar código</button>
+          <a class="mini" href="https://github.com/KleberHerlon?tab=repositories" target="_blank" rel="noopener">Ver no GitHub</a>
+          <span class="hint">Clique no diagrama para transformar o esquema</span>
+        </div>
+      </article>
+
+      <!-- ============ LAB 04 · AIRFLOW ============ -->
+      <article class="card lab reveal" id="lab-airflow">
+        <div class="lab-top">
+          <div class="tags">
+            <span class="tag">Apache Airflow</span>
+            <span class="tag b">Data Observability</span>
+            <span class="tag b">Orchestration</span>
+            <span class="tag y">SLA Monitoring</span>
+          </div>
+          <span class="lab-n">LAB 04</span>
+        </div>
+
+        <h3>Dashboard Integrado de Telemetria de Pipeline (Airflow/Orquestração)</h3>
+        <p><strong>Observabilidade de Dados &amp; Orquestração:</strong> painel simulado de monitoramento de DAGs (Apache Airflow), metrificando SLA, falhas de ingestão, volumetria diária e tempo de execução de pipelines.</p>
+
+        <div class="tabs" role="tablist" aria-label="Abas do laboratório de orquestração">
+          <button class="tab on" type="button" role="tab" aria-selected="true" data-tab="pnl">📊 Painel de DAGs</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="dag">🐍 Código da DAG</button>
+        </div>
+
+        <div class="panel on" data-panel="pnl" role="tabpanel">
+          <div class="dag-top">
+            <div class="dq-grid" id="dagKpis" style="flex:1;margin-top:0" aria-live="polite"></div>
+            <button class="mini solid" type="button" data-run="dag">▶ Executar simulação</button>
+          </div>
+          <div class="col-t" style="margin-top:16px">Duração por execução <span class="col-s">últimas 12 janelas · meta de SLA 45 min</span></div>
+          <div class="dag-chart" id="dagChart" role="img" aria-label="Gráfico de barras com a duração das execuções"></div>
+          <div class="col-t" style="margin-top:16px">Histórico de execuções <span class="col-s">sucesso · retentativa · falha</span></div>
+          <div class="tbl-wrap">
+            <table class="tbl" id="dagTbl">
+              <thead><tr><th>dag_id</th><th>janela</th><th>início</th><th>duração</th><th>SLA</th><th>status</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="scenario" style="margin-top:14px"><span class="sc-t">Como ler</span>
+            <b>Retentativa</b> = a tarefa reentrou na fila de retry e ainda pode fechar dentro do SLA.
+            <b>Falha</b> = estourou as 3 tentativas e disparou o webhook de alerta. A barra vermelha é a janela
+            que consumiu a folga do contrato de dados.
+          </p>
+        </div>
+
+        <div class="panel" data-panel="dag" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">python · airflow dag</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="python"># ============================================================
+# DAG de ingestão de vendas · orquestrador + alertas de SLA
+# ============================================================
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from airflow.providers.slack.hooks.slack_webhook import SlackWebhookOperator
+
+DEFAULT_ARGS = {
+    "owner": "data-eng",
+    "retries": 3,
+    "retry_delay": timedelta(minutes=10),
+    "email_on_failure": True,
+    "email": ["data@empresa.com"],
+    "sla": timedelta(minutes=45),        # contrato de dados D-1 07:00
+}
+
+def on_failure_alert(context):
+    """Webhook para o canal #data-alerts com o contexto da falha."""
+    SlackWebhookOperator(
+        task_id="alerta_falha",
+        slack_webhook_conn_id="slack_webhook",
+        text=(
+            f":red_circle: *DAG `{context['dag'].dag_id}` falhou*\n"
+            f"execucao: `{context['execution_date']}`\n"
+            f"tarefa: `{context['task_instance'].task_id}`\n"
+            f"log: {context['task_instance'].log_url}"
+        ),
+    ).execute(context=context)
+
+def extract(**context):
+    """Baixa a particao D-1 da API e grava na camada Bronze."""
+    ...
+
+def transform(**context):
+    """Sanitiza, deduplica e grava a particao Silver (Delta)."""
+    ...
+
+def load_and_check(**context):
+    """Recarrega o Gold, publica volumetria e valida a contagem."""
+    ...
+
+with DAG(
+    dag_id="ingest_vendas_diaria",
+    default_args=DEFAULT_ARGS,
+    start_date=datetime(2026, 1, 1),
+    schedule="0 6 * * *",               # 06:00, apos o fechamento D-1
+    catchup=False,
+    max_active_runs=1,                  # nao sobrepor particao em reprocesso
+    on_failure_callback=on_failure_alert,
+    tags=["sla-45min", "bronze-silver-gold"],
+) as dag:
+    t1 = PythonOperator(task_id="extract",       python_callable=extract)
+    t2 = PythonOperator(task_id="transform",     python_callable=transform)
+    t3 = PythonOperator(task_id="load_and_check", python_callable=load_and_check)
+    t1 &gt;&gt; t2 &gt;&gt; t3</code></pre>
+          </div>
+          <h5 class="sub">Por que assim</h5>
+          <ul class="expl">
+            <li><b><code>sla</code> em <code>DEFAULT_ARGS</code></b> — o Airflow passa a marcar a execução como <i>upstream SLA miss</i> sozinho e agenda o alerta, sem cron externo.</li>
+            <li><b><code>on_failure_callback</code></b> — o webhook recebe o <code>log_url</code> da tarefa; quem recebe a mensagem vai direto ao erro, sem navegar no scheduler.</li>
+            <li><b><code>retries=3</code> + <code>retry_delay=10min</code></b> — falha transitória de API não vira incidente; a coluna "retentativa" do painel é exatamente essa fila.</li>
+            <li><b><code>max_active_runs=1</code></b> — impede duas janelas escrevendo na mesma partição, a causa clássica de dado duplicado em lake.</li>
+            <li><b><code>catchup=False</code></b> — deploy não dispara histórico acumulado de execuções em produção.</li>
+          </ul>
+        </div>
+
+        <div class="lab-actions">
+          <button class="mini solid" type="button" data-run="dag">▶ Executar simulação</button>
+          <button class="mini js-copy" type="button">⧉ Copiar código</button>
+          <a class="mini" href="https://github.com/KleberHerlon?tab=repositories" target="_blank" rel="noopener">Ver no GitHub</a>
+          <span class="hint">Status gerados localmente · sem conexão com scheduler</span>
+        </div>
+
+        <p class="ai-note"><span class="ai-ic" aria-hidden="true">💡</span>
+          <span><b>Nota de Transparência:</b> Este projeto foi concebido como um estudo prático e demonstração arquitetural. O código e os scripts foram estruturados com suporte de Engenharia de Prompt e Inteligência Artificial Generativa para validação de conceitos de orquestração e Big Data.</span>
+        </p>
+      </article>
+
+      <!-- ============ LAB 05 · LAKEHOUSE ============ -->
+      <article class="card lab reveal" id="lab-lake">
+        <div class="lab-top">
+          <div class="tags">
+            <span class="tag">PySpark</span>
+            <span class="tag b">Delta Lake</span>
+            <span class="tag b">AWS S3 / Azure Blob</span>
+            <span class="tag y">Medallion Architecture</span>
+          </div>
+          <span class="lab-n">LAB 05</span>
+        </div>
+
+        <h3>Arquitetura Lakehouse &amp; Processamento em Nuvem (AWS / Azure / Spark)</h3>
+        <p><strong>Arquitetura Medallion (Bronze, Silver, Gold):</strong> pipeline de processamento em lote e streaming simulando a transição de dados brutos para camada analítica com PySpark.</p>
+
+        <div class="tabs" role="tablist" aria-label="Abas do laboratório de lakehouse">
+          <button class="tab on" type="button" role="tab" aria-selected="true" data-tab="med">🏛️ Arquitetura · 3 camadas</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="spark">⚡ PySpark · Delta Lake</button>
+        </div>
+
+        <div class="panel on" data-panel="med" role="tabpanel">
+          <div class="dg-controls">
+            <button class="mini solid" type="button" data-run="med">▶ Executar simulação</button>
+            <span class="dg-state" id="medState">Clique em uma camada para ver o contrato dela · simulação roda Bronze → Silver → Gold</span>
+          </div>
+
+          <div class="medallion">
+            <button class="layer bronze" type="button" data-layer="bronze">
+              <span class="l-n">Camada 1</span>
+              <span class="l-t">🥉 Bronze</span>
+              <span class="l-d">Ingestão de dados brutos (JSON/Parquet), 1:1 com a origem, sem transformação.</span>
+              <span class="l-c" data-count-layer>1.240.000 linhas</span>
+              <span class="l-fill"></span>
+            </button>
+            <button class="layer silver" type="button" data-layer="silver">
+              <span class="l-n">Camada 2</span>
+              <span class="l-t">🥈 Silver</span>
+              <span class="l-d">Dados limpos, deduplicados e enriquecidos, tipados e particionados.</span>
+              <span class="l-c" data-count-layer>980.412 linhas</span>
+              <span class="l-fill"></span>
+            </button>
+            <button class="layer gold" type="button" data-layer="gold">
+              <span class="l-n">Camada 3</span>
+              <span class="l-t">🥇 Gold</span>
+              <span class="l-d">Agregações de negócio prontas para visualização no Power BI.</span>
+              <span class="l-c" data-count-layer>42.780 linhas</span>
+              <span class="l-fill"></span>
+            </button>
+          </div>
+
+          <div class="layer-detail" id="medDetail" aria-live="polite"></div>
+        </div>
+
+        <div class="panel" data-panel="spark" role="tabpanel">
+          <div class="codebox">
+            <div class="cb-head"><span class="cb-lang">python · pyspark + delta lake</span><button class="cb-copy" type="button">⧉ Copiar</button></div>
+<pre><code class="src" data-lang="python"># ============================================================
+# Lakehouse · Arquitetura Medallion (Bronze → Silver → Gold)
+# ============================================================
+from pyspark.sql import SparkSession, functions as F
+
+spark = (SparkSession.builder
+         .appName("lakehouse-medallion")
+         .config("spark.sql.extensions",
+                 "io.delta.sql.DeltaSparkSessionExtension")
+         .config("spark.sql.catalog.spark_catalog",
+                 "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+         .getOrCreate())
+
+# ---------- BRONZE · ingestão crua, sem transformação ----------
+bronze = (spark.read.format("json")
+          .option("mode", "PERMISSIVE")     # registro quebrado vira null
+          .load("s3://lake/bronze/eventos/"))
+
+(bronze.write.format("parquet")
+       .partitionBy("dt_chegada")           # particionamento = data
+       .mode("append")
+       .save("s3://lake/bronze/eventos/"))
+
+# ---------- SILVER · limpeza, dedup e enriquecimento ----------
+silver = (bronze
+          .dropDuplicates(["id_evento", "versao"])        # deduplica
+          .withColumn("evento", F.trim(F.lower("tipo_evento")))
+          .withColumn("dt_evento", F.to_date("dt_evento"))
+          .withColumn("valor", F.col("valor").cast("decimal(18,2)"))
+          .filter(F.col("id_evento").isNotNull()))
+
+(silver.write.format("delta")
+       .partitionBy("dt_evento")
+       .mode("overwrite")
+       .option("replaceWhere", "dt_evento &gt;= '2026-01-01'")   # overwrite seletivo
+       .save("s3://lake/silver/eventos/"))
+
+# ---------- GOLD · agregação de negócio para o Power BI ----------
+gold = (silver.groupBy("dt_evento", "evento", "regiao")
+        .agg(F.countDistinct("id_evento").alias("eventos"),
+             F.count(F.lit(1)).alias("ocorrencias"),
+             F.sum("valor").alias("valor_total")))
+
+(gold.write.format("delta")
+     .mode("overwrite")
+     .save("s3://lake/gold/kpi_eventos"))</code></pre>
+          </div>
+          <h5 class="sub">Por que assim</h5>
+          <ul class="expl">
+            <li><b><code>PERMISSIVE</code></b> — arquivo malformado vira <code>null</code> em vez de derrubar o lote inteiro; o registro sujo é tratado na Silver, não perdido na Bronze.</li>
+            <li><b><code>partitionBy("dt_evento")</code></b> — filtro por data lê só as partições pedidas (pruning), que é o que mantém o custo do Spark previsível.</li>
+            <li><b>Delta + <code>replaceWhere</code></b> — reprocessamento sobrescreve apenas o intervalo afetado, com <b>transação atômica</b> e histórico de versões (time travel).</li>
+            <li><b><code>dropDuplicates(["id_evento", "versao"])</code></b> — chave de idempotência: reexecutar a mesma janela não duplica métrica.</li>
+            <li><b>Gold só agrrega</b> — nenhuma regra de limpeza mora na camada de consumo; o Power BI lê tabela pequena e estável.</li>
+          </ul>
+        </div>
+
+        <div class="lab-actions">
+          <button class="mini solid" type="button" data-run="med">▶ Executar simulação</button>
+          <button class="mini js-copy" type="button">⧉ Copiar código</button>
+          <a class="mini" href="https://github.com/KleberHerlon?tab=repositories" target="_blank" rel="noopener">Ver no GitHub</a>
+          <span class="hint">Clique nas camadas para ver o contrato de cada uma</span>
+        </div>
+
+        <p class="ai-note"><span class="ai-ic" aria-hidden="true">💡</span>
+          <span><b>Nota de Transparência:</b> Este projeto foi concebido como um estudo prático e demonstração arquitetural. O código e os scripts foram estruturados com suporte de Engenharia de Prompt e Inteligência Artificial Generativa para validação de conceitos de orquestração e Big Data.</span>
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <section id="competencias">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-title">04 — Competências</div>
+      <div class="sec-title">05 — Competências</div>
       <h2>Stack técnica + domínio clínico</h2>
       <p class="lead">Ferramentas que uso no dia a dia, somadas ao vocabulário da prática fisioterapêutica — a combinação que faz a diferença em projetos de health analytics.</p>
     </div>
@@ -865,7 +1970,7 @@ with open("Dataset.csv", "wt+", newline="") as f:
 <section id="leitura">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-title">05 — Leituras</div>
+      <div class="sec-title">06 — Leituras</div>
       <h2>52 livros lidos em 2026</h2>
       <p class="lead">De Marx a Machado, de Fanon a Sagan: a leitura é a base do meu pensamento crítico — o mesmo que aplico para questionar, modelar e interpretar dados. Interesse constante por História, política, ciência e literatura.</p>
     </div>
@@ -939,7 +2044,7 @@ with open("Dataset.csv", "wt+", newline="") as f:
 <section id="experiencia">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-title">06 — Experiência</div>
+      <div class="sec-title">07 — Experiência</div>
       <h2>Trajetória profissional</h2>
       <p class="lead">De desenvolvimento de sistemas a supervisão de operações com dados — sempre no ponto onde informação vira decisão.</p>
     </div>
@@ -981,7 +2086,7 @@ with open("Dataset.csv", "wt+", newline="") as f:
 <section class="contact" id="contato">
   <div class="wrap contact-in">
     <div>
-      <div class="sec-title">07 — Contato</div>
+      <div class="sec-title">08 — Contato</div>
       <h2>Vamos conversar?</h2>
       <p class="lead">Aberto a oportunidades remotas em análise de dados, engenharia de dados, BI e health analytics.</p>
       <div class="contact-list">
@@ -1210,6 +2315,556 @@ with open("Dataset.csv", "wt+", newline="") as f:
       if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
     });
   }
+})();
+</script>
+
+<script>
+/* ============ LABS · Engenharia de Dados ============ */
+(function(){
+  "use strict";
+
+  /* ---------- realce de sintaxe (leve, sem dependência) ---------- */
+  var KW = {
+    sql:'SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|GROUP|BY|ORDER|HAVING|JOIN|LEFT|RIGHT|INNER|OUTER|FULL|ON|AS|WITH|OVER|PARTITION|WINDOW|RANGE|ROWS|ROW_NUMBER|RANK|DENSE_RANK|PERCENT_RANK|NTILE|LAG|LEAD|FIRST_VALUE|LAST_VALUE|SUM|AVG|MIN|MAX|COUNT|CASE|WHEN|THEN|ELSE|END|AND|OR|NOT|NULL|IS|DISTINCT|UNION|ALL|QUALIFY|BETWEEN|INTERVAL|CREATE|TABLE|VIEW|INDEX|ALTER|DROP|TRUNCATE|VALUES|INTO|USING|COALESCE|CAST|EXTRACT|DESC|ASC|LIMIT|OFFSET|RETURNING|REFERENCES|PRIMARY|KEY|FOREIGN|DEFAULT|BOOLEAN|INTEGER|BIGINT|VARCHAR|TEXT|TIMESTAMP|NUMERIC|DECIMAL|SERIAL|BIGSERIAL|IF|EXISTS|REPLACE|CURRENT_DATE|CURRENT_TIMESTAMP|TRUE|FALSE|FILTER|LIKE|ILIKE|SET|FUNCTION|PROCEDURE|BEGIN|COMMIT|ROLLBACK|RECURSIVE|EXCEPT|INTERSECT|NULLS|MD5|CONCAT_WS|ROUND|QUALIFY',
+    python:'def|class|import|from|as|return|if|elif|else|for|while|in|not|and|or|is|with|try|except|finally|raise|lambda|None|True|False|yield|pass|global|nonlocal|print|len|range|str|int|float|dict|list|set|tuple|open|self|async|await|break|continue|assert|del|enumerate|zip|sorted|sum|abs|super|isinstance|staticmethod|property',
+    yaml:'version|models|columns|name|description|tests|to|field|expression|ref|source|materialized|unique_key|config|relationships',
+    sh:'dbt|test|select|pass|fail|model'
+  };
+  var COM = { sql:'--[^\\n]*', python:'#[^\\n]*', yaml:'#[^\\n]*', sh:'#[^\\n]*' };
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function highlight(code, lang){
+    var kw  = KW[lang] || KW.sql;
+    var com = COM[lang] || '--[^\\n]*|#[^\\n]*';
+    var src = '("(?:[^"\\\\]|\\\\.)*"|\'(?:[^\'\\\\]|\\\\.)*\')'
+            + '|(' + com + ')'
+            + '|\\b(' + kw + ')\\b'
+            + '|\\b(\\d+(?:\\.\\d+)?)\\b';
+    var re = new RegExp(src, 'gi');
+    return esc(code).replace(re, function(m, s1, c1, k1, n1){
+      if(s1) return '<span class="t-str">'+s1+'</span>';
+      if(c1) return '<span class="t-com">'+c1+'</span>';
+      if(k1) return '<span class="t-kw">'+k1+'</span>';
+      if(n1) return '<span class="t-num">'+n1+'</span>';
+      return m;
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('code.src'), function(el){
+    el.setAttribute('data-raw', el.textContent);
+    el.innerHTML = highlight(el.getAttribute('data-raw'), el.getAttribute('data-lang') || 'sql');
+  });
+
+  /* ---------- abas por card ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.lab'), function(card){
+    var tabs = card.querySelectorAll('.tab');
+    Array.prototype.forEach.call(tabs, function(t){
+      t.addEventListener('click', function(){
+        Array.prototype.forEach.call(tabs, function(x){
+          var on = (x === t);
+          x.classList.toggle('on', on);
+          x.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(card.querySelectorAll('.panel'), function(p){
+          p.classList.toggle('on', p.getAttribute('data-panel') === t.getAttribute('data-tab'));
+        });
+      });
+    });
+  });
+
+  /* ---------- copiar código ---------- */
+  function flash(btn){
+    var old = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1500);
+  }
+  function legacyCopy(txt, btn){
+    var ta = document.createElement('textarea');
+    ta.value = txt; ta.setAttribute('readonly','');
+    ta.style.position = 'fixed'; ta.style.top = '-1000px';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e){ ok = false; }
+    document.body.removeChild(ta);
+    if(ok){ flash(btn); } else { btn.textContent = 'Ctrl+C'; setTimeout(function(){ btn.textContent = '⧉ Copiar'; }, 1600); }
+  }
+  function copyText(txt, btn){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ flash(btn); }, function(){ legacyCopy(txt, btn); });
+    } else { legacyCopy(txt, btn); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.cb-copy'), function(btn){
+    btn.addEventListener('click', function(){
+      var box = btn.closest('.codebox');
+      var code = box && box.querySelector('code');
+      if(code) copyText(code.getAttribute('data-raw') || code.textContent, btn);
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.js-copy'), function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.lab');
+      if(!card) return;
+      var code = card.querySelector('.panel.on code.src') || card.querySelector('code.src');
+      if(code) copyText(code.getAttribute('data-raw') || code.textContent, btn);
+    });
+  });
+
+  /* ---------- helpers do sandbox ETL ---------- */
+  var CANON = ['nome','cpf','email','telefone','nascimento','valor'];
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+  var PREP = { da:1, de:1, do:1, das:1, dos:1, e:1 };
+
+  function digits(v){ return String(v == null ? '' : v).replace(/\D/g, ''); }
+  function pad2(n){ return (n < 10 ? '0' : '') + n; }
+
+  function cpfCheck(v){
+    var c = digits(v);
+    if(!/^\d{11}$/.test(c)) return false;
+    if(/^(\d)\1{10}$/.test(c)) return false;
+    var s = 0, i;
+    for(i = 0; i < 9; i++) s += parseInt(c[i], 10) * (10 - i);
+    var d1 = (s % 11) < 2 ? 0 : 11 - (s % 11);
+    if(d1 !== parseInt(c[9], 10)) return false;
+    s = 0;
+    for(i = 0; i < 10; i++) s += parseInt(c[i], 10) * (11 - i);
+    var d2 = (s % 11) < 2 ? 0 : 11 - (s % 11);
+    return d2 === parseInt(c[10], 10);
+  }
+  function makeCpf(base){
+    function dv(str){
+      var s = 0;
+      for(var i = 0; i < str.length; i++) s += parseInt(str[i], 10) * (str.length + 1 - i);
+      var r = (s * 10) % 11;
+      return r === 10 ? 0 : r;
+    }
+    var d1 = dv(base);
+    return base + d1 + dv(base + d1);
+  }
+  function maskCpf(v){
+    var c = digits(v);
+    if(c.length !== 11) return null;
+    return c.slice(0,3) + '.' + c.slice(3,6) + '.' + c.slice(6,9) + '-' + c.slice(9);
+  }
+  function maskPhone(v){
+    var d = digits(v);
+    if(d.length !== 10 && d.length !== 11) return null;
+    return '(' + d.slice(0,2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+  }
+  function normDate(v){
+    var s = String(v == null ? '' : v).trim(), m;
+    function ok(y, mo, d){
+      y = +y; mo = +mo; d = +d;
+      var dt = new Date(Date.UTC(y, mo - 1, d));
+      if(dt.getUTCFullYear() !== y || dt.getUTCMonth() !== mo - 1 || dt.getUTCDate() !== d) return null;
+      return y + '-' + pad2(mo) + '-' + pad2(d);
+    }
+    if((m = s.match(/^(\d{2})\/(\d{2})\/(\d{4})$/))) return ok(m[3], m[2], m[1]);
+    if((m = s.match(/^(\d{2})-(\d{2})-(\d{4})$/)))   return ok(m[3], m[2], m[1]);
+    if((m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/)))   return ok(m[1], m[2], m[3]);
+    return null;
+  }
+  function money(v){
+    var s = String(v == null ? '' : v).replace(/[^\d,.-]/g, '').trim();
+    if(!s) return null;
+    if(s.indexOf(',') >= 0) s = s.replace(/\./g, '').replace(',', '.');
+    var n = parseFloat(s);
+    return isNaN(n) ? null : n;
+  }
+  function brl(n){
+    return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits:2, maximumFractionDigits:2 });
+  }
+  function titleName(v){
+    return String(v == null ? '' : v).toLowerCase().split(/\s+/).filter(Boolean).map(function(w){
+      return PREP[w] ? w : w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(' ');
+  }
+  function splitLine(line){
+    var sep = (line.split(',').length >= line.split(';').length) ? ',' : ';';
+    var out = [], cur = '', q = false;
+    for(var i = 0; i < line.length; i++){
+      var c = line.charAt(i);
+      if(q){
+        if(c === '"'){ if(line.charAt(i+1) === '"'){ cur += '"'; i++; } else { q = false; } }
+        else cur += c;
+      } else if(c === '"'){ q = true; }
+      else if(c === sep){ out.push(cur); cur = ''; }
+      else cur += c;
+    }
+    out.push(cur);
+    return out;
+  }
+  function pick(header, names){
+    for(var i = 0; i < header.length; i++){
+      for(var j = 0; j < names.length; j++){
+        if(header[i].indexOf(names[j]) >= 0) return i;
+      }
+    }
+    return -1;
+  }
+  function kpi(v, l, cls){
+    return '<div class="dq' + (cls ? ' ' + cls : '') + '"><div class="v">' + v + '</div><div class="l">' + l + '</div></div>';
+  }
+  function cellClass(f, i, v){
+    if(!f) return '';
+    if(f.dup) return 'mut';
+    if(f.empty && f.empty[i]) return 'mut';
+    if(i === 1 && f.badCpf) return 'bad';
+    if(i === 2 && f.badEmail) return 'bad';
+    if(i === 3 && f.badPhone) return 'bad';
+    if(i === 4 && f.badDate) return 'bad';
+    if(i === 5 && !v) return 'bad';
+    return '';
+  }
+  function buildTable(tbody, head, rows){
+    var html = '<tr>' + head.map(function(c){ return '<th>' + esc(c) + '</th>'; }).join('') + '</tr>';
+    html += rows.map(function(r){
+      var tds = r.vals.map(function(v, i){
+        var c = cellClass(r.flag, i, v);
+        return '<td' + (c ? ' class="' + c + '"' : '') + '>' + (v === '' ? '—' : esc(v)) + '</td>';
+      }).join('');
+      return '<tr' + (r.flag && r.flag.dup ? ' class="duprow"' : '') + '>' + tds + '</tr>';
+    }).join('');
+    tbody.innerHTML = html;
+  }
+
+  function etlRun(){
+    var box = document.getElementById('etlIn');
+    var tb = document.querySelector('#etlBefore tbody');
+    var ta = document.querySelector('#etlAfter tbody');
+    var kp = document.getElementById('etlKpis');
+    if(!box || !tb || !ta || !kp) return;
+
+    var lines = box.value.split(/\r?\n/).map(function(l){ return l.trim(); }).filter(function(l){ return l.length; });
+    if(!lines.length){
+      tb.innerHTML = '<tr><td class="mut">sem dados</td></tr>';
+      ta.innerHTML = '<tr><td class="mut">sem dados</td></tr>';
+      kp.innerHTML = '';
+      return;
+    }
+
+    var rows = lines.map(splitLine);
+    var head0 = rows[0].map(function(h){ return String(h).trim().toLowerCase(); });
+    var isHeader = head0.some(function(h){
+      return ['nome','cpf','email','e-mail','telefone','nascimento','valor','name','mail','phone'].indexOf(h) >= 0;
+    });
+    var header = isHeader ? head0 : CANON.slice();
+    var data = isHeader ? rows.slice(1) : rows;
+    if(!data.length){ tb.innerHTML = '<tr><td class="mut">sem registros</td></tr>'; ta.innerHTML = tb.innerHTML; kp.innerHTML = ''; return; }
+
+    var map = {
+      nome:      pick(header, ['nome','name']),
+      cpf:       pick(header, ['cpf','cnpj','documento','doc']),
+      email:     pick(header, ['email','e-mail','mail']),
+      telefone:  pick(header, ['telefone','fone','phone','celular']),
+      nascimento:pick(header, ['nascimento','nasc','birth','dt_nasc']),
+      valor:     pick(header, ['valor','price','total','montante','preco'])
+    };
+    CANON.forEach(function(k, i){ if(map[k] < 0) map[k] = Math.min(i, header.length - 1); });
+
+    var seen = Object.create(null);
+    var stat = { linhas:data.length, dup:0, final:0, nulos:0, cpf:0, email:0, tel:0, dt:0 };
+    var before = [], after = [];
+
+    data.forEach(function(row){
+      var raw = CANON.map(function(k){
+        var v = row[map[k]];
+        return String(v === undefined || v === null ? '' : v).trim();
+      });
+      var key = raw.join('|').toLowerCase().replace(/\s+/g, ' ').replace(/["']/g, '');
+      var dup = !!seen[key];
+      seen[key] = true;
+
+      var f = { dup:dup, empty:[0,0,0,0,0,0] };
+      before.push({ vals:raw, flag:f });
+      if(dup){ stat.dup++; return; }
+      stat.final++;
+
+      var clean = [];
+      /* nome */
+      if(!raw[0]){ stat.nulos++; f.empty[0] = true; clean.push(''); }
+      else clean.push(titleName(raw[0]));
+      /* cpf */
+      var c = maskCpf(raw[1]);
+      if(!c || !cpfCheck(c)){ stat.cpf++; f.badCpf = true; clean.push(''); }
+      else clean.push(c);
+      /* e-mail */
+      var e = raw[2].toLowerCase();
+      if(!e){ stat.nulos++; f.empty[2] = true; f.badEmail = true; clean.push(''); }
+      else if(!EMAIL_RE.test(e)){ stat.email++; f.badEmail = true; clean.push(''); }
+      else clean.push(e);
+      /* telefone */
+      var p = maskPhone(raw[3]);
+      if(!p){ if(raw[3]){ f.badPhone = true; } else { stat.nulos++; f.empty[3] = true; } clean.push(''); }
+      else { if(p !== raw[3]) stat.tel++; clean.push(p); }
+      /* data */
+      var d = normDate(raw[4]);
+      if(!d){ if(!raw[4]){ stat.nulos++; f.empty[4] = true; } else { f.badDate = true; } clean.push(''); }
+      else { if(d !== raw[4]) stat.dt++; clean.push(d); }
+      /* valor */
+      var v = money(raw[5]);
+      if(v === null){ if(!raw[5]){ stat.nulos++; f.empty[5] = true; } clean.push(''); }
+      else clean.push(brl(v));
+
+      after.push({ vals:clean, flag:f });
+    });
+
+    buildTable(tb, CANON, before);
+    buildTable(ta, CANON, after);
+    kp.innerHTML =
+      kpi(stat.linhas, 'linhas lidas') +
+      kpi(stat.final, 'linhas aproveitadas') +
+      kpi(stat.dup, 'duplicados removidos', stat.dup ? 'warn' : '') +
+      kpi(stat.nulos, 'nulos tratados', stat.nulos ? 'warn' : '') +
+      kpi(stat.cpf, 'CPF inválido', stat.cpf ? 'bad' : '') +
+      kpi(stat.email, 'e-mail inválido', stat.email ? 'bad' : '') +
+      kpi(stat.tel, 'telefones normalizados') +
+      kpi(stat.dt, 'datas normalizadas');
+  }
+
+  function csvQuote(v){
+    v = String(v);
+    return /[";,]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  }
+  function sampleCsv(){
+    var a = makeCpf('390533447'), b = makeCpf('111222333'), c = makeCpf('529982247'),
+        d = makeCpf('123456789'), e = makeCpf('999888777'), g = makeCpf('456789123');
+    var bad = c.slice(0, 10) + ((parseInt(c.charAt(10), 10) + 1) % 10);
+    var rows = [
+      ['nome','cpf','email','telefone','nascimento','valor'],
+      ['joão da  silva', maskCpf(a), 'JOAO.Silva@Empresa.COM.BR', '(12) 98169-4128', '15/03/1990', 'R$ 1.234,56'],
+      ['MARIA APARECIDA SOUZA', maskCpf(b), 'maria.souza@empresa.com', '12981694128', '1990-12-01', '899,90'],
+      ['carlos eduardo lima', maskCpf(g), 'carlos.lima@empresa.com', '(11) 91234-5678', '01/12/1985', '2.500,00'],
+      ['ANA BEATRIZ ROCHA', maskCpf(c), 'ana@@empresa', '(11) 99999-1234', '10/10/1992', '350,00'],
+      ['JOSEFA LIMA', maskCpf(bad), 'josefa.lima@empresa.com', '11999990000', '99/99/1990', '1.000,00'],
+      ['', maskCpf(d), 'semnome@empresa.com', '(21) 98888-7777', '05/05/1988', '750,25'],
+      ['pedro henrique', maskCpf(e), '', '(31) 97777-6666', '20/07/1995', '4.300,00'],
+      ['joão da silva', maskCpf(a), 'JOAO.Silva@Empresa.COM.BR', '(12) 98169-4128', '15/03/1990', 'R$ 1.234,56'],
+      ['LUISA FERNANDES', maskCpf(c), 'luisa.fernandes@empresa.com', '31988887777', '1993-06-30', '1500']
+    ];
+    return rows.map(function(r){ return r.map(csvQuote).join(','); }).join('\n');
+  }
+
+  var GEN_NAMES = ['Ana Beatriz Rocha','Carlos Eduardo Lima','Mariana Prado','Rafael dos Santos',
+    'Juliana Almeida','Bruno Carvalho','Patrícia Nunes','Thiago Moreira','Camila Barbosa','Diego Fernandes',
+    'Fernanda Ribeiro','Lucas Teixeira','Renata Cardoso','Marcelo Pinto','Vanessa Correia'];
+  var GEN_DDD = ['11','12','13','19','21','31','41','51','61','71','85'];
+
+  function randSample(){
+    var rows = [['nome','cpf','email','telefone','nascimento','valor']];
+    var n = 8 + Math.floor(Math.random() * 4);
+    for(var i = 0; i < n; i++){
+      var nome = GEN_NAMES[Math.floor(Math.random() * GEN_NAMES.length)];
+      if(Math.random() < 0.4) nome = nome.toUpperCase();
+      var base = '';
+      for(var j = 0; j < 9; j++) base += Math.floor(Math.random() * 10);
+      var cpf = makeCpf(base);
+      if(Math.random() < 0.15) cpf = cpf.slice(0, 10) + ((parseInt(cpf.charAt(10), 10) + 1) % 10);
+      var first = nome.toLowerCase().split(' ')[0].replace(/[^a-z]/g, '');
+      var email = first + '@empresa.com';
+      var r = Math.random();
+      if(r < 0.15) email = first + '@@empresa';
+      else if(r < 0.3) email = email.toUpperCase();
+      var tel = GEN_DDD[Math.floor(Math.random() * GEN_DDD.length)] + '9' +
+                String(Math.floor(Math.random() * 90000000) + 10000000);
+      if(Math.random() < 0.5) tel = '(' + tel.slice(0,2) + ') ' + tel.slice(2,7) + '-' + tel.slice(7);
+      var y = 1985 + Math.floor(Math.random() * 14);
+      var mo = 1 + Math.floor(Math.random() * 12);
+      var da = 1 + Math.floor(Math.random() * 28);
+      var dt = Math.random() < 0.15 ? '99/99/1999'
+             : (Math.random() < 0.5 ? pad2(da) + '/' + pad2(mo) + '/' + y
+                                    : y + '-' + pad2(mo) + '-' + pad2(da));
+      var val = (100 + Math.floor(Math.random() * 4900)) + Math.random();
+      var valStr = val.toLocaleString('pt-BR', { minimumFractionDigits:2, maximumFractionDigits:2 });
+      if(Math.random() < 0.5) valStr = 'R$ ' + valStr;
+      rows.push([nome, maskCpf(cpf), email, tel, dt, valStr]);
+    }
+    return rows.map(function(r){ return r.map(csvQuote).join(','); }).join('\n');
+  }
+
+  /* ---------- LAB 04 · painel de DAGs ---------- */
+  var DAGS = ['ingest_vendas_diaria','fato_vendas_incremental','dim_tempo_refresh','validacao_dq','carga_gold_powerbi'];
+  var dagData = [
+    { dag:'ingest_vendas_diaria',    win:'2026-10-08 06:00', start:'06:00', dur:32, st:'ok' },
+    { dag:'ingest_vendas_diaria',    win:'2026-10-07 06:00', start:'06:00', dur:43, st:'warn' },
+    { dag:'fato_vendas_incremental', win:'2026-10-06 06:00', start:'06:00', dur:28, st:'ok' },
+    { dag:'ingest_vendas_diaria',    win:'2026-10-05 06:00', start:'06:00', dur:71, st:'bad' },
+    { dag:'dim_tempo_refresh',       win:'2026-10-04 06:00', start:'06:00', dur:35, st:'ok' },
+    { dag:'ingest_vendas_diaria',    win:'2026-10-03 06:00', start:'06:00', dur:30, st:'ok' },
+    { dag:'validacao_dq',            win:'2026-10-02 06:00', start:'06:00', dur:42, st:'ok' },
+    { dag:'carga_gold_powerbi',      win:'2026-10-01 06:00', start:'06:00', dur:41, st:'warn' },
+    { dag:'ingest_vendas_diaria',    win:'2026-09-30 06:00', start:'06:00', dur:26, st:'ok' },
+    { dag:'fato_vendas_incremental', win:'2026-09-29 06:00', start:'06:00', dur:39, st:'ok' }
+  ];
+  var nextWin = new Date(2026, 9, 9);
+
+  function pill(st){
+    if(st === 'ok')   return '<span class="pill ok">sucesso</span>';
+    if(st === 'warn') return '<span class="pill warn">retentativa</span>';
+    return '<span class="pill bad">falha</span>';
+  }
+  function fmtDate(d){
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+  function dagRender(){
+    var kp = document.getElementById('dagKpis');
+    var chart = document.getElementById('dagChart');
+    var tbody = document.querySelector('#dagTbl tbody');
+    if(!kp || !chart || !tbody) return;
+
+    var total = dagData.length;
+    var within = dagData.filter(function(r){ return r.dur <= 45; }).length;
+    var fails = dagData.filter(function(r){ return r.st === 'bad'; }).length;
+    var avg = Math.round(dagData.reduce(function(s, r){ return s + r.dur; }, 0) / total);
+    var sla = Math.round(within / total * 100);
+
+    kp.innerHTML =
+      kpi(sla + '%', 'execuções dentro do SLA (45 min)', sla >= 90 ? '' : 'warn') +
+      kpi(total, 'execuções monitoradas') +
+      kpi(fails, 'falhas definitivas', fails ? 'bad' : '') +
+      kpi(avg + ' min', 'tempo médio de execução');
+
+    var max = 0;
+    dagData.forEach(function(r){ if(r.dur > max) max = r.dur; });
+    chart.innerHTML = dagData.slice(0, 12).reverse().map(function(r){
+      var h = Math.max(7, Math.round(r.dur / max * 100));
+      return '<div class="dag-bar' + (r.st === 'ok' ? '' : ' ' + r.st) + '" style="height:' + h +
+             '%" title="' + esc(r.dag) + ' · ' + r.dur + ' min"></div>';
+    }).join('');
+
+    tbody.innerHTML = dagData.slice(0, 8).map(function(r){
+      var slaCell = r.dur <= 45 ? '<span class="pill ok">no prazo</span>' : '<span class="pill bad">estourou</span>';
+      return '<tr><td>' + esc(r.dag) + '</td><td class="mut">' + r.win + '</td><td>' + r.start +
+             '</td><td>' + r.dur + ' min</td><td>' + slaCell + '</td><td>' + pill(r.st) + '</td></tr>';
+    }).join('');
+  }
+  function dagRun(){
+    var r = Math.random();
+    var st = r < 0.7 ? 'ok' : (r < 0.92 ? 'warn' : 'bad');
+    var dur = st === 'ok'   ? 20 + Math.floor(Math.random() * 20)
+            : st === 'warn' ? 41 + Math.floor(Math.random() * 18)
+                            : 58 + Math.floor(Math.random() * 35);
+    dagData.unshift({
+      dag: DAGS[Math.floor(Math.random() * DAGS.length)],
+      win: fmtDate(nextWin) + ' 06:00',
+      start: '06:00',
+      dur: dur,
+      st: st
+    });
+    nextWin.setDate(nextWin.getDate() + 1);
+    if(dagData.length > 14) dagData.pop();
+    dagRender();
+  }
+
+  /* ---------- LAB 05 · arquitetura medallion ---------- */
+  var LAYERS = {
+    bronze: { title:'🥉 Bronze · dados brutos', rows:'1.240.000 linhas', detail:{
+      'Entrada': 'Streams e arquivos da origem (API, CDC, JSON/Parquet) — 1:1, sem filtro nem conversão.',
+      'Garantia': 'Schema on read · dados crudos preservados · replay e reprocessamento sempre possíveis.',
+      'Ferramenta': 'Spark Structured Streaming ou batch gravando Parquet no S3 / Azure Blob.',
+      'Custo': 'Barato: só armazenamento, quase nenhuma CPU de transformação.'
+    }},
+    silver: { title:'🥈 Silver · dados confiáveis', rows:'980.412 linhas', detail:{
+      'Entrada': 'Camada Bronze lida com inferência de schema e escape de payload.',
+      'Transformação': 'Trim + lowercase, deduplicação por id_evento/versao, tipagem, cast de decimal e filtro de nulos de chave.',
+      'Formato': 'Delta Lake particionado por dt_evento — transação atômica e time travel.',
+      'Garantia': 'Idempotência: reexecutar a mesma janela nunca duplica registro.'
+    }},
+    gold: { title:'🥇 Gold · dados de negócio', rows:'42.780 linhas', detail:{
+      'Entrada': 'Camada Silver agregada por granularidade de análise.',
+      'Transformação': 'groupBy(dt_evento, evento, regiao) com countDistinct, contagem e soma — nenhuma regra de limpeza aqui.',
+      'Consumo': 'Power BI lê tabela pequena e estável, sem lógica de negócio no relatório.',
+      'SLA': 'Atualização diária D-1 até 07:00, monitorada pelo painel do LAB 04.'
+    }}
+  };
+  var medToken = 0;
+
+  function showLayer(key){
+    var d = LAYERS[key];
+    var host = document.getElementById('medDetail');
+    if(!d || !host) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.layer'), function(el){
+      el.classList.toggle('on', el.getAttribute('data-layer') === key);
+    });
+    var dl = '';
+    Object.keys(d.detail).forEach(function(k){
+      dl += '<dt>' + k + '</dt><dd>' + d.detail[k] + '</dd>';
+    });
+    host.innerHTML = '<h5>' + d.title + ' · ' + d.rows + '</h5><dl>' + dl + '</dl>';
+  }
+  function medRun(){
+    var token = ++medToken;
+    var order = ['bronze','silver','gold'];
+    var counts = ['1.240.000 linhas','980.412 linhas','42.780 linhas'];
+    var st = document.getElementById('medState');
+    order.forEach(function(k, i){
+      setTimeout(function(){
+        if(token !== medToken) return;
+        var el = document.querySelector('.layer.' + k);
+        if(!el) return;
+        el.classList.remove('done');
+        void el.offsetWidth;
+        el.classList.add('done');
+        var cnt = el.querySelector('[data-count-layer]');
+        if(cnt) cnt.textContent = 'processando…';
+        showLayer(k);
+        setTimeout(function(){
+          if(token !== medToken) return;
+          if(cnt) cnt.textContent = counts[i];
+          if(st) st.textContent = i < 2
+            ? 'Camada ' + k + ' concluída · escrita Delta validada · gravando a próxima…'
+            : 'Pipeline concluído · 1.240.000 → 980.412 → 42.780 linhas · 3,4 s de wall-clock (simulado)';
+        }, 450);
+      }, i * 700);
+    });
+  }
+
+  /* ---------- LAB 03 · diagrama OLTP -> Star ---------- */
+  var starBtn = document.getElementById('starToggle');
+  if(starBtn){
+    var starOn = false;
+    starBtn.addEventListener('click', function(){
+      starOn = !starOn;
+      var card = document.getElementById('lab-model');
+      Array.prototype.forEach.call(card.querySelectorAll('.dg-view'), function(v){
+        v.classList.toggle('on', (v.getAttribute('data-view') === 'star') === starOn);
+      });
+      starBtn.textContent = starOn ? '← Voltar para o OLTP' : '→ Converter para Star Schema';
+      var state = document.getElementById('starState');
+      state.textContent = starOn
+        ? 'Estado atual: Star Schema · 3 joins fixos · histórico SCD 2 preservado'
+        : 'Estado atual: OLTP · 3ª forma normal · alta cardinalidade de joins';
+    });
+  }
+
+  /* ---------- liga/desliga dos botões ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-run]'), function(b){
+    b.addEventListener('click', function(){
+      var t = b.getAttribute('data-run');
+      if(t === 'etl') etlRun();
+      else if(t === 'dag') dagRun();
+      else if(t === 'med') medRun();
+    });
+  });
+
+  var etlIn = document.getElementById('etlIn');
+  if(etlIn){
+    etlIn.value = sampleCsv();
+    var gen = document.getElementById('etlGen');
+    var run = document.getElementById('etlRun');
+    if(gen) gen.addEventListener('click', function(){ etlIn.value = randSample(); etlRun(); });
+    if(run) run.addEventListener('click', etlRun);
+    etlRun();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.layer'), function(el){
+    el.addEventListener('click', function(){ showLayer(el.getAttribute('data-layer')); });
+  });
+  showLayer('bronze');
+  dagRender();
 })();
 </script>
 
