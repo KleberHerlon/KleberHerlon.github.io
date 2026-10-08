@@ -4,7 +4,7 @@
 
 **Kleber Carboni** — transformando dados brutos em decisões. 100% remoto.
 
-[![Site](https://img.shields.io/badge/Portf%C3%B3lio-Online-07d4ad?style=for-the-badge&logo=githubpages&logoColor=white)](https://kleberherlon.github.io/portfolio/)
+[![Site](https://img.shields.io/badge/Portf%C3%B3lio-Online-07d4ad?style=for-the-badge&logo=githubpages&logoColor=white)](https://kleberherlon.github.io/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-KleberHerlon-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kleber-herlon-analista-de-dados)
 [![E-mail](https://img.shields.io/badge/Email-kleberherlonsc%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kleberherlonsc@gmail.com)
 [![Localização](https://img.shields.io/badge/Jacare%C3%AD%2FSP%20%E2%80%94%20100%25%20Remoto-4f7942?style=for-the-badge)]()
@@ -80,7 +80,7 @@ Analytics Engineer & Data Analyst com **formação em Análise e Desenvolvimento
 | `Projetos.pbix` | Portfólio de projetos e melhorias por unidade |
 | `Suprimentos - MRP.pbix` | Estoque, requisições e MRP |
 | `Evolução das Carteiras - offs.pbix` | Carteiras (MIP protegido — print) |
-| `HC x HP Atualizado.pbix` | Headcount planejado × realizado (MIP — print) |
+| `HC x HP Atualizado.pbix` | Hora planejada × hora confirmada (MIP — print) |
 
 > Prints em [`assets/dashboards/`](./assets/dashboards/).
 
@@ -170,6 +170,6 @@ class KPIEngine:
 
 <div align="center">
 
-*Feito com 💚 e dados.* · Repositório publicado via GitHub Pages: [kleberherlon.github.io/portfolio](https://kleberherlon.github.io/portfolio/)
+*Feito com 💚 e dados.* · Repositório publicado via GitHub Pages: [kleberherlon.github.io](https://kleberherlon.github.io/)
 
 </div>

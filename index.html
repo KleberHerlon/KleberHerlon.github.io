@@ -10,8 +10,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kleber Carboni — Analista de Dados | Análise &amp; Engenharia de Dados · BI">
 <meta property="og:description" content="Dashboards, automações e projetos de análise de dados. SQL · Python · Power BI · SAP HANA.">
-<meta property="og:image" content="https://kleberherlon.github.io/portfolio/assets/og.png">
-<meta property="og:url" content="https://kleberherlon.github.io/portfolio/">
+<meta property="og:image" content="https://kleberherlon.github.io/assets/og.png">
+<meta property="og:url" content="https://kleberherlon.github.io/">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
   --maxw:1160px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:74px;-webkit-text-size-adjust:100%}
 body{
   background:var(--bg);
   color:var(--text);
@@ -72,6 +72,17 @@ nav{
   padding:6px 2px;border-bottom:2px solid transparent;transition:.18s;
 }
 .nav-links a:hover,.nav-links a[aria-current="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.nav-toggle{
+  display:none;margin-left:auto;background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;padding:9px 10px;cursor:pointer;transition:.18s;
+}
+.nav-toggle:hover{border-color:var(--accent)}
+.nav-toggle span{display:block;width:19px;height:2px;border-radius:2px;background:var(--text);transition:.22s}
+.nav-toggle span+span{margin-top:4.5px}
+.nav-toggle[aria-expanded="true"]{border-color:var(--accent)}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;padding:92px 0 70px;overflow:hidden}
@@ -403,7 +414,19 @@ footer a{color:var(--accent)}
   html{scroll-behavior:auto}
 }
 @media(max-width:720px){
+  .nav-in{padding:11px 18px}
+  .nav-toggle{display:block}
   .nav-links{display:none}
+  nav.open .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;margin-left:0;
+    background:rgba(7,11,18,.99);border-bottom:1px solid var(--border);
+    padding:4px 18px 12px;box-shadow:0 20px 34px rgba(0,0,0,.5);
+  }
+  nav.open .nav-links a{
+    font-size:.95rem;padding:13px 2px;border-bottom:1px solid var(--border);
+  }
+  nav.open .nav-links a:last-child{border-bottom:0}
   section{padding:56px 0}
   .bar-row{grid-template-columns:1fr;gap:7px}
 }
@@ -635,7 +658,7 @@ footer a{color:var(--accent)}
 <nav aria-label="Navegação principal">
   <div class="nav-in">
     <div class="brand"><span class="dot" aria-hidden="true"></span> Kleber Carboni</div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#sobre">Sobre</a>
       <a href="#dashboards">Dashboards</a>
       <a href="#projetos">Projetos</a>
@@ -645,6 +668,9 @@ footer a{color:var(--accent)}
       <a href="#experiencia">Experiência</a>
       <a href="#contato">Contato</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -864,7 +890,7 @@ footer a{color:var(--accent)}
       <article class="card dash reveal">
         <div class="thumb">
           <span class="badge">POWER BI</span>
-          <svg class="chart" viewBox="0 0 400 225" role="img" aria-label="Prévia gráfica: comparativo entre headcount atual e planejado">
+          <svg class="chart" viewBox="0 0 400 225" role="img" aria-label="Prévia gráfica: comparativo entre hora confirmada e hora planejada">
             <rect width="400" height="225" fill="#0a1119"/>
             <g stroke="#1c2836"><line x1="45" y1="70" x2="370" y2="70"/><line x1="45" y1="115" x2="370" y2="115"/><line x1="45" y1="160" x2="370" y2="160"/><line x1="45" y1="190" x2="370" y2="190"/></g>
             <g>
@@ -880,12 +906,12 @@ footer a{color:var(--accent)}
               <rect x="305" y="34" width="9" height="9" rx="2" fill="#2ee6c5"/><text x="319" y="42" fill="#9db0c6">HC</text>
             </g>
           </svg>
-          <img src="./assets/dashboards/hc-hp.png" alt="Print do dashboard de headcount versus headplan" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
+          <img src="./assets/dashboards/hc-hp.png" alt="Print do dashboard de hora confirmada versus hora planejada" loading="lazy" style="opacity:0;transition:opacity .3s" onload="this.style.opacity=1" onerror="console.warn('Erro ao carregar: ' + this.src)">
         </div>
         <div class="body">
           <div class="tags"><span class="tag">Power BI</span><span class="tag b">Pessoas</span></div>
-          <h3>HC x HP — Headcount x Headplan</h3>
-          <p>Comparativo entre quadro atual e planejado, acompanhando desvios de headcount por unidade para suporte à decisão de contratação e dimensionamento.</p>
+          <h3>HC x HP — Hora Confirmada x Hora Planejada</h3>
+          <p>Comparativo entre as horas confirmadas e as horas planejadas por unidade, evidenciando desvios de carga horária para suporte à decisão de dimensionamento e escalas de equipe.</p>
           <div class="links"><a class="mini solid" href="./hc-hp/">▶ Ver demonstração interativa</a><a class="mini" href="./assets/dashboards/hc-hp.png" target="_blank" rel="noopener">Ver print em alta</a></div>
           <div class="protected">🧪 Dados 100% fictícios — demo técnica (LGPD)</div>
         </div>
@@ -964,7 +990,7 @@ footer a{color:var(--accent)}
         }</pre>
 <span class="clip">… trecho truncado · código completo no repositório</span>
 </details>
-        <div class="links"><a class="mini solid" href="./PerformanceRoboMetatrader/">Ver analisador</a><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/PerformanceRoboMetatrader" target="_blank" rel="noopener">Código</a></div>
+        <div class="links"><a class="mini solid" href="./PerformanceRoboMetatrader/">Ver analisador</a><a class="mini" href="https://github.com/KleberHerlon/KleberHerlon.github.io/tree/main/PerformanceRoboMetatrader" target="_blank" rel="noopener">Código</a></div>
       </article>
 
       <article class="card reveal">
@@ -1033,7 +1059,7 @@ for i, tabela in enumerate(df):
 df = pd.DataFrame(df[0])</pre>
 <span class="clip">… trecho truncado · código completo no repositório</span>
 </details>
-        <div class="links"><a class="mini solid" href="./Cotacao_FIIs/">Ver projeto</a><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/Cotacao_FIIs" target="_blank" rel="noopener">Código</a></div>
+        <div class="links"><a class="mini solid" href="./Cotacao_FIIs/">Ver projeto</a><a class="mini" href="https://github.com/KleberHerlon/KleberHerlon.github.io/tree/main/Cotacao_FIIs" target="_blank" rel="noopener">Código</a></div>
       </article>
 
       <article class="card reveal">
@@ -1057,7 +1083,7 @@ with open("Dataset.csv", "wt+", newline="") as f:
         writer.writerow(row)</pre>
 <span class="clip">… trecho truncado · código completo no repositório</span>
 </details>
-        <div class="links"><a class="mini solid" href="./Web_scrapping_Covid/">Ver projeto</a><a class="mini" href="https://github.com/KleberHerlon/portfolio/tree/main/Web_scrapping_Covid" target="_blank" rel="noopener">Código</a></div>
+        <div class="links"><a class="mini solid" href="./Web_scrapping_Covid/">Ver projeto</a><a class="mini" href="https://github.com/KleberHerlon/KleberHerlon.github.io/tree/main/Web_scrapping_Covid" target="_blank" rel="noopener">Código</a></div>
       </article>
 
       <article class="card reveal">
@@ -2216,6 +2242,31 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     secs.forEach(function(s){so.observe(s)});
   }
 
+  /* menu mobile */
+  var navEl = document.querySelector('nav');
+  var navBtn = document.querySelector('.nav-toggle');
+  function navClose(){
+    if(!navEl || !navBtn) return;
+    navEl.classList.remove('open');
+    navBtn.setAttribute('aria-expanded','false');
+    navBtn.setAttribute('aria-label','Abrir menu');
+  }
+  if(navEl && navBtn){
+    navBtn.addEventListener('click', function(){
+      var open = navEl.classList.toggle('open');
+      navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    });
+    Array.prototype.forEach.call(navEl.querySelectorAll('.nav-links a'), function(a){
+      a.addEventListener('click', navClose);
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') navClose(); });
+    document.addEventListener('click', function(e){
+      if(navEl.classList.contains('open') && !navEl.contains(e.target)) navClose();
+    });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 720) navClose(); });
+  }
+
   /* filter de leituras */
   var fbtns = document.querySelectorAll('.fbtn');
   var books = document.querySelectorAll('.book');
@@ -2842,6 +2893,12 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     void el.offsetWidth;
     el.classList.add('pulse-in');
   }
+  function ensureVisible(el){
+    if(!el || !el.getBoundingClientRect || !el.scrollIntoView) return;
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    if(r.top < 0 || r.bottom > vh) el.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
 
   /* ---------- LAB 05 · arquitetura medallion ---------- */
   var LAYERS = {
@@ -2944,6 +3001,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       '✔ ' + stat.linhas + ' linhas → ' + stat.final + ' aproveitadas · ' +
       stat.dup + ' dup · ' + stat.nulos + ' nulos · ' +
       stat.cpf + ' CPF inv. · ' + stat.email + ' e-mail inv. · ' + ms + ' ms');
+    ensureVisible(document.getElementById('etlKpis'));
   }
   function runDag(){
     var card = cardOf('lab-airflow');
@@ -2954,10 +3012,13 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     if(!r) return;
     var label = r.st === 'ok' ? 'sucesso' : (r.st === 'warn' ? 'retentativa' : 'falha');
     runStatus(card, '✔ ' + r.dag + ' · ' + r.dur + ' min · ' + label);
+    ensureVisible(document.getElementById('dagKpis'));
   }
   function runMed(){
     activateTab(cardOf('lab-lake'), 'med');
     medRun();
+    var layers = document.querySelector('#lab-lake .medallion');
+    if(layers) ensureVisible(layers);
   }
   Array.prototype.forEach.call(document.querySelectorAll('[data-run]'), function(b){
     b.addEventListener('click', function(){
