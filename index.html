@@ -420,6 +420,22 @@ h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.03em;line-height:1.2;ma
 .book .a{font-size:.74rem;color:var(--muted)}
 .book .cat{font-size:.62rem;color:var(--accent2,#d9a7ff);letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
 .book.hide{display:none}
+.books-toggle{
+  display:inline-flex;align-items:center;gap:10px;
+  margin:18px 0 4px;padding:10px 16px;cursor:pointer;
+  background:transparent;color:var(--accent);
+  border:1px solid rgba(46,230,197,.4);border-radius:10px;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.06em;
+  transition:border-color .2s ease,background .2s ease,color .2s ease;
+}
+.books-toggle:hover{background:rgba(46,230,197,.1)}
+.books-toggle .bt-count{color:var(--muted);font-size:.66rem}
+.books-toggle .bt-chev{transition:transform .25s ease;opacity:.8;font-size:.9rem;line-height:1}
+.books-toggle[aria-expanded="true"] .bt-chev{transform:rotate(180deg)}
+.books-panel{margin-top:4px}
+.books-panel[hidden]{display:none!important}
+.books-panel.open{animation:booksIn .35s ease}
+@keyframes booksIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 @media (max-width:1060px){.read-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:760px){.read-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){.read-grid{grid-template-columns:1fr}}
@@ -816,6 +832,8 @@ footer a{color:var(--accent)}
 
 @media print{
   .vis-badge{display:none!important}
+  .books-toggle{display:none!important}
+  .books-panel[hidden]{display:block!important}
   nav,.hero-bg,.grid-lines{display:none}
   body{background:#fff;color:#000}
   .card,.kpi,.skill-box{border:1px solid #ccc;background:#fff}
@@ -2301,6 +2319,13 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       <p class="lead">De Marx a Machado, de Fanon a Sagan: a leitura é a base do meu pensamento crítico — o mesmo que aplico para questionar, modelar e interpretar dados. Interesse constante por História, política, ciência e literatura.</p>
     </div>
 
+    <button class="books-toggle" id="booksToggle" type="button" aria-expanded="false" aria-controls="booksPanel">
+      <span class="bt-label">Confira os Títulos</span>
+      <span class="bt-count">52 livros</span>
+      <span class="bt-chev" aria-hidden="true">▾</span>
+    </button>
+
+    <div class="books-panel" id="booksPanel" hidden>
     <div class="filters" role="group" aria-label="Filtrar livros por categoria">
       <button class="fbtn on" data-cat="todas" aria-pressed="true">Todas</button>
       <button class="fbtn" data-cat="Literatura" aria-pressed="false">Literatura</button>
@@ -2363,6 +2388,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       <article class="book" data-cat="História"><span class="n">50</span><h4>Conquistadores</h4><span class="a">Roger Crowley</span><span class="cat">História</span></article>
       <article class="book" data-cat="Política"><span class="n">51</span><h4>Do Bom Escravo ao Mau Cidadão</h4><span class="a">Clóvis de Moura</span><span class="cat">Política</span></article>
       <article class="book" data-cat="Filosofia"><span class="n">52</span><h4>Homo Ludens</h4><span class="a">Johan Huizinga</span><span class="cat">Filosofia</span></article>
+    </div>
     </div>
   </div>
 </section>
@@ -2562,6 +2588,25 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       });
     });
   });
+
+  /* lista de livros colapsada ("Confira os Títulos") */
+  var booksToggle = document.getElementById('booksToggle');
+  var booksPanel = document.getElementById('booksPanel');
+  if(booksToggle && booksPanel){
+    booksToggle.addEventListener('click', function(){
+      var open = booksPanel.hasAttribute('hidden');
+      if(open){
+        booksPanel.removeAttribute('hidden');
+        booksPanel.classList.remove('open');
+        void booksPanel.offsetWidth;
+        booksPanel.classList.add('open');
+      } else {
+        booksPanel.setAttribute('hidden', '');
+        booksPanel.classList.remove('open');
+      }
+      booksToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 
   /* Lightbox / Zoom de Dashboards */
   var images = document.querySelectorAll('.card.dash .thumb img');
