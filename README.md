@@ -160,6 +160,21 @@ class KPIEngine:
 
 ---
 
+## 📡 Analytics de visitas (privado)
+
+O site registra visitas reais (cidade/país via IP, organização/ISP — útil para identificar recrutadores —, origem/referral, UTM, navegador, dispositivo e permanência) em um **Supabase** gratuito. Visitas abertas com `#admin` **não são gravadas**; um navegador é "reivindicado" como seu no primeiro acesso com `#admin` e deixa de enviar dados para sempre.
+
+**Setup (uma vez):**
+
+1. Crie um projeto grátis em [supabase.com](https://supabase.com) (ou reutilize um existente).
+2. No **SQL Editor**, cole e execute o conteúdo de [`supabase/visits.sql`](./supabase/visits.sql).
+3. Em **Project Settings → API**, copie a *Project URL* e a *anon public key* e preencha [`visitas-config.js`](./visitas-config.js).
+4. Commit + push. Abra `https://kleberherlon.github.io/#admin` para ver o painel (KPIs, organizações, localizações, origens e tabela detalhada).
+
+Enquanto o config estiver vazio, o rastreamento fica desligado sem quebrar nada. A leitura do painel passa por uma RPC com chave — não há `SELECT` anônimo direto na tabela.
+
+---
+
 ## 📬 Contato
 
 - **E-mail:** [kleberherlonsc@gmail.com](mailto:kleberherlonsc@gmail.com)

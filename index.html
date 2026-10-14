@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="./visitas-config.js"></script>
 <style>
 :root{
   --bg:#06090f;
@@ -806,29 +807,71 @@ footer a{color:var(--accent)}
 .vis-badge{
   position:fixed;right:14px;bottom:14px;z-index:80;
   font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.7rem;line-height:1.45;
-  color:var(--muted);background:rgba(14,22,32,.94);border:1px solid var(--border);
-  border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.42);backdrop-filter:blur(6px);
-  max-width:min(286px,calc(100vw - 28px));
+  color:var(--muted);background:rgba(14,22,32,.96);border:1px solid var(--border);
+  border-radius:12px;box-shadow:0 12px 34px rgba(0,0,0,.5);backdrop-filter:blur(6px);
+  width:min(430px,calc(100vw - 28px));max-height:min(78vh,640px);
+  display:flex;flex-direction:column;overflow:hidden;
 }
 .vis-badge[hidden]{display:none!important}
 .vis-toggle{
-  display:flex;align-items:center;gap:7px;width:100%;
+  display:flex;align-items:center;gap:7px;width:100%;flex:none;
   background:none;border:0;color:inherit;font:inherit;cursor:pointer;
-  padding:8px 11px;border-radius:10px;text-align:left;
+  padding:9px 12px;border-radius:12px;text-align:left;
 }
 .vis-toggle:hover{color:#cddced}
 .vis-toggle .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex:none}
 .vis-toggle .chev{margin-left:auto;transition:transform .2s ease;opacity:.7;font-size:.62rem}
 .vis-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.vis-body{display:grid;gap:5px;padding:9px 11px 11px;border-top:1px solid var(--border)}
+.vis-body{display:flex;flex-direction:column;gap:8px;padding:0 12px 12px;border-top:1px solid var(--border);overflow:auto;min-height:0}
 .vis-body[hidden]{display:none!important}
+.vis-body::-webkit-scrollbar{width:8px}
+.vis-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
 .vis-row{display:flex;align-items:baseline;gap:10px;justify-content:space-between}
 .vis-row b{color:#cddced;font-weight:700}
-.vis-sec{margin-top:6px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;font-size:.58rem}
+.vis-sec{margin-top:4px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;font-size:.58rem;flex:none}
+.vis-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;flex:none}
+.vis-kpi{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:9px;padding:7px 8px;text-align:center}
+.vis-kpi b{display:block;color:var(--accent);font-size:1.05rem;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.vis-kpi span{font-size:.56rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.vis-chips{display:flex;flex-wrap:wrap;gap:5px;flex:none}
+.vis-chip{font-size:.62rem;padding:3px 8px;border-radius:999px;border:1px solid var(--border);color:#b9c8d6;background:rgba(255,255,255,.025);white-space:nowrap}
+.vis-chip b{color:var(--accent);font-weight:700}
+.vis-tablewrap{overflow:auto;max-height:220px;border:1px solid var(--border);border-radius:9px;flex:none}
+.vis-tablewrap::-webkit-scrollbar{width:8px;height:8px}
+.vis-tablewrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
+.vis-table{width:100%;border-collapse:collapse;font-size:.63rem;min-width:560px}
+.vis-table th{
+  position:sticky;top:0;z-index:1;text-align:left;white-space:nowrap;
+  font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  background:#0e1621;padding:7px 9px;border-bottom:1px solid var(--border);
+}
+.vis-table td{padding:6px 9px;border-bottom:1px solid rgba(255,255,255,.05);color:#cddced;white-space:nowrap;font-variant-numeric:tabular-nums}
+.vis-table tr:last-child td{border-bottom:0}
+.vis-table tr:nth-child(even) td{background:rgba(255,255,255,.016)}
+.vis-table td.mut{color:var(--muted)}
+.vis-table td.bad{color:#ff8f6b}
+.vis-actions{display:flex;gap:8px;align-items:center;flex:none}
+.vis-btn{
+  font:inherit;font-size:.62rem;font-weight:700;cursor:pointer;
+  background:transparent;border:1px solid var(--border);color:var(--muted);
+  padding:5px 11px;border-radius:8px;transition:.15s;
+}
+.vis-btn:hover{border-color:var(--accent);color:var(--accent)}
+.vis-note{
+  font-size:.62rem;color:var(--muted);line-height:1.5;
+  background:rgba(255,255,255,.02);border:1px dashed var(--border);
+  border-radius:9px;padding:8px 10px;flex:none;
+}
+.vis-note b{color:#cddced}
+.vis-status{font-size:.6rem;color:var(--muted);margin-left:auto;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
 .vis-list{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:3px;max-height:126px;overflow:auto}
 .vis-list li{display:flex;gap:10px;justify-content:space-between}
 .vis-list li span:first-child{color:#b9c8d6}
 .vis-list li span:last-child{opacity:.85}
+@media (max-width:560px){
+  .vis-kpis{grid-template-columns:repeat(2,1fr)}
+  .vis-status{max-width:110px}
+}
 
 @media print{
   .vis-badge{display:none!important}
@@ -2464,19 +2507,46 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
 </footer>
 
 <aside class="vis-badge" id="visBadge" hidden>
-  <button type="button" class="vis-toggle" id="visToggle" aria-expanded="false" aria-controls="visBody" title="Contador de visitas (admin)">
+  <button type="button" class="vis-toggle" id="visToggle" aria-expanded="false" aria-controls="visBody" title="Analytics de visitas (admin)">
     <span class="dot" aria-hidden="true"></span>
-    <span>Visitas</span>
+    <span>Visitas — admin</span>
     <span class="chev" aria-hidden="true">▲</span>
   </button>
   <div class="vis-body" id="visBody" hidden>
-    <div class="vis-row"><span>Acessos (este navegador)</span><b id="visLocal">—</b></div>
-    <div class="vis-row"><span>Hoje</span><b id="visToday">—</b></div>
-    <div class="vis-row"><span>Primeira visita</span><b id="visFirst">—</b></div>
-    <div class="vis-row"><span>Última visita</span><b id="visLast">—</b></div>
-    <div class="vis-row"><span>Origem da última</span><b id="visOrigin">—</b></div>
-    <div class="vis-sec">Origens recentes</div>
-    <ul class="vis-list" id="visList"></ul>
+    <div class="vis-kpis" id="visKpis">
+      <div class="vis-kpi"><b id="kTotal">—</b><span>visitas</span></div>
+      <div class="vis-kpi"><b id="kUniq">—</b><span>visitantes</span></div>
+      <div class="vis-kpi"><b id="kToday">—</b><span>hoje</span></div>
+      <div class="vis-kpi"><b id="kAvg">—</b><span>permanência</span></div>
+    </div>
+    <div id="visLocalBox">
+      <div class="vis-sec">Este navegador</div>
+      <div class="vis-row"><span>Acessos locais (histórico antigo)</span><b id="visLocal">—</b></div>
+    </div>
+    <div id="visSetup" class="vis-note" hidden>
+      <b>Backend não configurado.</b> Execute <code>supabase/visits.sql</code> no Supabase SQL Editor e preencha <code>visitas-config.js</code>. Até lá, visitas de outros navegadores não são registradas.
+    </div>
+    <div id="visData" hidden>
+      <div class="vis-sec">Organizações (possíveis recrutadores/empresas)</div>
+      <div class="vis-chips" id="visOrgs"></div>
+      <div class="vis-sec">Países / cidades</div>
+      <div class="vis-chips" id="visLocs"></div>
+      <div class="vis-sec">Origens (referral / utm)</div>
+      <div class="vis-chips" id="visRefs"></div>
+      <div class="vis-sec">Recentes</div>
+      <div class="vis-tablewrap">
+        <table class="vis-table">
+          <thead>
+            <tr><th>Quando</th><th>Local</th><th>Organização</th><th>Origem</th><th>Dispositivo</th><th>Perman.</th></tr>
+          </thead>
+          <tbody id="visRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="vis-actions">
+      <button type="button" class="vis-btn" id="visRefresh">⟳ Atualizar</button>
+      <span class="vis-status" id="visStatus"></span>
+    </div>
   </div>
 </aside>
 
@@ -3536,21 +3606,47 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
 </script>
 
 <script>
+/* ============================================================
+   Analytics de visitas — Supabase + ipwho.is
+   · Toda visita real é registrada (1x por sessão de navegador).
+   · Navegadores "reivindicados" com #admin nunca mais enviam dados.
+   · Visitas abertas com #admin não são gravadas.
+   ============================================================ */
 (function(){
-  var badge = document.getElementById('visBadge');
-  if(!badge) return;
+  var CFG = window.KLEBER_VISITS || {};
+  var cfgOk = !!(CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY);
+  var OWNER_KEY = 'kleber_vis_owner';
+  var VID_KEY = 'kleber_vid';
+  var SESSION_KEY = 'kleber_vis_sent';
 
-  var KEY = 'kleber_vis_v1';
-  var booted = false;
-
+  function isOwner(){
+    try{ return localStorage.getItem(OWNER_KEY) === '1'; }catch(e){ return false; }
+  }
   function adminLiberado(){
     try{
-      if(location.hash === '#admin'){ sessionStorage.setItem('kleber_vis_admin', '1'); return true; }
-      return sessionStorage.getItem('kleber_vis_admin') === '1';
+      if(location.hash === '#admin'){
+        /* reivindica este navegador para sempre: nenhuma visita futura é enviada */
+        localStorage.setItem(OWNER_KEY, '1');
+        sessionStorage.setItem('kleber_vis_admin', '1');
+        return true;
+      }
+      return sessionStorage.getItem('kleber_vis_admin') === '1' || localStorage.getItem(OWNER_KEY) === '1';
     }catch(e){ return location.hash === '#admin'; }
   }
 
-  function origin(){
+  function visitorId(){
+    try{
+      var v = localStorage.getItem(VID_KEY);
+      if(!v){
+        v = (crypto && crypto.randomUUID) ? crypto.randomUUID()
+            : 'v-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);
+        localStorage.setItem(VID_KEY, v);
+      }
+      return v;
+    }catch(e){ return 'v-anon'; }
+  }
+
+  function originLabel(){
     try{
       var u = new URL(location.href);
       var src = u.searchParams.get('utm_source') || u.searchParams.get('source') ||
@@ -3567,57 +3663,249 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     }catch(e){}
     return 'direto';
   }
-  function fmt(dt){
-    return new Intl.DateTimeFormat('pt-BR', {
-      day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit'
-    }).format(new Date(dt));
+  function utmParam(name){
+    try{ return new URL(location.href).searchParams.get(name) || ''; }catch(e){ return ''; }
   }
-  function dayKey(d){
-    var x = new Date(d);
-    return x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate();
+
+  function parseUA(){
+    var ua = navigator.userAgent || '';
+    var browser = 'Outro';
+    if(/Edg\//.test(ua)) browser = 'Edge';
+    else if(/OPR\/|Opera/.test(ua)) browser = 'Opera';
+    else if(/Firefox\//.test(ua)) browser = 'Firefox';
+    else if(/Chrome\//.test(ua) && !/CriOS/.test(ua)) browser = 'Chrome';
+    else if(/CriOS/.test(ua)) browser = 'Chrome iOS';
+    else if(/Safari\//.test(ua)) browser = 'Safari';
+    else if(/linkedin|bot|crawler|spider|curl|wget|python|lighthouse/i.test(ua)) browser = 'Bot/Script';
+
+    var os = 'Outro';
+    if(/Windows NT/.test(ua)) os = 'Windows';
+    else if(/iPhone|iPad|iPod/.test(ua)) os = 'iOS';
+    else if(/Android/.test(ua)) os = 'Android';
+    else if(/Mac OS X|Macintosh/.test(ua)) os = 'macOS';
+    else if(/Linux/.test(ua)) os = 'Linux';
+
+    var device = 'Desktop';
+    if(/Mobi|Android.*Mobile|iPhone|iPod/.test(ua)) device = 'Mobile';
+    else if(/iPad|Android|Tablet/.test(ua)) device = 'Tablet';
+
+    return { browser: browser, os: os, device: device };
+  }
+
+  function fetchGeo(){
+    return new Promise(function(resolve){
+      if(typeof AbortController === 'undefined'){ resolve({}); return; }
+      var ctl = new AbortController();
+      var t = setTimeout(function(){ ctl.abort(); resolve({}); }, 4000);
+      fetch('https://ipwho.is/', { signal: ctl.signal })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          clearTimeout(t);
+          if(!j || j.success === false){ resolve({}); return; }
+          resolve({
+            ip: j.ip || '',
+            city: j.city || '',
+            region: j.region || '',
+            country: j.country || '',
+            org: (j.connection && (j.connection.org || j.connection.isp)) || '',
+            asn: (j.connection && j.connection.asn) ? String(j.connection.asn) : ''
+          });
+        })
+        .catch(function(){ clearTimeout(t); resolve({}); });
+    });
+  }
+
+  function rest(path, opts){
+    opts = opts || {};
+    var headers = Object.assign({
+      'apikey': CFG.SUPABASE_ANON_KEY,
+      'Authorization': 'Bearer ' + CFG.SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    }, opts.headers || {});
+    return fetch(CFG.SUPABASE_URL.replace(/\/$/, '') + path, Object.assign({}, opts, { headers: headers }));
+  }
+
+  /* ---------- rastreamento público (nunca roda com #admin / navegador do dono) ---------- */
+  function track(){
+    if(!cfgOk) return;
+    if(isOwner() || adminLiberado()) return;
+    try{ if(sessionStorage.getItem(SESSION_KEY) === '1') return; }catch(e){}
+
+    var ua = parseUA();
+    var payload = {
+      visitor_id: visitorId(),
+      path: location.pathname,
+      referrer: document.referrer || '',
+      origin_label: originLabel(),
+      utm_source: utmParam('utm_source'),
+      utm_medium: utmParam('utm_medium'),
+      utm_campaign: utmParam('utm_campaign'),
+      browser: ua.browser,
+      os: ua.os,
+      device: ua.device,
+      language: navigator.language || '',
+      timezone: (Intl && Intl.DateTimeFormat().resolvedOptions().timeZone) || '',
+      screen: (window.innerWidth || '') + 'x' + (window.innerHeight || '')
+    };
+
+    fetchGeo().then(function(geo){
+      Object.assign(payload, geo);
+      return rest('/rest/v1/visits', {
+        method: 'POST',
+        headers: { Prefer: 'return=representation' },
+        body: JSON.stringify(payload)
+      });
+    }).then(function(res){
+      if(!res || !res.ok) return;
+      try{ sessionStorage.setItem(SESSION_KEY, '1'); }catch(e){}
+      return res.json().then(function(rows){
+        if(rows && rows[0] && rows[0].id) armazenarSessao(rows[0].id);
+      });
+    }).catch(function(){});
+  }
+
+  var sessaoId = null, sessaoInicio = 0;
+  function armazenarSessao(id){ sessaoId = id; sessaoInicio = Date.now(); }
+
+  function fecharSessao(){
+    if(!sessaoId || !cfgOk) return;
+    var seg = Math.round((Date.now() - sessaoInicio) / 1000);
+    if(seg < 3) return;
+    /* keepalive mantém a requisição viva ao fechar a aba; sendBeacon não serve
+       aqui porque não envia os headers apikey/Authorization exigidos pelo Supabase */
+    fetch(CFG.SUPABASE_URL.replace(/\/$/, '') + '/rpc/visitas_close', {
+      method: 'POST', keepalive: true,
+      headers: {
+        'apikey': CFG.SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + CFG.SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ p_id: sessaoId, p_seconds: seg })
+    }).catch(function(){});
+  }
+
+  window.addEventListener('pagehide', fecharSessao);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'hidden') fecharSessao();
+  });
+
+  /* ---------- painel admin (#admin) ---------- */
+  var badge = document.getElementById('visBadge');
+  var booted = false;
+
+  function fmtDt(ts){
+    try{
+      return new Intl.DateTimeFormat('pt-BR', {
+        day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'
+      }).format(new Date(ts));
+    }catch(e){ return new Date(ts).toLocaleString(); }
+  }
+  function fmtDur(ms){
+    if(ms == null || isNaN(ms)) return '—';
+    var s = Math.round(ms / 1000);
+    if(s < 60) return s + 's';
+    var m = Math.floor(s / 60);
+    return m + 'm' + (s % 60 ? (s % 60) + 's' : '');
+  }
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function topCount(rows, keyFn, n){
+    var m = {};
+    rows.forEach(function(r){
+      var k = keyFn(r);
+      if(!k) return;
+      m[k] = (m[k] || 0) + 1;
+    });
+    return Object.keys(m).map(function(k){ return { k: k, n: m[k] }; })
+      .sort(function(a,b){ return b.n - a.n; }).slice(0, n || 6);
+  }
+  function renderChips(el, items){
+    el.innerHTML = items.length
+      ? items.map(function(i){ return '<span class="vis-chip">' + esc(i.k) + ' <b>' + i.n + '</b></span>'; }).join('')
+      : '<span class="vis-chip">— sem dados —</span>';
+  }
+
+  function localDe(r){
+    var partes = [];
+    if(r.city) partes.push(r.city);
+    if(r.region && r.region !== r.city) partes.push(r.region);
+    if(r.country) partes.push(r.country);
+    return partes.join(', ') || '—';
+  }
+
+  function carregarDados(){
+    var status = document.getElementById('visStatus');
+    var boxData = document.getElementById('visData');
+    var boxSetup = document.getElementById('visSetup');
+
+    /* fallback local (contador antigo, apenas deste navegador) */
+    try{
+      var raw = localStorage.getItem('kleber_vis_v1');
+      document.getElementById('visLocal').textContent = raw ? (JSON.parse(raw).n || 0) : 0;
+    }catch(e){ document.getElementById('visLocal').textContent = '—'; }
+
+    if(!cfgOk){
+      boxSetup.hidden = false;
+      boxData.hidden = true;
+      status.textContent = 'backend não configurado';
+      return;
+    }
+    boxSetup.hidden = true;
+    status.textContent = 'carregando…';
+
+    rest('/rpc/visitas_admin_get', {
+      method: 'POST',
+      body: JSON.stringify({ p_key: CFG.ADMIN_KEY || '', p_limit: 300 })
+    }).then(function(res){
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    }).then(function(rows){
+      rows = rows || [];
+      var hoje = new Date(); hoje.setHours(0,0,0,0);
+      var uniques = {};
+      var durSum = 0, durN = 0;
+      rows.forEach(function(r){
+        uniques[r.visitor_id] = 1;
+        if(r.duration_ms != null){ durSum += r.duration_ms; durN++; }
+      });
+      document.getElementById('kTotal').textContent = rows.length;
+      document.getElementById('kUniq').textContent = Object.keys(uniques).length;
+      document.getElementById('kToday').textContent = rows.filter(function(r){ return new Date(r.ts) >= hoje; }).length;
+      document.getElementById('kAvg').textContent = durN ? fmtDur(durSum / durN) : '—';
+
+      renderChips(document.getElementById('visOrgs'), topCount(rows, function(r){ return r.org; }, 8));
+      renderChips(document.getElementById('visLocs'), topCount(rows, function(r){
+        return [r.city, r.country].filter(Boolean).join(', ');
+      }, 8));
+      renderChips(document.getElementById('visRefs'), topCount(rows, function(r){ return r.origin_label; }, 8));
+
+      document.getElementById('visRows').innerHTML = rows.slice(0, 150).map(function(r){
+        var disp = [r.browser, r.os, r.device].filter(Boolean).join(' · ') || '—';
+        return '<tr>' +
+          '<td>' + esc(fmtDt(r.ts)) + '</td>' +
+          '<td>' + esc(localDe(r)) + '</td>' +
+          '<td' + (r.org ? '' : ' class="mut"') + '>' + esc(r.org || '—') + '</td>' +
+          '<td>' + esc(r.origin_label || '—') + '</td>' +
+          '<td class="mut">' + esc(disp) + '</td>' +
+          '<td>' + esc(fmtDur(r.duration_ms)) + '</td>' +
+          '</tr>';
+      }).join('');
+
+      boxData.hidden = false;
+      status.textContent = rows.length + ' registro(s) · ' + fmtDt(Date.now());
+    }).catch(function(err){
+      status.textContent = 'erro: ' + (err && err.message || 'fetch');
+      boxData.hidden = true;
+    });
   }
 
   function boot(){
     if(booted) return;
     booted = true;
-
-    var st = { n:0, todayKey:'', todayCount:0, first:0, last:0, hist:[] };
-    try{
-      var raw = localStorage.getItem(KEY);
-      if(raw){
-        var p = JSON.parse(raw);
-        if(p && typeof p === 'object'){
-          for(var k in st) if(p[k] != null) st[k] = p[k];
-        }
-      }
-    }catch(e){}
-
-    var now = Date.now();
-    var o = origin();
-    st.n += 1;
-    st.last = now;
-    if(!st.first) st.first = now;
-    var dk = dayKey(now);
-    st.todayCount = (st.todayKey === dk) ? (st.todayCount + 1) : 1;
-    st.todayKey = dk;
-    st.hist.unshift({ t: now, o: o });
-    st.hist = st.hist.slice(0, 20);
-    try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){}
-
-    document.getElementById('visLocal').textContent = st.n;
-    document.getElementById('visToday').textContent = st.todayCount;
-    document.getElementById('visFirst').textContent = fmt(st.first);
-    document.getElementById('visLast').textContent = fmt(st.last);
-    document.getElementById('visOrigin').textContent = o;
-
-    var list = document.getElementById('visList');
-    st.hist.forEach(function(h){
-      var li = document.createElement('li');
-      var a = document.createElement('span'); a.textContent = h.o;
-      var b = document.createElement('span'); b.textContent = fmt(h.t);
-      li.appendChild(a); li.appendChild(b);
-      list.appendChild(li);
-    });
+    badge.removeAttribute('hidden');
+    carregarDados();
 
     var toggle = document.getElementById('visToggle');
     var body = document.getElementById('visBody');
@@ -3626,6 +3914,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       if(open){
         body.removeAttribute('hidden');
         toggle.setAttribute('aria-expanded', 'true');
+        carregarDados();
       } else {
         body.setAttribute('hidden', '');
         toggle.setAttribute('aria-expanded', 'false');
@@ -3637,14 +3926,13 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
-
-    badge.removeAttribute('hidden');
+    document.getElementById('visRefresh').addEventListener('click', carregarDados);
   }
 
   if(adminLiberado()) boot();
-  else window.addEventListener('hashchange', function(){
-    if(adminLiberado()) boot();
-  });
+  else window.addEventListener('hashchange', function(){ if(adminLiberado()) boot(); });
+
+  track();
 })();
 </script>
 
