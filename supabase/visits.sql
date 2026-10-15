@@ -36,11 +36,11 @@ create index if not exists visits_vid_idx on public.visits (visitor_id);
 alter table public.visits enable row level security;
 
 -- Visitantes anônimos apenas INSEREM; ninguém lê a tabela diretamente.
--- O papel é declarado como anon, authenticated: assim a política vale
--- qualquer que seja o papel efetivo da publishable key do navegador.
+-- TO public: vale para qualquer papel efetivo da publishable key (anon,
+-- authenticated ou outro), evitando depender do papel exato da chave.
 drop policy if exists "anon_insert_visits" on public.visits;
 create policy "anon_insert_visits" on public.visits
-  for insert to anon, authenticated with check (true);
+  for insert to public with check (true);
 
 -- Grant explícito (mesmo que as default privileges já existam).
 grant insert on public.visits to anon, authenticated;

@@ -3726,13 +3726,24 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
   }
 
   /* ---------- rastreamento público (nunca roda com #admin / navegador do dono) ---------- */
+  function novoUuid(){
+    try{ if(crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+      var r = Math.random() * 16 | 0;
+      var v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
   function track(){
     if(!cfgOk) return;
     if(isOwner() || adminLiberado()) return;
     try{ if(sessionStorage.getItem(SESSION_KEY) === '1') return; }catch(e){}
 
     var ua = parseUA();
+    var visId = novoUuid();
     var payload = {
+      id: visId,
       visitor_id: visitorId(),
       path: location.pathname,
       referrer: document.referrer || '',
@@ -3750,17 +3761,17 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
 
     fetchGeo().then(function(geo){
       Object.assign(payload, geo);
+      /* return=minimal: a leitura da linha inserida (return=representation) é
+         bloqueada pelo RLS (não há política de SELECT) e faz o INSERT falhar. */
       return rest('/rest/v1/visits', {
         method: 'POST',
-        headers: { Prefer: 'return=representation' },
+        headers: { Prefer: 'return=minimal' },
         body: JSON.stringify(payload)
       });
     }).then(function(res){
       if(!res || !res.ok) return;
       try{ sessionStorage.setItem(SESSION_KEY, '1'); }catch(e){}
-      return res.json().then(function(rows){
-        if(rows && rows[0] && rows[0].id) armazenarSessao(rows[0].id);
-      });
+      armazenarSessao(visId);
     }).catch(function(){});
   }
 
