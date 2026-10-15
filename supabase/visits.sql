@@ -36,9 +36,14 @@ create index if not exists visits_vid_idx on public.visits (visitor_id);
 alter table public.visits enable row level security;
 
 -- Visitantes anônimos apenas INSEREM; ninguém lê a tabela diretamente.
+-- O papel é declarado como anon, authenticated: assim a política vale
+-- qualquer que seja o papel efetivo da publishable key do navegador.
 drop policy if exists "anon_insert_visits" on public.visits;
 create policy "anon_insert_visits" on public.visits
-  for insert to anon with check (true);
+  for insert to anon, authenticated with check (true);
+
+-- Grant explícito (mesmo que as default privileges já existam).
+grant insert on public.visits to anon, authenticated;
 
 -- Leitura admin: só via RPC com a chave (troque a chave abaixo se quiser outra).
 -- Mantenha a mesma string em visitas-config.js → ADMIN_KEY.
@@ -71,3 +76,10 @@ revoke execute on function public.visitas_admin_get(text, int) from public;
 revoke execute on function public.visitas_close(uuid, int) from public;
 grant execute on function public.visitas_admin_get(text, int) to anon, authenticated;
 grant execute on function public.visitas_close(uuid, int) to anon, authenticated;
+
+-- Diagnóstico: ao final do Run, a lista abaixo deve mostrar a política
+-- anon_insert_visits (cmd=i) cobrindo os papéis anon e authenticated.
+select polname, polcmd,
+       coalesce(array_to_string(polroles::regrole[], ', '), 'PUBLIC') as roles
+from pg_policies
+where schemaname = 'public' and tablename = 'visits';

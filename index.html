@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<script src="./visitas-config.js"></script>
+<script src="./visitas-config.js?v=2"></script>
 <style>
 :root{
   --bg:#06090f;
@@ -3773,7 +3773,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     if(seg < 3) return;
     /* keepalive mantém a requisição viva ao fechar a aba; sendBeacon não serve
        aqui porque não envia os headers apikey/Authorization exigidos pelo Supabase */
-    fetch(CFG.SUPABASE_URL.replace(/\/$/, '') + '/rpc/visitas_close', {
+    fetch(CFG.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/rpc/visitas_close', {
       method: 'POST', keepalive: true,
       headers: {
         'apikey': CFG.SUPABASE_ANON_KEY,
@@ -3855,7 +3855,7 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
     boxSetup.hidden = true;
     status.textContent = 'carregando…';
 
-    rest('/rpc/visitas_admin_get', {
+    rest('/rest/v1/rpc/visitas_admin_get', {
       method: 'POST',
       body: JSON.stringify({ p_key: CFG.ADMIN_KEY || '', p_limit: 300 })
     }).then(function(res){
@@ -3896,7 +3896,9 @@ gold = (silver.groupBy("dt_evento", "evento", "regiao")
       boxData.hidden = false;
       status.textContent = rows.length + ' registro(s) · ' + fmtDt(Date.now());
     }).catch(function(err){
-      status.textContent = 'erro: ' + (err && err.message || 'fetch');
+      var msg = (err && err.message) || 'fetch';
+      if(msg === 'Failed to fetch') msg = 'Failed to fetch — Supabase não respondeu (confira visitas-config.js)';
+      status.textContent = 'erro: ' + msg;
       boxData.hidden = true;
     });
   }
